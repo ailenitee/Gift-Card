@@ -1,0 +1,12 @@
+.carousel-item{
+    object-fit: cover;
+    max-height: 500px;
+    object-position: top;
+    .overlay{
+        height: 550px;
+        // background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        display: block;
+        width: 100%;
+    }
+}

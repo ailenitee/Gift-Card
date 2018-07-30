@@ -1,0 +1,220 @@
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+  display: block;
+  span {
+    display: inline-block;
+    position: relative;
+    &:before,&:after {
+      content: "";
+      position: absolute;
+      height: 5px;
+      border-bottom: 1px solid $darkheadertext;
+      border-top: 1px solid $darkheadertext;
+      top: 0;
+      width: 100px;
+    }
+    &:before{
+      right: 100%;
+      margin-right: 15px;
+    }
+    &:after{
+      left: 100%;
+      margin-left: 15px;
+    }
+  }
+}
+//navtabs steps
+.board{
+  margin: 0 auto;
+  .nav-tabs {
+    position: relative;
+    margin: 10px auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    .liner{
+      height: 2px;
+      background: #ddd;
+      position: absolute;
+      width: 80%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      top: 50%;
+      z-index: 1;
+    }
+    li{
+      a{
+        span{
+          &.round-tabs{
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            display: inline-block;
+            border-radius: 100px;
+            background: white;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            text-align: center;
+            font-size: 25px;
+            &.one{
+              color: rgb(34, 194, 34);
+              border: 2px solid rgb(34, 194, 34);
+            }
+            &.two{
+              color: #febe29;
+              border: 2px solid #febe29;
+            }
+            &.three{
+              color: #3e5e9a;
+              border: 2px solid #3e5e9a;
+            }
+            &.four{
+              color: #f1685e;
+              border: 2px solid #f1685e;
+            }
+            &.five{
+              color: $darkheadertext;
+              border: 2px solid $darkheadertext;
+            }
+            &.six{
+              color: #999;
+              border: 2px solid #999;
+            }
+          }
+        }
+      }
+      &.active{
+        span{
+          &.one{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+          &.two{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+          &.three{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+          &.four{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+          &.five{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+          &.six{
+            background: #fff !important;
+            border: 2px solid #ddd!important;
+          }
+        }
+      }
+    }
+  }
+}
+p.narrow{
+  width: 60%;
+  margin: 10px auto;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #555555;
+  cursor: default;
+  border: 0;
+  border-bottom-color: transparent;
+}
+.nav-tabs > li.active > a span.round-tabs{
+  background: #fafafa;
+}
+.nav-tabs > li {
+  width: 15%;
+}
+.nav-tabs > li:after {
+  content: " ";
+  position: absolute;
+  left: 45%;
+  opacity:0;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 5px solid transparent;
+  border-bottom-color: #ddd;
+  transition:0.1s ease-in-out;
+}
+.nav-tabs > li.active:after {
+  content: " ";
+  position: absolute;
+  left: 45%;
+  opacity:1;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 10px solid transparent;
+  border-bottom-color: #ddd;
+}
+.nav-tabs > li a{
+  width: 70px;
+  height: 70px;
+  margin: 20px auto;
+  border-radius: 100%;
+  padding: 0;
+}
+.nav-tabs > li a:hover{
+  background: transparent;
+}
+.tab-content{
+  .head{
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+  }
+  .tab-pane{
+    position: relative;
+    padding-top: 30px;
+  }
+}
+.btn-outline-rounded{
+  padding: 10px 40px;
+  margin: 20px 0;
+  border: 2px solid transparent;
+  border-radius: 25px;
+}
+.btn.green{
+  background-color:#5cb85c;
+  color: #ffffff;
+}
+@media( max-width : 585px ){
+  .board {
+    width: 90%;
+    height:auto !important;
+  }
+  span.round-tabs {
+    font-size:16px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .tab-content .head{
+    font-size:20px;
+  }
+  .nav-tabs > li a {
+    width: 50px;
+    height: 50px;
+    line-height:50px;
+  }
+
+  .nav-tabs > li.active:after {
+    content: " ";
+    position: absolute;
+    left: 35%;
+  }
+
+  .btn-outline-rounded {
+    padding:12px 20px;
+  }
+}

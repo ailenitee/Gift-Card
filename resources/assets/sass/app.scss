@@ -1,0 +1,53 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body{
+    font-size:15px;
+    font-family: $font-body;
+    letter-spacing: 1.5px;
+}
+h3,h4,h5,h6{
+    font-family: $font-header;
+    color: $headertext;
+    text-transform: uppercase;
+}
+h1,h2{
+    color: $darkheadertext;
+    font-family: $font-header;
+    text-transform: uppercase;
+}
+hr {
+    display: block;
+    display: block;
+    border: 1px solid $headertext;
+    margin: 30px auto;
+}
+i {
+  font-family: fontawesome !important;
+}
+a{
+  text-transform: uppercase;
+  &:hover{
+    text-decoration: none;
+  }
+}
+//Custom css
+@import 'components/nav';
+@import 'components/navpills';
+@import 'components/modal';
+@import 'components/buttons';
+@import 'components/fancy';
+@import 'components/forms';
+@import 'components/carousel';
+@import 'components/banner';
+@import 'components/content';
+@import 'components/login';
+@import 'components/footer';

@@ -1,0 +1,102 @@
+.login-content{
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  @media( max-width : 768px ){
+    height: auto;
+  }
+  .blur{
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1509252054023-980dd0df5222?ixlib=rb-0.3.5…EyMDd9&s=e2e4c3f…&auto=format&fit=crop&w=1189&q=80);
+    -webkit-filter: blur(5px);
+    background-size: cover;
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(15px);
+    width: 100%;
+    transform: scale(1.1);
+    position: absolute;
+    @media( max-width : 768px ){
+      height: 100%;
+    }
+  }
+  .login-box{
+    width: 100%;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+    background: #fff;
+    position: relative;
+    .row{
+      margin: 0;
+    }
+    .col-md-4,.col-md-8{
+      padding: 0;
+    }
+    .login-box-left{
+      background: #000;
+      background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(http://glyphcards.test/img/GiftCard/Section1/1.png);
+      background-position: right;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: inline-grid;
+      h2{
+        color: #fff;
+      }
+      h4{
+        color: #fff;
+      }
+      img{
+        margin-top: 50px;
+        @media( max-width : 768px ){
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .login-box-right{
+      padding: 40px;
+      @extend .login_form;
+      @media( max-width : 768px ){
+        padding: 10px;
+        width: 95%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .signup-box{
+    @extend .login-box;
+    padding: 40px;
+    width: 80%;
+    input.btn-border{
+      background: transparent;
+      font-size: 15px;
+      &:hover{
+        color: #fff;
+        background: $button;
+      }
+    }
+    .custom-control-label::before, .custom-control-label::after {
+      width: 18px;
+      height: 18px;
+    }
+    .custom-control{
+      padding-left: 20px;
+      .custom-control-label{
+        padding-left: 20px;
+        font-size: 13px;
+        padding-top: 1px;
+      }
+    }
+  }
+  .signup-content-box{
+    display: none;
+    opacity: 0;
+  }
+}
+
+.modal.fade.show{
+      opacity: 1!important;
+}
