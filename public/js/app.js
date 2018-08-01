@@ -35921,6 +35921,9 @@ window.Vue = __webpack_require__(36);
 //});
 $(function () {
   var referrer = document.referrer;
+  $('.navbar-nav>li>a').on('click', function () {
+    $('.navbar-collapse').collapse('hide');
+  });
   $('.signup-content-box').css('display', 'none');
   $('#detailModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus');

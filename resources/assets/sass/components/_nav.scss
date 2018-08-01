@@ -1,6 +1,19 @@
 .navbar {
   margin-bottom: 0;
   height: 75px;
+
+  .navbar-toggle{
+    float: right;
+    border: none;
+    width: 100%;
+    border: 1px solid #555;
+    span{
+      background: #555;
+    }
+    @media( max-width : 991px ){
+      width: auto;
+    }
+  }
   .navbar-brand {
     font-size: 21px;
     color: $headertext;
@@ -26,24 +39,39 @@
         }
       }
     }
+    &.navbar-right{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+    @media( max-width : 991px ){
+      width: 100%;
+    }
   }
   &.bg-gray{
     background-color: $lightnav;
   }
+  @media( max-width : 991px ){
+    height:auto;
+  }
 }
+
 @media( max-width : 991px ){
   #navbarNavDropdown{
     z-index: 1;
     text-align: center;
-    background: rgba(0, 0, 0, 1);
-    color: #fff!important;
+    // background: rgba(0, 0, 0, 1);
+    // color: #fff!important;
     width: 100%;
     .nav-link{
-          color: #fff!important;
-          &.btn-border{
-            color: $button;
-          }
+      // color: #fff!important;
+      &.btn-border{
+        color: $button;
+      }
     }
-
   }
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
 }

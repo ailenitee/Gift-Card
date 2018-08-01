@@ -4,7 +4,7 @@
   padding: 10px 15px!important;
   text-align: center;
   &:hover{
-    background-color: $button;
+    background-color: $button!important;
     color: #fff!important;
   }
 }
@@ -49,6 +49,9 @@
   margin: 0 auto;
   display: block;
   width: 50%;
+  @media( max-width : 575px ){
+    width: 100%;
+  }
 }
 .btn-group-toggle{
   .btn{

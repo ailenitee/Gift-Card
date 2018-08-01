@@ -22,6 +22,9 @@ window.Vue = require('vue');
 //});
 $(function() {
   var referrer =  document.referrer;
+  $('.navbar-nav>li>a').on('click', function(){
+    $('.navbar-collapse').collapse('hide');
+  });
   $('.signup-content-box').css('display','none');
   $('#detailModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
@@ -43,7 +46,7 @@ $(function() {
     $(this).css('cursor','pointer');
     window.location.href = '/signup';
     return false;
-  }); 
+  });
   $('.btn-signup').click(function() {
     $('.login-box').css('display','none');
     $('.login-box').css('opacity','0');
@@ -154,34 +157,34 @@ $(function() {
   });
   ////////// upload photo with preview
   $(document).on('change', '.btn-file :file', function() {
-      var input = $(this),
-          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-      input.trigger('fileselect', [label]);
+    var input = $(this),
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
   });
   $('.btn-file :file').on('fileselect', function(event, label) {
 
-      var input = $(this).parents('.input-group').find(':text'),
-          log = label;
+    var input = $(this).parents('.input-group').find(':text'),
+    log = label;
 
-      if( input.length ) {
-          input.val(log);
-      } else {
-          if( log ) alert(log);
-      }
+    if( input.length ) {
+      input.val(log);
+    } else {
+      if( log ) alert(log);
+    }
   });
   function readURL(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-          reader.onload = function (e) {
-              $('#img-upload').attr('src', e.target.result);
-              $('#img-upload').css('display','block');
-          }
-
-          reader.readAsDataURL(input.files[0]);
+      reader.onload = function (e) {
+        $('#img-upload').attr('src', e.target.result);
+        $('#img-upload').css('display','block');
       }
+
+      reader.readAsDataURL(input.files[0]);
+    }
   }
   $("#imgInp").change(function(){
-      readURL(this);
+    readURL(this);
   });
 });

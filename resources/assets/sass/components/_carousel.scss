@@ -1,4 +1,5 @@
-.carousel-item{
+.carousel-inner{
+  .item{
     object-fit: cover;
     max-height: 500px;
     object-position: top;
@@ -9,4 +10,6 @@
         display: block;
         width: 100%;
     }
+  }
+
 }

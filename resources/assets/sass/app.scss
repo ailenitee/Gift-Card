@@ -10,25 +10,32 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-    font-size:15px;
-    font-family: $font-body;
-    letter-spacing: 1.5px;
+  font-size:15px;
+  font-family: $font-body;
+  letter-spacing: 1.5px;
+}
+.fonts {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase; 
 }
 h3,h4,h5,h6{
-    font-family: $font-header;
-    color: $headertext;
-    text-transform: uppercase;
+  font-family: $font-header;
+  color: $headertext;
+  @extend .fonts;
 }
 h1,h2{
-    color: $darkheadertext;
-    font-family: $font-header;
-    text-transform: uppercase;
+  color: $darkheadertext;
+  font-family: $font-header;
+  @extend .fonts;
 }
+
 hr {
-    display: block;
-    display: block;
-    border: 1px solid $headertext;
-    margin: 30px auto;
+  display: block;
+  display: block;
+  border: 1px solid $headertext;
+  margin: 30px auto;
 }
 i {
   font-family: fontawesome !important;
