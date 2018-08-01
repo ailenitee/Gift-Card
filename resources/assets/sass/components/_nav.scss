@@ -28,6 +28,7 @@
     }
   }
   .navbar-nav{
+    margin: 0;
     .nav-item{
       .nav-link{
         font-weight: 400;
@@ -53,6 +54,7 @@
   }
   @media( max-width : 991px ){
     height:auto;
+    border-bottom: 1px solid #ccc;
   }
 }
 
@@ -72,6 +74,6 @@
   }
 }
 .nav>li>a:focus, .nav>li>a:hover {
-    text-decoration: none;
-    background-color: transparent;
+  text-decoration: none;
+  background-color: transparent;
 }

@@ -44,7 +44,7 @@ $(function() {
   });
   $('.carousel_signup').click(function() {
     $(this).css('cursor','pointer');
-    window.location.href = '/signup';
+    window.location.href = '/login#signup';
     return false;
   });
   $('.btn-signup').click(function() {

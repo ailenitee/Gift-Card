@@ -10503,6 +10503,10 @@ a:hover {
   width: 165px;
 }
 
+.navbar .navbar-nav {
+  margin: 0;
+}
+
 .navbar .navbar-nav .nav-item .nav-link {
   font-weight: 400;
   margin: 10px 15px;
@@ -10537,6 +10541,7 @@ a:hover {
 @media (max-width: 991px) {
   .navbar {
     height: auto;
+    border-bottom: 1px solid #ccc;
   }
 }
 
