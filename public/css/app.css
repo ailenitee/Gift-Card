@@ -10832,6 +10832,22 @@ a:hover {
   border: 2px solid #999;
 }
 
+@media (max-width: 767px) {
+  .board .nav-tabs li a span.round-tabs {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+  }
+}
+
+@media (max-width: 479px) {
+  .board .nav-tabs li a span.round-tabs {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
 .board .nav-tabs li.active span.one {
   background: #fff !important;
   border: 2px solid #ddd !important;
@@ -10916,6 +10932,20 @@ p.narrow {
   padding: 0;
 }
 
+@media (max-width: 767px) {
+  .nav-tabs > li a {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 479px) {
+  .nav-tabs > li a {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .nav-tabs > li a:hover {
   background: transparent;
 }
@@ -10951,19 +10981,10 @@ p.narrow {
 
   span.round-tabs {
     font-size: 16px;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
   }
 
   .tab-content .head {
     font-size: 20px;
-  }
-
-  .nav-tabs > li a {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
   }
 
   .nav-tabs > li.active:after {
@@ -11364,6 +11385,20 @@ input,
   display: block;
 }
 
+@media (max-width: 767px) {
+  .messenger .col-md-4 img {
+    max-height: 300px;
+    width: auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 479px) {
+  .messenger .col-md-4 img {
+    max-height: 250px;
+  }
+}
+
 .messenger .col-md-6 img {
   width: 40%;
   margin: 0 auto;
@@ -11434,8 +11469,8 @@ input,
 .login-content .login-box .login-box-left,
 .login-content .signup-box .login-box-left {
   background: #000;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(http://glyphcards.test/img/GiftCard/Section1/1.png);
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(http://glyphcards.test/img/GiftCard/Section1/1.png);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(/img/GiftCard/Section1/1.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/img/GiftCard/Section1/1.png);
   background-position: right;
   width: 100%;
   height: 100%;
@@ -11509,6 +11544,13 @@ input,
   padding-left: 20px;
   font-size: 13px;
   padding-top: 1px;
+}
+
+@media (max-width: 768px) {
+  .login-content .signup-box {
+    padding: 20px;
+    width: 95%;
+  }
 }
 
 .login-content .signup-content-box {
