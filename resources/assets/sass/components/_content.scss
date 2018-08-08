@@ -55,6 +55,9 @@
     hr{
       border: 1px solid #999;
       margin: 50px 150px;
+      @media( max-width : 768px ){
+        margin: 50px;
+      }
     }
     p{
       margin-top: 20px;
@@ -136,6 +139,15 @@
       margin-top: 10px;
       span{
         width: 100%;
+        background: none;
+        &:hover{
+          border: none;
+        }
+        span{
+          &:hover{
+            border: none;
+          }
+        }
       }
     }
     .choose_btn{
@@ -148,6 +160,10 @@
   &.design_card{
     h2{
       margin-bottom: 0;
+      @media( max-width : 768px ){
+       margin-bottom: 20px;
+       text-align: center;
+      }
     }
   }
   .about{

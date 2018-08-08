@@ -16,7 +16,7 @@
     <div class="item ">
       <img class="d-block w-100" src="{{URL::asset('/img/GiftCard/Section1/3.png')}}" alt="First slide">
     </div>
-    <div class="item carousel_signup">
+    <div class="item carousel_signup" style="cursor: pointer;">
       <img class="d-block w-100" src="{{URL::asset('/img/GiftCard/Section1/4.png')}}" alt="First slide">
     </div>
 

@@ -1,11 +1,12 @@
 textarea{
   resize: none;
 }
-input,.input-group-text, .form-control{
+input,.input-group-text, .form-control{ 
   font-size: 13px;
+  padding: 20px;
 }
 .form_details{
-      margin: 30px 0;
+  margin: 30px 0;
   img{
     border: 1px solid #fdfdff;
     width: 100%;
@@ -31,7 +32,7 @@ input,.input-group-text, .form-control{
 .login_form{
   width: 80%;
   display: block;
-    margin: 0 auto;
+  margin: 0 auto;
   form{
     margin: 15px auto;
     .form-control{

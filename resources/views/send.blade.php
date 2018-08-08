@@ -1,6 +1,7 @@
 <div class="row ">
   <div class="col-md-12">
     <h2 class="text-center send-gift">Send Your Gift Card</h2>
+    <br>
   </div>
   <div class="col-md-offset-3 col-md-6">
     <!-- <ul class="nav nav-pills mb-3 send-pills" id="pills-tab" role="tablist">
