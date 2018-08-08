@@ -1,9 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Input;
+use Redirect;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use IlluminateSupportFacadesValidator;
+use IlluminateFoundationBusDispatchesJobs;
+use IlluminateRoutingController as BaseController;
+use IlluminateFoundationValidationValidatesRequests;
+use IlluminateFoundationAuthAccessAuthorizesRequests;
+use IlluminateFoundationAuthAccessAuthorizesResources;
+use IlluminateHtmlHtmlServiceProvider;
 
 class LoginController extends Controller
 {
@@ -25,7 +34,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/card/details';
 
     /**
      * Create a new controller instance.
@@ -36,5 +45,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
+    }
     
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function loginProcess()
+    {
+    }
 }

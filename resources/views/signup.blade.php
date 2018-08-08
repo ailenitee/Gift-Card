@@ -1,22 +1,28 @@
 <div class="signup-content-box">
   <div class="signup-box">
-    <form role="form" class="signup_form">
+    <form role="form" class="signup_form" method="POST" action="{{ route('register') }}">
+      {!! csrf_field() !!}
       <h2>Sign up</h2>
       <hr class="colorgraph">
+      @if(session()->has('success'))
+      <div class="alert alert-success">
+        {{ session()->get('success') }}
+      </div>
+      @endif
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+            <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" value="{{ old('first_name') }}">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+            <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" value="{{ old('last_name') }}">
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <input type="text" name="user name" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="3">
+            <input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="3">
           </div>
         </div>
         <div class="col-md-12">
@@ -26,7 +32,7 @@
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <input type="number" name="email" id="" class="form-control input-lg" placeholder="Mobile Number" tabindex="4">
+            <input type="number" name="mnumber" id="" class="form-control input-lg" placeholder="Mobile Number" tabindex="4">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -36,7 +42,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+            <input type="password" name="" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
           </div>
         </div>
         <div class="col-md-12">
@@ -52,7 +58,7 @@
           <p>Already have an account?&nbsp;<a href="#" class="back_login"><b>Sign In</b></a></p>
         </div>
         <div class=" col-xs-12 col-md-4">
-          <input type="submit" value="Register" class="btn btn-border btn-center" tabindex="7" style="width:100%;">
+          <input type="submit" value="Register" class="btn btn-border btn-center reg-btn" tabindex="7" style="width:100%;">
         </div>
       </div>
     </form>

@@ -18,7 +18,7 @@ body{
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  text-transform: uppercase; 
+  text-transform: uppercase;
 }
 h3,h4,h5,h6{
   font-family: $font-header;
@@ -52,6 +52,7 @@ a{
 @import 'components/modal';
 @import 'components/buttons';
 @import 'components/fancy';
+@import 'components/slider';
 @import 'components/forms';
 @import 'components/carousel';
 @import 'components/banner';

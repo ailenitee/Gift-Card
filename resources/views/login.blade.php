@@ -36,13 +36,20 @@
               <div class="login-box-right">
                 <h2 class="text-center">Login</h2>
                 <form class="login_form" action="index.html" method="post">
+                  {!! csrf_field() !!}
+                  @if(Session::has('error'))
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     {{ Session::get('error') }}
+                 </div>
+                 @endif
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password" required>
                   </div>
                   <a class="nav-link btn-border btn-center" href="">Login</a>
                 </form>

@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 Route::get('/card/details', 'CardController@index');
 Route::get('/categories', 'HomeController@categories');
-Route::get('/login', 'HomeController@login'); 
+Route::get('/login', 'Auth\LoginController@login');
+Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']); 

@@ -12,4 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+  .js('resources/assets/js/components/slick.js', 'public/js')
+  .js('resources/assets/js/components/upload.js', 'public/js')
+  .js('resources/assets/js/components/validation.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
