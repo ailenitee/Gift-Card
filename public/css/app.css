@@ -11272,16 +11272,16 @@ input,
           box-shadow: none;
 }
 
-.login_form form button,
-.login-content .login-box .login-box-right form button,
-.login-content .signup-box .login-box-right form button {
+.login_form form button.nav-link,
+.login-content .login-box .login-box-right form button.nav-link,
+.login-content .signup-box .login-box-right form button.nav-link {
   margin-top: 30px;
   background: transparent;
 }
 
-.login_form form button:hover,
-.login-content .login-box .login-box-right form button:hover,
-.login-content .signup-box .login-box-right form button:hover {
+.login_form form button.nav-link:hover,
+.login-content .login-box .login-box-right form button.nav-link:hover,
+.login-content .signup-box .login-box-right form button.nav-link:hover {
   background-color: #f2574f;
 }
 

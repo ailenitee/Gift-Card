@@ -2,17 +2,17 @@
   <ul>
     @if(Auth::guest())
     <li class="nav-item">
-      <a class="nav-link-top login " href="http://gift-card.test/login">Login</a>
+      <a class="nav-link-top login " href="{{url('/login')}}">Login</a>
     </li>
     <li class="nav-item">
       <a class="nav-link-top carousel_signup ">Sign Up</a>
     </li>
     @else
     <li class="nav-item">
-      <h4 class="nav-link-top login">Hi {{ Auth::user()->name }}!</h4>    
+      <h4 class="nav-link-top login">Hi {{ Auth::user()->name }}!</h4>
     </li>
       <li class="nav-item">
-        <a class="nav-link-top logout " href="http://gift-card.test/logout">Logout</a>
+        <a class="nav-link-top logout " href="{{url('/logout')}}">Logout</a>
       </li>
       @endif
     </ul>
