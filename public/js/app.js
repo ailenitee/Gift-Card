@@ -60,19 +60,101 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
-
+$(function () {
+  $('.reg-btn').attr('disabled', 'disabled');
+  $('#customCheck1').change(function () {
+    if ($(this).is(':checked')) {
+      $('.reg-btn').attr('disabled', false);
+    } else {
+      $('.reg-btn').attr('disabled', 'disabled');
+    }
+  });
+});
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+$(function () {
+  //partner slide
+  $('.customer-logos').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: false,
+    dots: false,
+    pauseOnHover: false,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3
+      }
+    }, {
+      breakpoint: 520,
+      settings: {
+        slidesToShow: 2
+      }
+    }]
+  });
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+$(function () {
+  ////////// upload photo with preview
+  $(document).on('change', '.btn-file :file', function () {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+  });
+  $('.btn-file :file').on('fileselect', function (event, label) {
+
+    var input = $(this).parents('.input-group').find(':text'),
+        log = label;
+
+    if (input.length) {
+      input.val(log);
+    } else {
+      if (log) alert(log);
+    }
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img-upload').attr('src', e.target.result);
+        $('#img-upload').css('display', 'block');
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#imgInp").change(function () {
+    readURL(this);
+  });
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(4);
+module.exports = __webpack_require__(5);
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -81,9 +163,9 @@ module.exports = __webpack_require__(2);
 * includes Vue and other libraries. It is a great starting point when
 * building robust, powerful web applications using Vue and Laravel.
 */
-__webpack_require__(8);
-__webpack_require__(4);
-__webpack_require__(6);
+__webpack_require__(0);
+__webpack_require__(1);
+__webpack_require__(2);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -113,6 +195,7 @@ $(function () {
     window.location.href = '/card/details';
     return false;
   });
+  $('.carousel_signup').css('cursor', 'pointer');
   $('.carousel_signup').click(function () {
     $(this).css('cursor', 'pointer');
     window.location.href = '/login#signup';
@@ -227,95 +310,10 @@ $(function () {
 });
 
 /***/ }),
-/* 2 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */,
-/* 4 */
-/***/ (function(module, exports) {
-
-$(function () {
-  //partner slide
-  $('.customer-logos').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    arrows: false,
-    dots: false,
-    pauseOnHover: false,
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 3
-      }
-    }, {
-      breakpoint: 520,
-      settings: {
-        slidesToShow: 2
-      }
-    }]
-  });
-});
-
-/***/ }),
-/* 5 */,
-/* 6 */
-/***/ (function(module, exports) {
-
-$(function () {
-  ////////// upload photo with preview
-  $(document).on('change', '.btn-file :file', function () {
-    var input = $(this),
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [label]);
-  });
-  $('.btn-file :file').on('fileselect', function (event, label) {
-
-    var input = $(this).parents('.input-group').find(':text'),
-        log = label;
-
-    if (input.length) {
-      input.val(log);
-    } else {
-      if (log) alert(log);
-    }
-  });
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        $('#img-upload').attr('src', e.target.result);
-        $('#img-upload').css('display', 'block');
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#imgInp").change(function () {
-    readURL(this);
-  });
-});
-
-/***/ }),
-/* 7 */,
-/* 8 */
-/***/ (function(module, exports) {
-
-$(function () {
-  $('.reg-btn').attr('disabled', 'disabled');
-  $('#customCheck1').change(function () {
-    if ($(this).is(':checked')) {
-      $('.reg-btn').attr('disabled', false);
-    } else {
-      $('.reg-btn').attr('disabled', 'disabled');
-    }
-  });
-});
 
 /***/ })
 /******/ ]);

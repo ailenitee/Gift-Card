@@ -37,6 +37,7 @@ $(function() {
     window.location.href = '/card/details';
     return false;
   });
+  $('.carousel_signup').css('cursor','pointer');
   $('.carousel_signup').click(function() {
     $(this).css('cursor','pointer');
     window.location.href = '/login#signup';

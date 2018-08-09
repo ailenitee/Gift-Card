@@ -10605,6 +10605,43 @@ a:hover {
   }
 }
 
+.navbar-top {
+  position: relative;
+  height: auto;
+  display: block;
+  width: 100%;
+  padding: 5px;
+}
+
+.navbar-top ul {
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 3px 20px;
+}
+
+.navbar-top ul li {
+  display: inline-block;
+}
+
+.navbar-top ul li .nav-link-top {
+  margin: 10px 0;
+  padding: 0 20px;
+  color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  font-size: 13px;
+}
+
+.navbar-top ul li .login {
+  border-right: 1px solid;
+}
+
+.navbar-top ul li h4 {
+  color: #161d8e !important;
+  margin-bottom: 0;
+}
+
 @media (max-width: 991px) {
   #navbarNavDropdown {
     z-index: 1;
@@ -11235,10 +11272,17 @@ input,
           box-shadow: none;
 }
 
-.login_form form a,
-.login-content .login-box .login-box-right form a,
-.login-content .signup-box .login-box-right form a {
+.login_form form button,
+.login-content .login-box .login-box-right form button,
+.login-content .signup-box .login-box-right form button {
   margin-top: 30px;
+  background: transparent;
+}
+
+.login_form form button:hover,
+.login-content .login-box .login-box-right form button:hover,
+.login-content .signup-box .login-box-right form button:hover {
+  background-color: #f2574f;
 }
 
 .carousel-inner .item {
@@ -11505,6 +11549,12 @@ input,
   width: 100%;
 }
 
+.content.design_card {
+  margin: 0;
+  -webkit-box-shadow: 0px 5px 14px #bdbdbd;
+          box-shadow: 0px 5px 14px #bdbdbd;
+}
+
 .content.design_card h2 {
   margin-bottom: 0;
 }
@@ -11594,6 +11644,10 @@ input,
   margin-bottom: 20px;
 }
 
+.details-bg {
+  background-color: #fff;
+}
+
 .login-content {
   height: 100vh;
   overflow: hidden;
@@ -11636,6 +11690,7 @@ input,
   width: 100%;
   height: auto;
   margin: 30px auto;
+  margin-top: 50px;
   display: block;
   background: #fff;
   position: relative;

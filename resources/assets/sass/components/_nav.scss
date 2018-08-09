@@ -57,7 +57,39 @@
     border-bottom: 1px solid #ccc;
   }
 }
+.navbar-top{
+  position: relative;
+  height: auto;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  ul{
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+    margin-bottom: 0;
+        padding: 3px 20px;
+    li{
+      display: inline-block;
+      .nav-link-top{
+        margin: 10px 0;
+        padding: 0 20px;
+        color: rgba(0, 0, 0, 0.5);
+        border:  0;
+        font-size: 13px;
+      }
+      .login{
+        border-right: 1px solid;
+      }
+      h4{
+        color: $darkheadertext!important;
+        margin-bottom: 0;
+      }
+    }
 
+  }
+
+}
 @media( max-width : 991px ){
   #navbarNavDropdown{
     z-index: 1;

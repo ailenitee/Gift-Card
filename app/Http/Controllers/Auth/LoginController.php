@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 use Input;
 use Redirect;
 use Auth;
+use App\User;
+use DB;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use IlluminateSupportFacadesValidator;
@@ -53,13 +56,23 @@ class LoginController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
     }
-    
+
     public function login()
     {
         return view('login');
     }
 
-    public function loginProcess()
+    public function loginProcess(Request $request)
     {
+      if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+          return redirect('/card/details');
+      }else{
+           return redirect('/login')->with('error', 'Invalid Username or Password');
+      }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
     }
 }
