@@ -5,11 +5,11 @@
   <div class="col-md-6">
     <div class="form-group">
       <label>Sender Name</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@endif">
     </div>
     <div class="form-group">
       <label>Recipient Name</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->email }}@endif">
     </div>
     <div class="form-group">
       <label>Optional Message</label>

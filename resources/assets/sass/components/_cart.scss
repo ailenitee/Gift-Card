@@ -1,0 +1,29 @@
+#cartModal{
+  .modal-dialog{
+    width: 50%;
+    max-width: none;
+    .modal-body{
+      max-height: 350px;
+      overflow: auto;
+    }
+    table{
+      th,td{
+        text-align: center;
+        img{
+          width: auto;
+          height: 80px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+
+  }
+}
+
+.cart-btn{
+  @media( max-width : 768px ){
+    float: none!important;
+    margin-top: 20px;
+  } 
+}

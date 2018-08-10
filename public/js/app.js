@@ -166,6 +166,7 @@ module.exports = __webpack_require__(5);
 __webpack_require__(0);
 __webpack_require__(1);
 __webpack_require__(2);
+__webpack_require__(14);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -307,6 +308,10 @@ $(function () {
     var imgsrc = $(this).attr('src');
     $('#img-upload').attr('src', imgsrc);
   });
+
+  $('.cart-btn').on('click', function () {
+    $('#cartModal').modal('show');
+  });
 });
 
 /***/ }),
@@ -314,6 +319,24 @@ $(function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.cart-btn').on('click', function () {
+    $('#cartModal').modal('show');
+  });
+});
 
 /***/ })
 /******/ ]);

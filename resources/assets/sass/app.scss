@@ -16,7 +16,7 @@ body{
 }
 .fonts {
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -46,11 +46,18 @@ a{
     text-decoration: none;
   }
 }
+.alert-danger {
+    color: #fff;
+    background-color: #db4437;
+    border-color: #f5c6cb;
+    background-image: none;
+}
 //Custom css
 @import 'components/nav';
 @import 'components/navpills';
 @import 'components/modal';
 @import 'components/buttons';
+@import 'components/cart';
 @import 'components/fancy';
 @import 'components/slider';
 @import 'components/forms';

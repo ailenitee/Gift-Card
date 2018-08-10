@@ -36,13 +36,15 @@
             </div>
             <div class="col-md-8">
               <div class="login-box-right">
-                <h2 class="text-center">Login</h2>
+                <h2 class="text-center">
+                  <i class="fas fa-user-circle"></i>&nbsp;Login
+                </h2>
                 <form class="login_form" action="{{ route('user_login') }}" method="post">
                   {!! csrf_field() !!}
                   @if(Session::has('error'))
                   <div class="alert alert-danger alert-dismissible" role="alert">
                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     {{ Session::get('error') }}
+                     <i class="fas fa-exclamation-circle"></i> {{ Session::get('error') }}
                  </div>
                  @endif
                   <div class="form-group">
@@ -58,9 +60,9 @@
                 <br>
                 <h3 class="fancy"><span>Or</span></h3>
                 <br>
-                <a class="nav-link btn-fb" href="">Sign in with Facebook</a>
+                <a class="nav-link btn-fb" href=""><i class="fab fa-facebook"></i>&nbsp;Sign in with Facebook</a>
                 <br>
-                <a class="nav-link btn-g" href="">Sign in with Google</a>
+                <a class="nav-link btn-g" href=""><i class="fab fa-google"></i>&nbsp;Sign in with Google</a>
               </div>
             </div>
           </div>

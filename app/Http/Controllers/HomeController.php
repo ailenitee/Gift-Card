@@ -20,7 +20,11 @@ class HomeController extends Controller
     {
         return view('categories');
     }
-     
+    public function contact()
+    {
+        return view('contact');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

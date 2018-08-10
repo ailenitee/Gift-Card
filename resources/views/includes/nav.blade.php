@@ -33,7 +33,7 @@
           <a class="nav-link active home" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/login') }}">Contact Us</a>
+          <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link btn-border details" href="{{ url('/card/details') }}">Send A Gift Card</a>

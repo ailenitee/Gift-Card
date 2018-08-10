@@ -25,6 +25,14 @@
       margin-left: 15px;
     }
   }
+  &.fancy2{
+    span{
+      &:before,&:after {
+        border-bottom: none;
+        width: 200px;
+      }
+    }
+  }
 }
 //navtabs steps
 .board{
@@ -179,7 +187,7 @@ p.narrow{
   }
   @media( max-width : 479px ){
     width: 40px;
-    height: 40px; 
+    height: 40px;
   }
 }
 .nav-tabs > li a:hover{

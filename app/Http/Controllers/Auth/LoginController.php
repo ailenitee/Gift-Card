@@ -67,7 +67,7 @@ class LoginController extends Controller
       if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
           return redirect('/card/details');
       }else{
-           return redirect('/login')->with('error', 'Invalid Username or Password');
+           return redirect('/login')->with('error', 'Invalid Email or Password');
       }
     }
 

@@ -7,6 +7,7 @@
 require('./components/validation.js');
 require('./components/slick.js');
 require('./components/upload.js');
+require('./components/cartmodal.js');
 
 
 /**
@@ -152,5 +153,7 @@ $(function() {
     $('#img-upload').attr('src',imgsrc);
   });
 
-
+  $('.cart-btn').on('click', function(){
+    $('#cartModal').modal('show');
+  });
 });
