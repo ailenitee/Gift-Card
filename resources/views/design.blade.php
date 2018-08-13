@@ -3,7 +3,7 @@
     <h2>Design</h2>
   </div>
   <div class="col-md-6">
-    <img src="{{URL::asset('/img/themes/bday-1.jpg')}}" id='img-upload' style='width:100%'>
+    <img src="{{URL::asset('/img/themes/bday-1.jpg')}}" id='img-upload' style='width:100%' name="giftcard">
     <h4>Choose a theme</h4>
     <div class="choose_btn">
       <div class="row">

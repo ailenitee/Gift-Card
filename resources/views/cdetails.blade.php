@@ -3,31 +3,33 @@
     <h2>Details</h2>
   </div>
   <div class="col-md-6">
+    <input type="hidden" value="{{Auth::user() ? Auth::user()->id : '0'}}" name="user_id">
+    <input type="hidden" value="0" name="total">
     <div class="form-group">
       <label>Sender Name</label>
-      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@endif">
-    </div>
-    <div class="form-group">
-      <label>Recipient Name</label>
-      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->email }}@endif">
+      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@endif" name="name" required>
     </div>
     <div class="form-group">
       <label>Optional Message</label>
-      <textarea name="name"  class="form-control" rows="4"></textarea>
+      <textarea name="message"  class="form-control" rows="4"></textarea>
     </div>
     <div class="form-group">
       <label>Amount</label>
     </div>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-secondary active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> P500
+        <input type="radio" id="option1" autocomplete="off" checked name="amount" value="500" > P500
       </label>
       <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off"> P1000
+        <input type="radio" id="option2" autocomplete="off" name="amount" value="1000"> P1000
       </label>
       <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off"> P2000
+        <input type="radio" id="option3" autocomplete="off" name="amount" value="2000"> P2000
       </label>
+    </div>
+    <div class="form-group">
+      <br><label>Quantity</label>
+      <input type="text" class="form-control" value="" name="quantity" required>
     </div>
   </div>
 </div>

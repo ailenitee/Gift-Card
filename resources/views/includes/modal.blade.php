@@ -19,34 +19,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td><img src="{{URL::asset('/img/themes/bday-1.jpg')}}" alt=""></td>
-              <td>Price</td>
-              <td>Quantity</td>
-              <td>Total</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td><img src="{{URL::asset('/img/themes/bday-2.jpg')}}" alt=""></td>
-              <td>Price</td>
-              <td>Quantity</td>
-              <td>Total</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td><img src="{{URL::asset('/img/themes/bday-22.jpg')}}" alt=""></td>
-              <td>Price</td>
-              <td>Quantity</td>
-              <td>Total</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td><img src="{{URL::asset('/img/themes/bday-11.jpg')}}" alt=""></td>
-              <td>Price</td>
-              <td>Quantity</td>
-              <td>Total</td>
-            </tr>
+            @if(Auth::guest())
+              not logged in
+            @else
+              @foreach ($cartItems as $card)
+              <tr>
+                <th scope="row">{{$card->id}}</th>
+                <td><img src="{{URL::asset('/img/themes/bday-1.jpg')}}" alt=""></td>
+                <td>{{$card->amount}}</td>
+                <td>{{$card->quantity}}</td>
+                <td>{{$card->total}}</td>
+              </tr>
+              @endforeach
+            @endif
           </tbody>
         </table>
       </div>

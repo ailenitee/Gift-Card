@@ -8,24 +8,31 @@
         <button class="nav-link btn-red btn-center float-right cart-btn"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</button>
       </div>
     </div>
-  <form action="" method="post" class="form_details">
-    <div class="content d-content design_card" style="margin:0;">
+    @if(session()->has('success'))
+    <br>
+    <div class="alert alert-success">
+      {{ session()->get('success') }}
+    </div>
+    @endif
+    <form action="{{ route('cart') }}" method="post" class="form_details">
+      {{ csrf_field() }}
+      <div class="content d-content design_card" style="margin:0;">
         @include('design')
         <hr>
         @include('cdetails')
         <hr>
         @include('send')
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <a class="btn-border btn-center" href="">ADD TO CART</a>
       </div>
-      <div class="col-md-6">
-        <a class="btn-red btn-center" href="">CONFIRM AND CHECKOUT</a>
+      <div class="row">
+        <div class="col-md-6">
+          <button type="submit" name="button" class="btn-border btn-center">ADD TO CART</button>
+        </div>
+        <div class="col-md-6">
+          <a class="btn-red btn-center" href="">CONFIRM AND CHECKOUT</a>
+        </div>
       </div>
-    </div>
     </form>
   </div>
 </div>
-
+@include('includes.modal')
 @stop

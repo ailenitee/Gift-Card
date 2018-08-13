@@ -57,8 +57,12 @@
       </div>
     </div> -->
     <div class="form-group">
+      <label>Recipient's Name</label>
+      <input type="name" class="form-control" name="name" required>
+    </div>
+    <div class="form-group">
       <label>Recipient's Email</label>
-      <input type="email" class="form-control">
+      <input type="email" class="form-control" name="email" required>
     </div>
     <div class="form-group">
       <label>Confirm Recipient's Email</label>

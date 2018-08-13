@@ -150,7 +150,7 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-module.exports = __webpack_require__(5);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
@@ -166,7 +166,7 @@ module.exports = __webpack_require__(5);
 __webpack_require__(0);
 __webpack_require__(1);
 __webpack_require__(2);
-__webpack_require__(14);
+__webpack_require__(5);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -318,25 +318,17 @@ $(function () {
 /* 5 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ (function(module, exports) {
-
 $(function () {
   $('.cart-btn').on('click', function () {
     $('#cartModal').modal('show');
   });
 });
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

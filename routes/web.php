@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/card/details', 'CardController@index');
+Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
 Route::get('/categories', 'HomeController@categories');
 Route::get('/contact', 'HomeController@contact');
 
