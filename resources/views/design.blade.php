@@ -3,7 +3,7 @@
     <h2>Design</h2>
   </div>
   <div class="col-md-6">
-    <img src="{{URL::asset('/img/themes/bday-1.jpg')}}" id='img-upload' style='width:100%' name="giftcard">
+    <img src="{{URL::asset('/img/themes/bday-1.jpg')}}" id='img-upload' style='width:100%'>
     <h4>Choose a theme</h4>
     <div class="choose_btn">
       <div class="row">
@@ -71,10 +71,10 @@
           <label>Upload Image</label>
           <br>
           <div class="input-group upload-file">
-            <input type="text" class="form-control" readonly>
+            <!-- <input type="text" class="form-control" readonly> -->
             <span class="input-group-btn">
               <span class="btn btn-default btn-file">
-                <input type="file" id="imgInp">
+                <input type="text" id="imgInp"  name="giftcard"  class="img-input-upload">
               </span>
             </span>
           </div>

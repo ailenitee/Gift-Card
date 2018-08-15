@@ -139,6 +139,7 @@ $(function() {
     $('.own').css('opacity','0');
   });
   $('#photo_btn').click(function () {
+    $('#imgInp').attr('type','file');
     $('#standard_btn').removeClass('active');
     $('#photo_btn').addClass('active');
     $('.own').css('display','block');

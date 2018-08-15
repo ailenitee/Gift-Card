@@ -20,12 +20,18 @@
           </thead>
           <tbody>
             @if(Auth::guest())
-              not logged in
+              @foreach ($cart as $card)
+              <tr>
+                  @foreach ($card as $key => $value)
+                  <td>{{$value}}</td>
+                  @endforeach
+              </tr>
+              @endforeach
             @else
               @foreach ($cartItems as $card)
               <tr>
                 <th scope="row">{{$card->id}}</th>
-                <td><img src="{{URL::asset('/img/themes/bday-1.jpg')}}" alt=""></td>
+                <td><img src="{{$card->giftcard}}" alt=""></td>
                 <td>{{$card->amount}}</td>
                 <td>{{$card->quantity}}</td>
                 <td>{{$card->total}}</td>

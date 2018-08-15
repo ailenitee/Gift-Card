@@ -21,7 +21,7 @@ class CreateCartTable extends Migration
           $table->string('quantity');
           $table->string('total');
           $table->string('email');
-          $table->string('message');
+          $table->text('message');
           $table->string('giftcard');
           $table->timestamps();
           $table->foreign('user_id')->references('id')->on('users');

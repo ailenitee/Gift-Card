@@ -31,4 +31,16 @@ $(function() {
   $("#imgInp").change(function(){
     readURL(this);
   });
+
+  $(".img-input-upload").val($('#img-upload').attr('src'));
+
+  $(".themes img").click(function(){
+    var image = $(this).attr('src');
+    $(".img-input-upload").val(image);
+  });
+
+  $('#img-upload').on('load', function () {
+    var image = $(this).attr('src');
+    $(".img-input-upload").val(image);
+  });
 });

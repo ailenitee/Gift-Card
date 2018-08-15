@@ -1,6 +1,6 @@
 .navbar {
   margin-bottom: 0;
-  height: 75px;
+  height: 85px;
 
   .navbar-toggle{
     float: right;
@@ -17,14 +17,16 @@
   .navbar-brand {
     font-size: 21px;
     color: $headertext;
-    height: 60px;
+    height: 75px;
     padding: 0;
     h1{
       margin: 0;
       padding: 10px 0;
     }
     img{
-      width: 165px;
+      // width: 165px;
+      height: 100%;
+      display: block;
     }
   }
   .navbar-nav{
@@ -68,7 +70,7 @@
     text-align: right;
     display: inline-block;
     margin-bottom: 0;
-        padding: 3px 20px;
+    padding: 3px 20px;
     li{
       display: inline-block;
       .nav-link-top{

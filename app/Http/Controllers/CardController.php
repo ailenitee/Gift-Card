@@ -10,73 +10,77 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+use App\Cart\CartItem;
+use App\Cart\EasyCart;
 
 class CardController extends Controller
 {
-  public function __construct(){
-    // $this->cart = $cart;
+  protected $url;
+
+  public function __construct(UrlGenerator $url)
+  {
+    $this->url = $url;
+    $this->cart = session('cart');
+
   }
+
   /**
-  * Display a listing of the resource.
+  * Send a Gift Card.
   *
   * @return \Illuminate\Http\Response
   */
   public function index()
   {
+    //for logged on user
     $user = Auth::user();
-
     if ($user){
       $data['cartItems'] = DB::table('cart')
       ->where('user_id', $user->id)
-      ->get();
+      ->get(); //get all data from db table.cart based on user id
       return view('details',$data);
     }else{
-      echo 'not logged in';
+      //for guest
+      // dd(session()->get('cart'));
+      // dd(session()->all());
+      $data = session()->get('cart');
+      $data['cart'] =$data;
+      return view('details',$data);
     }
-
   }
-
-  /**
-  * Show the form for creating a new resource.
-  *
-  * @return \Illuminate\Http\Response
-  */
-  public function create()
-  {
-    //
-  }
-
-  /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
   public function store(Request $request)
   {
+    $request->total = $request->quantity*$request->amount; //get total amount per item
+    $input      = $request->except(['_token']);
+    $input['total'] = $request->total;
+    $input['id']     = $this->cart->generateTransctionID(15);
+    if($request->hasFile('giftcard')){
+      $messages   = [
+        'image|mimes' => 'should be jpeg,png,jpg,gif,svg!',
+      ];
+      $imageName = time().'.'.$request->giftcard->getClientOriginalExtension(); //set a name for the image
+      $request->giftcard->move(public_path('/img/uploads'), $imageName); //move the image to a folder
+      $imageFile = $this->url->to('/').'/img/uploads/'.$imageName; //the full url of the image
+      $input['giftcard'] = $imageFile; //new name/link of the image
+    }
+    //for logged on user
     if ($request->user_id != '0'){
-      // $this->validate($request, [
-      //   'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-      // ]);
-      // $image = $request->file('image');
-      // $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-      // $destinationPath = public_path('/img/uploads');
-      // $image->move($destinationPath, $input['imagename']);
-      // $this->postImage->add($input);
-
-      $request->total = $request->quantity*$request->amount;
-      $input      = $request->except(['_token']);
-      $input['total'] = $request->total;
       $messages   = [
         'required' => 'The :attribute is required',
       ];
-      Cart::create($input);
-      return back()->with('success', 'Added to Cart Succesfully!');
+      Cart::create($input); //insert all inputs to db
+    }else{
+      //for guest
+      $request->session()->push('cart', $input);
+      // $this->cart->addItem(new CartItem($input,'cart'));
     }
-    else{
-      return back()->with('success', 'Not logged in!');
+    $cart                       = $this->cart->getItems();
+    $data['cart']               = $cart;
+    if($request->type =="json"){
+      return $data;
     }
-
+    // dd($request->session()->all());
+    return back()->with('success', 'Added to Cart Succesfully!');
   }
 
   /**
@@ -85,9 +89,9 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($id)
+  public function confirm($id)
   {
-    //
+    return view('confirm');
   }
 
   /**
@@ -96,9 +100,9 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function edit($id)
+  public function checkout($id)
   {
-    //
+    return view('checkout');
   }
 
   /**

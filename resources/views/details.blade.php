@@ -14,7 +14,7 @@
       {{ session()->get('success') }}
     </div>
     @endif
-    <form action="{{ route('cart') }}" method="post" class="form_details">
+    <form action="{{ route('cart') }}" enctype="multipart/form-data" method="post" class="form_details">
       {{ csrf_field() }}
       <div class="content d-content design_card" style="margin:0;">
         @include('design')

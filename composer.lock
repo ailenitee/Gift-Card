@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "b79f4fd807aa4f8909288409722ca78c",
     "packages": [
+        {
+            "name": "cyvelnet/laravel-easycart",
+            "version": "v0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Cyvelnet/laravel-easycart.git",
+                "reference": "a77a55a97e8860ed227254c0d216a8efd62a0def"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Cyvelnet/laravel-easycart/zipball/a77a55a97e8860ed227254c0d216a8efd62a0def",
+                "reference": "a77a55a97e8860ed227254c0d216a8efd62a0def",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.4.*|5.5.*|5.6.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "3.4.*",
+                "phpunit/phpunit": "5.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cyvelnet\\EasyCart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cyvelnet",
+                    "email": "cyvelnet@gmail.com"
+                }
+            ],
+            "description": "A simple & easy to use yet powerful laravel cart solution",
+            "keywords": [
+                "Laravel cart",
+                "easycart",
+                "shopping cart"
+            ],
+            "time": "2018-07-04T10:17:29+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

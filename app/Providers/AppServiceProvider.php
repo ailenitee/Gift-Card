@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Cart\CartItem;
+use App\Cart\EasyCart;
+use DB;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      if(!session('cart'))
+      {
+          session(['cart' => new EasyCart()]);
+      }
     }
 
     /**

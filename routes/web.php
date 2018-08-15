@@ -12,15 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+  return view('index');
 });
-Route::get('/card/details', 'CardController@index');
-Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
-Route::get('/categories', 'HomeController@categories');
-Route::get('/contact', 'HomeController@contact');
+Route::group(['middleware' => 'web'], function () {
+  Route::get('/card/details', 'CardController@index');
+  Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
+  Route::get('/categories', 'HomeController@categories');
+  Route::get('/contact', 'HomeController@contact');
+  Route::get('/confirm', 'CardController@confirm');
+  Route::get('/checkout', 'CardController@checkout');
 
-//Auth
-Route::get('/login', 'Auth\LoginController@login');
-Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
-Route::post('/login-user',['as' => 'user_login', 'uses' => 'Auth\LoginController@loginProcess']);
-Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
+  //Auth
+  Route::get('/login', 'Auth\LoginController@login');
+  Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
+  Route::post('/login-user',['as' => 'user_login', 'uses' => 'Auth\LoginController@loginProcess']);
+  Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
+});
