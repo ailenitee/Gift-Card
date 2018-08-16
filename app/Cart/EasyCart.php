@@ -38,13 +38,13 @@ class EasyCart
         break;
       }
     }
+
     //if item not in cart add the item to cart
     if(!$q) {
       $this->items[] = $item;
       $msg            = 'Add to cart successful!';
       $return         = true;
-    }
-
+    } 
     return ['result' => $return, 'message' => $msg];
   }
 

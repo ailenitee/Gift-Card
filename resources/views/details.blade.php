@@ -28,7 +28,7 @@
           <button type="submit" name="button" class="btn-border btn-center">ADD TO CART</button>
         </div>
         <div class="col-md-6">
-          <a class="btn-red btn-center" href="">CONFIRM AND CHECKOUT</a>
+          <a class="btn-red btn-center" href="{{url('/confirm')}}">CONFIRM AND CHECKOUT</a>
         </div>
       </div>
     </form>

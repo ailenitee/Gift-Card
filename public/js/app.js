@@ -325,6 +325,12 @@ $(function () {
   $('.cart-btn').on('click', function () {
     $('#cartModal').modal('show');
   });
+  var sum = 0;
+  $('.total-cart').each(function () {
+    sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
+    console.log(sum);
+    $('.total_sum').text(sum);
+  });
 });
 
 /***/ }),

@@ -22,7 +22,6 @@ class CardController extends Controller
   {
     $this->url = $url;
     $this->cart = session('cart');
-
   }
 
   /**
@@ -41,11 +40,15 @@ class CardController extends Controller
       return view('details',$data);
     }else{
       //for guest
-      // dd(session()->get('cart'));
-      // dd(session()->all());
+
       $data = session()->get('cart');
-      $data['cart'] =$data;
-      return view('details',$data);
+      if (session()->exists('cart')){
+        $data['cart'] =$data;
+        // dd(session()->get('cart'));
+        return view('details',$data);
+      }else{
+        return view('details');
+      }
     }
   }
   public function store(Request $request)
@@ -71,8 +74,14 @@ class CardController extends Controller
       Cart::create($input); //insert all inputs to db
     }else{
       //for guest
-      $request->session()->push('cart', $input);
+      // dd(session()->all());
+      if ($request->session()->exists('cart')) {
+        $request->session()->push('cart.items', $input);
+      }else{
+        $request->session()->put('cart.items', $input);
+      }
       // $this->cart->addItem(new CartItem($input,'cart'));
+      // $request->session()->push('cart', $input);
     }
     $cart                       = $this->cart->getItems();
     $data['cart']               = $cart;
@@ -89,9 +98,26 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function confirm($id)
+  public function confirm()
   {
-    return view('confirm');
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['cartItems'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get(); //get all data from db table.cart based on user id
+      return view('confirm',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      if (session()->exists('cart')){
+        $data['cart'] =$data;
+        // dd(session()->get('cart'));
+        return view('confirm',$data);
+      }else{
+        return view('confirm');
+      }
+    }
   }
 
   /**
@@ -100,7 +126,7 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function checkout($id)
+  public function checkout()
   {
     return view('checkout');
   }

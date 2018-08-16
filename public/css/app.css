@@ -11461,6 +11461,54 @@ input,
   margin-bottom: 40px;
 }
 
+.content.confirm table {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+
+.content.confirm th,
+.content.confirm td {
+  text-align: center;
+}
+
+.content.confirm .confirm_img {
+  width: 120px;
+  margin: 0 auto;
+  display: block;
+}
+
+.content.confirm p.total_sum_p {
+  font-size: 18px;
+  text-align: right;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.content.confirm .checkout_bg {
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.content.confirm .checkout_bg hr {
+  margin: 15px auto;
+  border-top: 2px solid #116DB6;
+}
+
+.content.confirm .checkout_bg p {
+  text-align: left;
+}
+
+.content.confirm .order_summary {
+  margin-bottom: 30px;
+}
+
+.content.confirm .checkout_pay {
+  margin-top: 30px;
+}
+
 .content .content-link {
   color: #116DB6 !important;
   display: block;
@@ -11765,8 +11813,8 @@ input,
 .login-content .login-box .login-box-left,
 .login-content .signup-box .login-box-left {
   background: #000;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url(/img/GiftCard/Section1/1.png);
-  background: linear-gradient(rgba(255, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/img/GiftCard/Section1/1.png);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url(/img/GiftCard/Section1/1.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/img/GiftCard/Section1/1.png);
   background-position: right;
   width: 100%;
   height: 100%;

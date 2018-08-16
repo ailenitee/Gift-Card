@@ -20,13 +20,35 @@
           </thead>
           <tbody>
             @if(Auth::guest())
-              @foreach ($cart as $card)
-              <tr>
-                  @foreach ($card as $key => $value)
-                  <td>{{$value}}</td>
+              @if(!empty($cart))
+                @foreach ($cart as $card)
+                  @foreach ($card as $cards)
+                  <tr>
+                      @if(isset($cards['giftcard']))
+                        <td></td>
+                      @endif
+                      @if(isset($cards['giftcard']))
+                        <td>
+                          <img src="{{$cards['giftcard']}}" alt="">
+                        </td>
+                      @endif
+                      @if(isset($cards['amount']))
+                        <td>{{$cards['amount']}}</td>
+                      @endif
+                      @if(isset($cards['quantity']))
+                        <td>{{$cards['quantity']}}</td>
+                      @endif
+                      @if(isset($cards['total']))
+                        <td>{{$cards['total']}}</td>
+                      @endif
+                  </tr>
                   @endforeach
-              </tr>
-              @endforeach
+                @endforeach
+              @else
+                <tr>
+                  <td>empty</td>
+                </tr>
+              @endif
             @else
               @foreach ($cartItems as $card)
               <tr>
@@ -42,8 +64,8 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-red" style="float: right; ">Checkout</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+        <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
       </div>
     </div>
   </div>
