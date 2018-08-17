@@ -10,8 +10,23 @@
             <div class="order_summary">
               <h4>Order Summary</h4>
               <br>
-              <p>Total Gifts: </p>
-              <p>Total: </p>
+              <p>Total Gifts: {{count($cart)}}</p>
+              <p>Total: <span class="total_sum"></span></p>
+              @if(Auth::guest())
+                @if(!empty($cart))
+                  @foreach ($cart as $card)
+                    @foreach ($card as $cards)
+                        @if(isset($cards['total']))
+                          <div class="total-cart" style="display:none;">{{$cards['total']}}</div>
+                        @endif
+                    @endforeach
+                  @endforeach
+                @endif
+              @else
+                @foreach ($cart as $card)
+                  <div class="total-cart" style="display:none;">{{$card->total}}</div>
+                @endforeach
+              @endif
             </div>
             <hr>
             <div class="credit_info">
@@ -36,25 +51,25 @@
             <h4>Billing Information</h4>
             <br>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="email" required placeholder="Email">
+              <input type="text" class="form-control" name="email" required placeholder="Email" value="{{Auth::user() ? Auth::user()->email : ''}}" >
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="confirm" required placeholder="Confirm Email Address">
+              <input type="text" class="form-control" name="confirm" required placeholder="Confirm Email Address" value="{{Auth::user() ? Auth::user()->email : ''}}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="name" required placeholder="Full Name">
+              <input type="text" class="form-control" name="name" required placeholder="Full Name" value="{{Auth::user() ? Auth::user()->name : ''}}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="Address" required placeholder="Address">
+              <input type="text" class="form-control" name="Address" required placeholder="Address">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="state" required placeholder="State">
+              <input type="text" class="form-control" name="state" required placeholder="State">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="city" required placeholder="City">
+              <input type="text" class="form-control" name="city" required placeholder="City">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" value="" name="mnumber" required placeholder="Phone Number">
+              <input type="text" class="form-control" value="{{Auth::user() ? Auth::user()->mobile : ''}}" name="mnumber" required placeholder="Phone Number">
             </div>
           </div>
         </div>

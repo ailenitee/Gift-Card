@@ -20,52 +20,60 @@
           </thead>
           <tbody>
             @if(Auth::guest())
-              @if(!empty($cart))
-                @foreach ($cart as $card)
-                  @foreach ($card as $cards)
-                  <tr>
-                      @if(isset($cards['giftcard']))
-                        <td></td>
-                      @endif
-                      @if(isset($cards['giftcard']))
-                        <td>
-                          <img src="{{$cards['giftcard']}}" alt="">
-                        </td>
-                      @endif
-                      @if(isset($cards['amount']))
-                        <td>{{$cards['amount']}}</td>
-                      @endif
-                      @if(isset($cards['quantity']))
-                        <td>{{$cards['quantity']}}</td>
-                      @endif
-                      @if(isset($cards['total']))
-                        <td>{{$cards['total']}}</td>
-                      @endif
-                  </tr>
-                  @endforeach
-                @endforeach
-              @else
-                <tr>
-                  <td>empty</td>
-                </tr>
+            @if(!empty($cart))
+            @foreach ($cart as $card)
+            @foreach ($card as $cards)
+            <tr>
+              @if(isset($cards['giftcard']))
+              <td></td>
               @endif
+              @if(isset($cards['giftcard']))
+              <td>
+                <img src="{{$cards['giftcard']}}" alt="">
+              </td>
+              @endif
+              @if(isset($cards['amount']))
+              <td>{{$cards['amount']}}</td>
+              @endif
+              @if(isset($cards['quantity']))
+              <td>{{$cards['quantity']}}</td>
+              @endif
+              @if(isset($cards['total']))
+              <td>{{$cards['total']}}</td>
+              @endif
+            </tr>
+            @endforeach
+            @endforeach
             @else
-              @foreach ($cartItems as $card)
-              <tr>
-                <th scope="row">{{$card->id}}</th>
-                <td><img src="{{$card->giftcard}}" alt=""></td>
-                <td>{{$card->amount}}</td>
-                <td>{{$card->quantity}}</td>
-                <td>{{$card->total}}</td>
-              </tr>
-              @endforeach
+            <tr>
+              <td>empty</td>
+            </tr>
+            @endif
+            @else
+            @foreach ($cart as $card)
+            <tr>
+              <th scope="row">{{$card->id}}</th>
+              <td><img src="{{$card->giftcard}}" alt=""></td>
+              <td>{{$card->amount}}</td>
+              <td>{{$card->quantity}}</td>
+              <td>{{$card->total}}</td>
+            </tr>
+            @endforeach
             @endif
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-        <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
+        @if(!empty($cart))
+          @if(count($cart) == 0)
+            <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
+            <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+          @else
+            <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
+            <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
+          @endif
+        @endif
       </div>
     </div>
   </div>

@@ -3,60 +3,94 @@
 <div class="container">
   <div class="content confirm">
     <h1 class="text-center egift">Confirm &amp; Checkout</h1>
-    <table class="table table-hover">
-      <thead class="">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Product</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(Auth::guest())
-          @if(!empty($cart))
-            @foreach ($cart as $card)
-              @foreach ($card as $cards)
-              <tr>
-                  @if(isset($cards['giftcard']))
-                    <td></td>
-                  @endif
-                  @if(isset($cards['giftcard']))
-                    <td>
-                      <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
-                    </td>
-                  @endif
-                  @if(isset($cards['amount']))
-                    <td>{{$cards['amount']}}</td>
-                  @endif
-                  @if(isset($cards['quantity']))
-                    <td>{{$cards['quantity']}}</td>
-                  @endif
-                  @if(isset($cards['total']))
-                    <td class="total-cart">{{$cards['total']}}</td>
-                  @endif
-              </tr>
-              @endforeach
-            @endforeach
-          @else
-            <tr>
-              <td>empty</td>
-            </tr>
-          @endif
-        @else
-          @foreach ($cartItems as $card)
-          <tr>
-            <th scope="row">{{$card->id}}</th>
-            <td><img src="{{$card->giftcard}}" alt="" class="confirm_img"></td>
-            <td>{{$card->amount}}</td>
-            <td>{{$card->quantity}}</td>
-            <td class="total-cart">{{$card->total}}</td>
-          </tr>
-          @endforeach
-        @endif
-      </tbody>
-    </table>
+    <div class="confirm-box">
+      <div class="row" style="width: 90%;margin: 0 auto;">
+        <div class="col-md-offset-6 col-md-2">
+          <h4 class="text-center">Price</h4>
+        </div>
+        <div class="col-md-2">
+          <h4 class="text-center">Quantity</h4>
+        </div>
+        <div class="col-md-2">
+          <h4 class="text-center">Total</h4>
+        </div>
+      </div>
+      @if(Auth::guest())
+      @if(!empty($cart))
+      @foreach ($cart as $card)
+      @foreach ($card as $cards)
+      <div class="row">
+        <div class="border-bottom">
+
+          <div class="col-md-2">
+            @if(isset($cards['giftcard']))
+            <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
+            @endif
+          </div>
+          <div class="col-md-4">
+            @if(isset($cards['email']))
+            <p>Send to: {{$cards['email']}}</p>
+            @endif
+            @if(isset($cards['name']))
+            <p>From: {{$cards['name']}}</p>
+            @endif
+            @if(isset($cards['message']))
+            <p>Message: {{$cards['message']}}</p>
+            @endif
+          </div>
+          <div class="col-md-2">
+            @if(isset($cards['amount']))
+            <div>{{$cards['amount']}}</div>
+            @endif
+          </div>
+          <div class="col-md-2">
+            @if(isset($cards['quantity']))
+            <div>{{$cards['quantity']}}</div>
+            @endif
+          </div>
+          <div class="col-md-2">
+            @if(isset($cards['total']))
+            <div class="total-cart">{{$cards['total']}}</div>
+            @endif
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @endforeach
+      @else
+      <div class="">
+        cart is empty
+      </div>
+      @endif
+      @else
+      @foreach ($cart as $card)
+      <div class="row">
+        <div class="border-bottom">
+          <div class="col-md-2">
+            <img src="{{$card->giftcard}}" alt="" class="confirm_img">
+          </div>
+          <div class="col-md-4">
+            <p>Send to: {{$card->email}}</p>
+            <p>From: {{$card->name}}</p>
+            <p>Message: {{$card->message}}</p>
+          </div>
+          <div class="col-md-2">
+            {{$card->amount}}
+          </div>
+          <div class="col-md-2">
+            {{$card->quantity}}
+          </div>
+          <div class="col-md-2">
+            <div class="total-cart">
+              {{$card->total}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      @endforeach
+      @endif
+    </div>
     <div class="row">
       <div class="col-md-offset-6 col-md-6">
         <p class="total_sum_p">Total : <span class="total_sum"></span></p>

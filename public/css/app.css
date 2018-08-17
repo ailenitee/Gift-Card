@@ -10521,7 +10521,8 @@ a {
   text-transform: uppercase;
 }
 
-a:hover {
+a:hover,
+a:focus {
   text-decoration: none;
 }
 
@@ -10827,6 +10828,12 @@ a:hover {
 .btn-group-toggle .btn-secondary.active {
   color: #fff !important;
   background-color: #161d8e;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background: #ddd;
+  border: 1px solid #ddd;
 }
 
 #cartModal .modal-dialog {
@@ -11509,6 +11516,29 @@ input,
   margin-top: 30px;
 }
 
+.content.confirm .confirm-box {
+  padding: 20px 0;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+}
+
+.content.confirm .confirm-box div {
+  text-align: center;
+}
+
+.content.confirm .confirm-box div p {
+  text-align: left;
+}
+
+.content.confirm .confirm-box .border-bottom {
+  border-bottom: 1px solid #ddd !important;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
 .content .content-link {
   color: #116DB6 !important;
   display: block;
@@ -11813,8 +11843,7 @@ input,
 .login-content .login-box .login-box-left,
 .login-content .signup-box .login-box-left {
   background: #000;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url(/img/GiftCard/Section1/1.png);
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/img/GiftCard/Section1/1.png);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e170e), to(rgba(0, 3, 142, 0.7))), url(/img/GiftCard/Section1/1.png);
   background-position: right;
   width: 100%;
   height: 100%;
@@ -11834,7 +11863,9 @@ input,
 
 .login-content .login-box .login-box-left img,
 .login-content .signup-box .login-box-left img {
-  margin-top: 50px;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {

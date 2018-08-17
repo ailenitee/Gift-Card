@@ -42,7 +42,7 @@ i {
 }
 a{
   text-transform: uppercase;
-  &:hover{
+  &:hover,&:focus{
     text-decoration: none;
   }
 }

@@ -80,10 +80,29 @@
       }
     }
     .order_summary{
-      margin-bottom: 30px; 
+      margin-bottom: 30px;
     }
     .checkout_pay{
       margin-top: 30px;
+    }
+    .confirm-box{
+      padding: 20px 0;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      background-color: #f1f1f1;
+      div{
+        text-align: center;
+        p{
+          text-align: left;
+        }
+      }
+      .border-bottom{
+        border-bottom: 1px solid #ddd!important;
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        padding-top: 20px;
+      }
     }
   }
 

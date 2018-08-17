@@ -16,11 +16,15 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => 'web'], function () {
   Route::get('/card/details', 'CardController@index');
-  Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
   Route::get('/categories', 'HomeController@categories');
   Route::get('/contact', 'HomeController@contact');
   Route::get('/confirm', 'CardController@confirm');
   Route::get('/checkout', 'CardController@checkout');
+  Route::get('/clear-cart',['as' => 'clear_cart','uses' => 'CardController@clearCart']);
+
+  //post
+  Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
+  Route::post('/cart/transaction', ['as' => 'cart_transaction', 'uses' => 'CardController@transaction']);
 
   //Auth
   Route::get('/login', 'Auth\LoginController@login');

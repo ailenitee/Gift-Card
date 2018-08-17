@@ -34,18 +34,22 @@ class CardController extends Controller
     //for logged on user
     $user = Auth::user();
     if ($user){
-      $data['cartItems'] = DB::table('cart')
+      $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
       return view('details',$data);
     }else{
       //for guest
-
+      // dd(session()->all());
       $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
       if (session()->exists('cart')){
-        $data['cart'] =$data;
-        // dd(session()->get('cart'));
-        return view('details',$data);
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          return view('details',$data);
+        }else{
+          return view('details');
+        }
       }else{
         return view('details');
       }
@@ -74,21 +78,17 @@ class CardController extends Controller
       Cart::create($input); //insert all inputs to db
     }else{
       //for guest
-      // dd(session()->all());
       if ($request->session()->exists('cart')) {
         $request->session()->push('cart.items', $input);
       }else{
         $request->session()->put('cart.items', $input);
       }
-      // $this->cart->addItem(new CartItem($input,'cart'));
-      // $request->session()->push('cart', $input);
     }
     $cart                       = $this->cart->getItems();
     $data['cart']               = $cart;
     if($request->type =="json"){
       return $data;
     }
-    // dd($request->session()->all());
     return back()->with('success', 'Added to Cart Succesfully!');
   }
 
@@ -103,17 +103,24 @@ class CardController extends Controller
     //for logged on user
     $user = Auth::user();
     if ($user){
-      $data['cartItems'] = DB::table('cart')
+      $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
+
       return view('confirm',$data);
     }else{
       //for guest
       $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      //check if existing cart in session
       if (session()->exists('cart')){
-        $data['cart'] =$data;
-        // dd(session()->get('cart'));
-        return view('confirm',$data);
+        //check if cart empty
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          return view('confirm',$data);
+        }else{
+          return view('confirm');
+        }
       }else{
         return view('confirm');
       }
@@ -128,7 +135,31 @@ class CardController extends Controller
   */
   public function checkout()
   {
-    return view('checkout');
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get(); //get all data from db table.cart based on user id
+      $data['cart'] =$data['cart'];
+      return view('checkout',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      //check if existing cart in session
+      if (session()->exists('cart')){
+        //check if cart empty
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          return view('checkout',$data);
+        }else{
+          return view('checkout');
+        }
+      }else{
+        return view('checkout');
+      }
+    }
   }
 
   /**
@@ -138,9 +169,30 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function transaction()
   {
-    //
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get(); //get all data from db table.cart based on user id
+      $data['cart'] =$data['cart'];
+      return view('checkout',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      //check if existing cart in session
+      if (session()->exists('cart')){
+        //check if cart empty
+        if (!empty($data2)){
+          $data['cart'] =$data;
+        }else{
+        }
+      }else{
+      }
+    }
   }
 
   /**
@@ -149,8 +201,15 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function destroy($id)
-  {
-    //
+  public function clearCart(Request $request){
+    $user = Auth::user();
+    if ($user){
+      $data = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->delete();
+    }else{
+      session()->flush('cart');
+    }
+    return back()->with('success', 'Cleared Cart!');
   }
 }

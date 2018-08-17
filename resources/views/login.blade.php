@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="login-box-left">
-                <img src="{{URL::asset('/img/logo.png')}}" style="width:100%;">
+                <img src="{{URL::asset('/img/logo.png')}}">
                 <br>
                 <h2 class="text-center">Not a Member yet?</h2>
                 <br>
