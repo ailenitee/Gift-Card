@@ -24,6 +24,7 @@ Route::group(['middleware' => 'web'], function () {
 
   //post
   Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
+  Route::post('/cartcheckout', ['as' => 'cartcheckout', 'uses' => 'CardController@cartcheckout']);
   Route::post('/cart/transaction', ['as' => 'cart_transaction', 'uses' => 'CardController@transaction']);
 
   //Auth

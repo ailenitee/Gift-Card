@@ -10832,8 +10832,21 @@ a:focus {
 
 .disabled {
   cursor: not-allowed;
-  background: #ddd;
+  background: #ddd !important;
+  color: #fff !important;
   border: 1px solid #ddd;
+}
+
+.disabled:hover,
+.disabled:focus {
+  background: #ddd !important;
+  color: #fff !important;
+  border: 1px solid #ddd;
+}
+
+.n_disabled {
+  display: none;
+  opacity: 0;
 }
 
 #cartModal .modal-dialog {

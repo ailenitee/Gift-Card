@@ -89,8 +89,17 @@ class CardController extends Controller
     if($request->type =="json"){
       return $data;
     }
-    return back()->with('success', 'Added to Cart Succesfully!');
+    switch($request->submitbutton) {
+      case 'save':
+      return back()->with('success', 'Added to Cart Succesfully!');
+      break;
+      case 'save_cart':
+      return redirect('/confirm');
+      break;
+    }
+
   }
+
 
   /**
   * Display the specified resource.
