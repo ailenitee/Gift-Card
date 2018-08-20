@@ -113,6 +113,13 @@ $(function () {
     var image = $(this).attr('src');
     $(".img-input-upload").val(image);
   });
+
+  if ($('.getgc').val().length === 0) {
+    console.log('empty');
+  } else {
+    console.log($('#imgInp').val());
+    $('#img-upload').attr('src', $('.getgc').val());
+  }
 });
 
 /***/ }),

@@ -155,6 +155,13 @@ $(function () {
     var image = $(this).attr('src');
     $(".img-input-upload").val(image);
   });
+
+  if ($('.getgc').val().length === 0) {
+    console.log('empty');
+  } else {
+    console.log($('#imgInp').val());
+    $('#img-upload').attr('src', $('.getgc').val());
+  }
 });
 
 /***/ }),
@@ -350,6 +357,11 @@ $(function () {
       $('.form_details .n_disabled').css('opacity', '0');
     }
   });
+
+  if ($('.radiobtns').is(':checked')) {
+    $('.radiobtns').parent().removeClass('active');
+    $("input[type=radio][name='amount']:checked").parent().addClass('active');
+  }
 });
 
 /***/ }),

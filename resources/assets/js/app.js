@@ -161,7 +161,7 @@ $(function() {
   $('.total-cart').each(function(){
     sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText
     $('.total_sum').text(sum);
-  }); 
+  });
 
   $('.form_details input').keyup(function() {
         var empty = false;
@@ -182,4 +182,9 @@ $(function() {
           $('.form_details .n_disabled').css('opacity', '0');
         }
     });
+
+    if ($('.radiobtns').is(':checked')) {
+      $('.radiobtns').parent().removeClass('active');
+      $("input[type=radio][name='amount']:checked").parent().addClass('active');
+    }
 });

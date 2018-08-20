@@ -24,6 +24,14 @@
         @include('send')
       </div>
       <div class="row">
+        @if($edit == 'edit')
+        <div class="col-md-6">
+          <button type="submit" class="btn-border btn-center" value="save" name='submitbutton'>ADD TO CART</button>
+        </div>
+        <div class="col-md-6">
+          <button type="submit" class="btn-red btn-center" name='submitbutton' value="save_cart" style="background-color: #f2574f">CONFIRM AND CHECKOUT</button>
+        </div>
+        @else
         <div class="col-md-6">
           <button type="submit" class="btn-border btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">ADD TO CART</button>
           <button type="submit" class="btn-border btn-center n_disabled" value="save" name='submitbutton'>ADD TO CART</button>
@@ -32,6 +40,7 @@
           <button type="submit" class="btn-red btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">CONFIRM AND CHECKOUT</button>
           <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="save_cart" style="background-color: #f2574f">CONFIRM AND CHECKOUT</button>
         </div>
+        @endif
       </div>
     </form>
   </div>

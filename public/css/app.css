@@ -10558,7 +10558,7 @@ a:focus {
 .navbar .navbar-brand {
   font-size: 21px;
   color: #116DB6;
-  height: 75px;
+  height: 83px;
   padding: 0;
 }
 
@@ -10568,6 +10568,7 @@ a:focus {
 }
 
 .navbar .navbar-brand img {
+  margin: 0 15px;
   height: 100%;
   display: block;
 }
@@ -10852,6 +10853,12 @@ a:focus {
 #cartModal .modal-dialog {
   width: 50%;
   max-width: none;
+}
+
+@media (max-width: 768px) {
+  #cartModal .modal-dialog {
+    width: 80%;
+  }
 }
 
 #cartModal .modal-dialog .modal-body {

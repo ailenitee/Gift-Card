@@ -20,6 +20,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-gray">
     <a class="navbar-brand" href="{{ url('/') }}">
       <img src="{{URL::asset('/img/logo.png')}}" alt="">
+      <!-- <img src="{{URL::asset('/img/logo-text.png')}}" alt=""> -->
     </a>
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false">
       <span class="sr-only">Toggle navigation</span>

@@ -37,6 +37,13 @@ class CardController extends Controller
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
+      $data['quantity'] = '';
+      $data['name'] = '';
+      $data['email'] = '';
+      $data['message'] = '';
+      $data['giftcard'] = '';
+      $data['amount'] = '500';
+      $data['edit'] = '';
       return view('details',$data);
     }else{
       //for guest
@@ -135,13 +142,31 @@ class CardController extends Controller
       }
     }
   }
-
-  /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
+  public function transaction()
+  {
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get(); //get all data from db table.cart based on user id
+      $data['cart'] =$data['cart'];
+      return view('checkout',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      //check if existing cart in session
+      if (session()->exists('cart')){
+        //check if cart empty
+        if (!empty($data2)){
+          $data['cart'] =$data;
+        }else{
+        }
+      }else{
+      }
+    }
+  }
   public function checkout()
   {
     //for logged on user
@@ -170,6 +195,36 @@ class CardController extends Controller
       }
     }
   }
+  /**
+  * Show the form for editing the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function edit($id)
+  {
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['item'] = DB::table('cart')
+      ->where('id', $id)
+      ->first(); //get specific data to edit from db table.cart based on user id
+      $data['cart'] = DB::table('cart')
+      ->get(); //get all data from db table.cart based on user id
+      $data['quantity'] = $data['item']->quantity;
+      $data['name'] = $data['item']->name;
+      $data['email'] = $data['item']->email;
+      $data['message'] = $data['item']->message;
+      $data['giftcard'] = $data['item']->giftcard;
+      $data['amount'] = $data['item']->amount;
+      $data['edit'] = 'edit';
+      return view('details',$data);
+    }else{
+      //for guest
+      // TODO:
+    }
+  }
+
 
   /**
   * Update the specified resource in storage.
@@ -178,7 +233,7 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function transaction()
+  public function update()
   {
     //for logged on user
     $user = Auth::user();
@@ -186,20 +241,21 @@ class CardController extends Controller
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      $data['cart'] =$data['cart'];
-      return view('checkout',$data);
+      return view('details',$data);
     }else{
       //for guest
+      // dd(session()->all());
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
-      //check if existing cart in session
       if (session()->exists('cart')){
-        //check if cart empty
         if (!empty($data2)){
           $data['cart'] =$data;
+          return view('details',$data);
         }else{
+          return view('details');
         }
       }else{
+        return view('details');
       }
     }
   }
@@ -220,5 +276,21 @@ class CardController extends Controller
       session()->flush('cart');
     }
     return back()->with('success', 'Cleared Cart!');
+  }
+
+  public function deleteCart($id)
+  {
+    //for logged on user
+    $user = Auth::user();
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('id', $id)
+      ->delete(); //delete data from db table.cart based on item id
+    }else{
+      //for guest
+      // dd(session()->forget('cart.items.' . $id));
+      session()->forget('cart.items.' . $id);
+    }
+    return back()->with('success', 'Removed Item From Cart!');
   }
 }
