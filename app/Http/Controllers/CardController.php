@@ -51,14 +51,23 @@ class CardController extends Controller
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
       if (session()->exists('cart')){
+        $data3['quantity'] = '';
+        $data3['id'] = '';
+        $data3['name'] = '';
+        $data3['email'] = '';
+        $data3['message'] = '';
+        $data3['giftcard'] = '';
+        $data3['amount'] = '500';
+        $data3['edit'] = '';
         if (!empty($data2)){
           $data['cart'] =$data;
-          return view('details',$data);
+          $array = array_merge($data, $data3);
+          return view('details',$array);
         }else{
-          return view('details');
+          return view('details',$data3);
         }
       }else{
-        return view('details');
+        return view('details',$data);
       }
     }
   }
@@ -204,6 +213,7 @@ class CardController extends Controller
   public function edit($id)
   {
     //for logged on user
+
     $user = Auth::user();
     if ($user){
       $data['item'] = DB::table('cart')
@@ -218,10 +228,31 @@ class CardController extends Controller
       $data['giftcard'] = $data['item']->giftcard;
       $data['amount'] = $data['item']->amount;
       $data['edit'] = 'edit';
+      $data['id'] = $id;
       return view('details',$data);
     }else{
       //for guest
-      // TODO:
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      if (session()->exists('cart')){
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          dd($data2);
+          $data['quantity'] = $data['cart']->quantity;
+          $data['name'] = $data['cart']->name;
+          $data['email'] = $data['cart']->email;
+          $data['message'] = $data['cart']->message;
+          $data['giftcard'] = $data['cart']->giftcard;
+          $data['amount'] = $data['cart']->amount;
+          $data['edit'] = 'edit';
+          $data['id'] = $id;
+          return view('details',$data);
+        }else{
+          return view('details',$data3);
+        }
+      }else{
+        return view('details',$data);
+      }
     }
   }
 
@@ -233,15 +264,30 @@ class CardController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update()
+  public function update(Request $request)
   {
+    $data['edit'] = 'edit';
+    $request->total = $request->quantity*$request->amount; //get total amount per item
+    $input      = $request->except(['_token','submitbutton','id']);
+    $input['total'] = $request->total;
+    if($request->hasFile('giftcard')){
+      $messages   = [
+        'image|mimes' => 'should be jpeg,png,jpg,gif,svg!',
+      ];
+      $imageName = time().'.'.$request->giftcard->getClientOriginalExtension(); //set a name for the image
+      $request->giftcard->move(public_path('/img/uploads'), $imageName); //move the image to a folder
+      $imageFile = $this->url->to('/').'/img/uploads/'.$imageName; //the full url of the image
+      $input['giftcard'] = $imageFile; //new name/link of the image
+    }
     //for logged on user
-    $user = Auth::user();
-    if ($user){
-      $data['cart'] = DB::table('cart')
-      ->where('user_id', $user->id)
-      ->get(); //get all data from db table.cart based on user id
-      return view('details',$data);
+    if ($request->user_id != '0'){
+      $messages   = [
+        'required' => 'The :attribute is required',
+      ];
+      DB::table('cart')
+            ->where('id', $request->id)
+            ->where('user_id', $request->user_id)
+            ->update($input);
     }else{
       //for guest
       // dd(session()->all());
@@ -257,6 +303,15 @@ class CardController extends Controller
       }else{
         return view('details');
       }
+    }
+
+    switch($request->submitbutton) {
+      case 'update':
+      return back()->with('success', 'Updated Cart Item Succesfully!');
+      break;
+      case 'update_cart':
+      return redirect('/confirm');
+      break;
     }
   }
 

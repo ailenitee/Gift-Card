@@ -5,6 +5,7 @@
   <div class="col-md-6">
     <input type="hidden" value="{{Auth::user() ? Auth::user()->id : '0'}}" name="user_id">
     <input type="hidden" value="0" name="total">
+    <input type="hidden" value="{{$id}}" name="id">
     <div class="form-group">
       <label>Sender Name</label>
       <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@endif" name="name" required>

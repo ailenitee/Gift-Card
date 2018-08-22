@@ -11863,7 +11863,7 @@ input,
 .login-content .login-box .login-box-left,
 .login-content .signup-box .login-box-left {
   background: #000;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1e170e), to(rgba(0, 3, 142, 0.7))), url(/img/GiftCard/Section1/1.png);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e170e), to(rgba(30, 23, 17, 0.65))), url(/img/GiftCard/Section1/1.png);
   background-position: right;
   width: 100%;
   height: 100%;

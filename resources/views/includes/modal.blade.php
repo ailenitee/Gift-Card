@@ -43,7 +43,7 @@
                       <td>
                         @if(isset($cards['id']))
                           <input type="hidden" name="id" value="{{$cards['id']}}">
-                          <a href="{{url('/delete-cart',$cards['id'])}}">Edit</a>
+                          <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>
                         @endif
                       </td>
                       <td>

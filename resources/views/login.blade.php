@@ -5,7 +5,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
-  <title>eGlyphCards</title>
+  <title>AllGiftCards</title>
+  <link rel="icon" href="{{URL::asset('/img/logo-only.png')}}">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:500" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -25,7 +26,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="login-box-left">
-                <img src="{{URL::asset('/img/logo.png')}}">
+                <img src="{{URL::asset('/img/logo-only.png')}}">
                 <br>
                 <h2 class="text-center">Not a Member yet?</h2>
                 <br>

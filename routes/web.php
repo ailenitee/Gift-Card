@@ -23,8 +23,10 @@ Route::group(['middleware' => 'web'], function () {
   Route::get('/clear-cart',['as' => 'clear_cart','uses' => 'CardController@clearCart']);
   Route::get('/delete-cart/{id}',['as' => 'delete_cart','uses' => 'CardController@deleteCart']);
   Route::get('/edit-cart/{id}', ['as' => 'edit_cart','uses' => 'CardController@edit']);
+
   //post
   Route::post('/cart', ['as' => 'cart', 'uses' => 'CardController@store']);
+  Route::post('/update-cart', ['as' => 'update_cart','uses' => 'CardController@update']);
   Route::post('/cartcheckout', ['as' => 'cartcheckout', 'uses' => 'CardController@cartcheckout']);
   Route::post('/cart/transaction', ['as' => 'cart_transaction', 'uses' => 'CardController@transaction']);
 

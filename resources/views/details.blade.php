@@ -14,7 +14,11 @@
       {{ session()->get('success') }}
     </div>
     @endif
+    @if($edit == 'edit')
+    <form action="{{ route('update_cart') }}" enctype="multipart/form-data" method="post" class="form_details">
+    @else
     <form action="{{ route('cart') }}" enctype="multipart/form-data" method="post" class="form_details">
+    @endif
       {{ csrf_field() }}
       <div class="content d-content design_card" style="margin:0;">
         @include('design')
@@ -26,10 +30,10 @@
       <div class="row">
         @if($edit == 'edit')
         <div class="col-md-6">
-          <button type="submit" class="btn-border btn-center" value="save" name='submitbutton'>ADD TO CART</button>
+          <button type="submit" class="btn-border btn-center" value="update" name='submitbutton'>UPDATE ITEM</button>
         </div>
         <div class="col-md-6">
-          <button type="submit" class="btn-red btn-center" name='submitbutton' value="save_cart" style="background-color: #f2574f">CONFIRM AND CHECKOUT</button>
+          <button type="submit" class="btn-red btn-center" name='submitbutton' value="update_cart" style="background-color: #f2574f">UPDATE AND CHECKOUT</button>
         </div>
         @else
         <div class="col-md-6">
