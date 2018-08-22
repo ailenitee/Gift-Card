@@ -235,24 +235,29 @@ class CardController extends Controller
       //for guest
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
+      // dd($data2['id']);
       if (session()->exists('cart')){
         if (!empty($data2)){
           $data['cart'] =$data;
-          // dd($data2);
-          $data['quantity'] = '';
-          $data['name'] = '';
-          $data['email'] = '';
-          $data['message'] = '';
-          $data['giftcard'] = '';
-          $data['amount'] = '';
-          $data['edit'] = 'edit';
-          $data['id'] = '';
+          foreach ($data2 as $key => $value){
+            // dd($value['id']);
+            if($value['id'] == $id){
+              $data['quantity'] = $value['quantity'];
+              $data['name'] = $value['name'];
+              $data['email'] = $value['email'];
+              $data['message'] = $value['message'];
+              $data['giftcard'] = $value['giftcard'];
+              $data['amount'] = $value['amount'];
+              $data['edit'] = 'edit';
+              $data['id'] = $id;
+            }
+          }
           return view('details',$data);
         }else{
-          return view('details',$data3);
+          return view('details');
         }
       }else{
-        return view('details',$data);
+        return view('details');
       }
     }
   }
@@ -269,7 +274,7 @@ class CardController extends Controller
   {
     $data['edit'] = 'edit';
     $request->total = $request->quantity*$request->amount; //get total amount per item
-    $input      = $request->except(['_token','submitbutton','id']);
+    $input      = $request->except(['_token','submitbutton']);
     $input['total'] = $request->total;
     if($request->hasFile('giftcard')){
       $messages   = [
@@ -291,19 +296,13 @@ class CardController extends Controller
             ->update($input);
     }else{
       //for guest
-      // dd(session()->all());
-      $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      if (session()->exists('cart')){
-        if (!empty($data2)){
-          $data['cart'] =$data;
-          return view('details',$data);
-        }else{
-          return view('details');
-        }
-      }else{
-        return view('details');
-      }
+      // TODO: UPDATE FUNCTION FOR EDIT for guest (should delete current then add to cart again for update)
+      dd($input);
+      // if ($request->session()->exists('cart')) {
+      //   $request->session()->push('cart.items', $input);
+      // }else{
+      //   $request->session()->put('cart.items', $input);
+      // }
     }
 
     switch($request->submitbutton) {
@@ -345,7 +344,13 @@ class CardController extends Controller
     }else{
       //for guest
       // dd(session()->forget('cart.items.' . $id));
-      session()->forget('cart.items.' . $id);
+      $data2 = session()->get('cart.items');
+      foreach ($data2 as $key => $value){
+        if($value['id'] == $id){
+          session()->forget($id);
+        }
+      }
+
     }
     return back()->with('success', 'Removed Item From Cart!');
   }
