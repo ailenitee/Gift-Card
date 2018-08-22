@@ -114,7 +114,7 @@ $(function () {
     $(".img-input-upload").val(image);
   });
 
-  if (!$('.getgc').val().length) {
+  if ($('.getgc').val() == '') {
     console.log('empty');
   } else {
     console.log($('#imgInp').val());
