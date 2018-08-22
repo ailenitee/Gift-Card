@@ -44,6 +44,7 @@ class CardController extends Controller
       $data['giftcard'] = '';
       $data['amount'] = '500';
       $data['edit'] = '';
+      $data['id'] = '';
       return view('details',$data);
     }else{
       //for guest
@@ -237,15 +238,15 @@ class CardController extends Controller
       if (session()->exists('cart')){
         if (!empty($data2)){
           $data['cart'] =$data;
-          dd($data2);
-          $data['quantity'] = $data['cart']->quantity;
-          $data['name'] = $data['cart']->name;
-          $data['email'] = $data['cart']->email;
-          $data['message'] = $data['cart']->message;
-          $data['giftcard'] = $data['cart']->giftcard;
-          $data['amount'] = $data['cart']->amount;
+          // dd($data2);
+          $data['quantity'] = '';
+          $data['name'] = '';
+          $data['email'] = '';
+          $data['message'] = '';
+          $data['giftcard'] = '';
+          $data['amount'] = '';
           $data['edit'] = 'edit';
-          $data['id'] = $id;
+          $data['id'] = '';
           return view('details',$data);
         }else{
           return view('details',$data3);

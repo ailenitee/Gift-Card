@@ -156,7 +156,7 @@ $(function () {
     $(".img-input-upload").val(image);
   });
 
-  if ($('.getgc').val().length === 0) {
+  if (!$('.getgc').val().length) {
     console.log('empty');
   } else {
     console.log($('#imgInp').val());
