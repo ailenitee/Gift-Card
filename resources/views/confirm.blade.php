@@ -5,10 +5,10 @@
     <h1 class="text-center egift">Confirm &amp; Checkout</h1>
     <div class="confirm-box">
       <div class="row" style="width: 90%;margin: 0 auto;">
-        <div class="col-md-offset-6 col-md-2">
+        <div class="col-md-offset-5 col-md-2">
           <h4 class="text-center">Price</h4>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <h4 class="text-center">Quantity</h4>
         </div>
         <div class="col-md-2">
@@ -21,21 +21,20 @@
       @foreach ($card as $cards)
       <div class="row">
         <div class="border-bottom">
-
           <div class="col-md-2">
             @if(isset($cards['giftcard']))
             <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
             @endif
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             @if(isset($cards['email']))
-            <p>Send to: {{$cards['email']}}</p>
+            <p>Send to: <b>{{$cards['email']}}</b></p>
             @endif
             @if(isset($cards['name']))
             <p>From: {{$cards['name']}}</p>
             @endif
             @if(isset($cards['message']))
-            <p>Message: {{$cards['message']}}</p>
+            <p class="text-overflow">Message: {{$cards['message']}}</p>
             @endif
           </div>
           <div class="col-md-2">
@@ -43,7 +42,7 @@
             <div>{{$cards['amount']}}</div>
             @endif
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             @if(isset($cards['quantity']))
             <div>{{$cards['quantity']}}</div>
             @endif
@@ -51,6 +50,16 @@
           <div class="col-md-2">
             @if(isset($cards['total']))
             <div class="total-cart">{{$cards['total']}}</div>
+            @endif
+          </div>
+          <div class="col-md-2">
+            @if(isset($cards['id']))
+            <input type="hidden" name="id" value="{{$cards['id']}}">
+            <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>&nbsp;|&nbsp;
+            @endif
+            @if(isset($cards['id']))
+            <input type="hidden" name="id" value="{{$cards['id']}}">
+            <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a>
             @endif
           </div>
         </div>
@@ -69,21 +78,27 @@
           <div class="col-md-2">
             <img src="{{$card->giftcard}}" alt="" class="confirm_img">
           </div>
-          <div class="col-md-4">
-            <p>Send to: {{$card->email}}</p>
+          <div class="col-md-3">
+            <p>Send to: <b>{{$card->email}}</b></p>
             <p>From: {{$card->name}}</p>
-            <p>Message: {{$card->message}}</p>
+            <p class="text-overflow">Message: {{$card->message}}</p>
           </div>
           <div class="col-md-2">
             {{$card->amount}}
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             {{$card->quantity}}
           </div>
           <div class="col-md-2">
             <div class="total-cart">
               {{$card->total}}
             </div>
+          </div>
+          <div class="col-md-2">
+            <input type="hidden" name="id" value="{{$card->id}}">
+            <a href="{{url('/edit-cart',$card->id)}}">Edit</a>&nbsp;|&nbsp;
+            <input type="hidden" name="id" value="{{$card->id}}">
+            <a href="{{url('/delete-cart',$card->id)}}">Delete</a>
           </div>
         </div>
 

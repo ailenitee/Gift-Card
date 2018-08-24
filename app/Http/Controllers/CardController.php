@@ -114,7 +114,6 @@ class CardController extends Controller
       return redirect('/confirm');
       break;
     }
-
   }
 
 
@@ -152,31 +151,62 @@ class CardController extends Controller
       }
     }
   }
-  public function transaction()
+  public function transaction(Request $request)
   {
-    //for logged on user
     $user = Auth::user();
+    $data1 = [
+      'name' => $request->name,
+      'bot_name' => "",
+      'bot_alias' => "",
+      'email' => $request->email,
+      'contact' => $request->mobile,
+      'amount' => $request->amount,
+      'payment_method' => 'credit_card',
+      'product_title' => "",
+      'page_access_token' => "",
+      'scoped_id' => "",
+      'item_code' => "",
+    ];
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88/ipay88-handler",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30000,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => json_encode($data1),
+      CURLOPT_HTTPHEADER => array(
+        // Set here requred headers
+        "accept: */*",
+        "accept-language: en-US,en;q=0.8",
+        "content-type: application/json",
+      ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+      print_r(json_decode($response));
+    }
+
     if ($user){
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      $data['cart'] =$data['cart'];
-      return view('checkout',$data);
     }else{
       //for guest
-      $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      //check if existing cart in session
-      if (session()->exists('cart')){
-        //check if cart empty
-        if (!empty($data2)){
-          $data['cart'] =$data;
-        }else{
-        }
-      }else{
-      }
     }
+    // TODO: insert to transaction table db for guest and user
   }
+
   public function checkout()
   {
     //for logged on user
@@ -291,20 +321,33 @@ class CardController extends Controller
         'required' => 'The :attribute is required',
       ];
       DB::table('cart')
-            ->where('id', $request->id)
-            ->where('user_id', $request->user_id)
-            ->update($input);
+      ->where('id', $request->id)
+      ->where('user_id', $request->user_id)
+      ->update($input);
     }else{
       //for guest
       // TODO: UPDATE FUNCTION FOR EDIT for guest (should delete current then add to cart again for update)
-      dd($input);
-      // if ($request->session()->exists('cart')) {
-      //   $request->session()->push('cart.items', $input);
-      // }else{
-      //   $request->session()->put('cart.items', $input);
-      // }
+      // dd($input['id']);
+      $data2 = session()->get('cart.items');
+      foreach ($data2 as $key => $value){
+        if($value['id'] == $input['id']){
+          // dd(session()->get('cart.items.'. $key));
+          session()->pull('cart.items.'. $key);
+          session()->forget('cart.items.'. $key);
+          session()->save();
+        }
+      }
+      if ($request->session()->exists('cart')) {
+        $request->session()->push('cart.items', $input);
+      }else{
+        $request->session()->put('cart.items', $input);
+      }
     }
-
+    $cart                       = $this->cart->getItems();
+    $data['cart']               = $cart;
+    if($request->type =="json"){
+      return $data;
+    }
     switch($request->submitbutton) {
       case 'update':
       return back()->with('success', 'Updated Cart Item Succesfully!');
@@ -347,10 +390,13 @@ class CardController extends Controller
       $data2 = session()->get('cart.items');
       foreach ($data2 as $key => $value){
         if($value['id'] == $id){
-          session()->forget($id);
+          // dd(session()->get('cart.items.'. $key));
+          session()->pull('cart.items.'. $key);
+          session()->forget('cart.items.'. $key);
+          session()->save();
         }
       }
-
+      // session()->put('cart.items', $data2);
     }
     return back()->with('success', 'Removed Item From Cart!');
   }

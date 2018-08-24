@@ -29,10 +29,10 @@ class CartItem
             $this->total            = $item['total'];
             $this->amount           = $item['amount'];
             $this->quantity         = $item['quantity'];
-            $this->email            = $item['email'];
+            $this->email            = $item['email']; 
             $this->type             = 'cart';
         }
-        
+
     }
 
     /**

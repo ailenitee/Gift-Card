@@ -336,6 +336,7 @@ $(function () {
   $('.total-cart').each(function () {
     sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
     $('.total_sum').text(sum);
+    $('.total_sum').val(sum);
   });
 
   $('.form_details input').keyup(function () {

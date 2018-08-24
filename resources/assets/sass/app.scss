@@ -47,10 +47,15 @@ a{
   }
 }
 .alert-danger {
-    color: #fff;
-    background-color: #db4437;
-    border-color: #f5c6cb;
-    background-image: none;
+  color: #fff;
+  background-color: #db4437;
+  border-color: #f5c6cb;
+  background-image: none;
+}
+.text-overflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 //Custom css
 @import 'components/nav';
