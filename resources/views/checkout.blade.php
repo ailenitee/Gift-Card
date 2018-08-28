@@ -35,9 +35,9 @@
               @endforeach
             @endif
           @else
-              @foreach ($cart as $card)
+            @foreach ($cart as $card)
               <div class="total-cart" style="display:none;">{{$card->total}}</div>
-              @endforeach
+            @endforeach
           @endif
         </div>
         <hr>

@@ -57,11 +57,7 @@ a{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 //Custom css
 @import 'components/nav';
 @import 'components/navpills';
