@@ -55,13 +55,17 @@
                     </tr>
                     @endforeach
                   @endforeach
+                  @else
+                  <tr>
+                    <td colspan="7">
+                      <i class="fas fa far fa-shopping-cart" style="font-size: 50px; margin: 20px 0;"></i>
+                      <br>
+                      Your Cart is Empty
+                    </td>
+                  </tr>
+                  @endif
               @else
-              <tr>
-                <td>empty</td>
-              </tr>
-              @endif
-              @else
-                @if(!empty($cart))
+                @if(count($cart) > 0)
                   @foreach ($cart as $card)
                     <tr>
                       <th scope="row">{{$card->id}}</th>
@@ -76,12 +80,16 @@
                           <a href="{{url('/delete-cart',$card->id)}}">Delete</a>
                       </td>
                     </tr>
-                @endforeach
-              @else
-                  <tr>
-                    <td>empty</td>
-                  </tr>
-              @endif
+                  @endforeach
+                @else
+                      <tr>
+                        <td colspan="7">
+                          <i class="fas fa far fa-shopping-cart" style="font-size: 50px; margin: 20px 0;"></i>
+                          <br>
+                          Your Cart is Empty
+                        </td>
+                      </tr>
+                @endif
             @endif
           </tbody>
         </table>

@@ -10539,6 +10539,12 @@ a:focus {
   text-overflow: ellipsis;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .navbar {
   margin-bottom: 0;
   height: 85px;

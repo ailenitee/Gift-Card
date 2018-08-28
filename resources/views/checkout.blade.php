@@ -15,25 +15,29 @@
               <p>Total Amount:</p>
             </div>
             <div class="col-md-6">
-              <p>{{count($cart)}}</p>
+              @if(Auth::guest())
+                <p>{{count($items)}}</p>
+              @else
+                <p>{{count($cart)}}</p>
+              @endif
               <p>&#8369;<span class="total_sum"></span></p>
-              <input type="hidden" name="amount" value="" class="total_sum">
+              <input type="hidden" name="total" value="" class="total_sum">
             </div>
           </div>
           @if(Auth::guest())
-          @if(!empty($cart))
-          @foreach ($cart as $card)
-          @foreach ($card as $cards)
-          @if(isset($cards['total']))
-          <div class="total-cart" style="display:none;">{{$cards['total']}}</div>
-          @endif
-          @endforeach
-          @endforeach
-          @endif
+            @if(!empty($cart))
+              @foreach ($cart as $card)
+                @foreach ($card as $cards)
+                  @if(isset($cards['total']))
+                  <div class="total-cart" style="display:none;">{{$cards['total']}}</div>
+                  @endif
+                @endforeach
+              @endforeach
+            @endif
           @else
-          @foreach ($cart as $card)
-          <div class="total-cart" style="display:none;">{{$card->total}}</div>
-          @endforeach
+              @foreach ($cart as $card)
+              <div class="total-cart" style="display:none;">{{$card->total}}</div>
+              @endforeach
           @endif
         </div>
         <hr>

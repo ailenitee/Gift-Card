@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Transaction;
 use DB;
 use Auth;
 use App\Http\Controllers\Controller;
@@ -160,10 +161,10 @@ class CardController extends Controller
       'bot_alias' => "",
       'email' => $request->email,
       'contact' => $request->mobile,
-      'amount' => $request->amount,
+      'amount' => $request->total,
       'payment_method' => 'credit_card',
       'product_title' => "",
-      'page_access_token' => "",
+      'page_access_token' => $request->_token,
       'scoped_id' => "",
       'item_code' => "",
     ];
@@ -194,17 +195,38 @@ class CardController extends Controller
     if ($err) {
       echo "cURL Error #:" . $err;
     } else {
-      print_r(json_decode($response));
-    }
+      if ($user){
+        $data['address'] = $request->Address;
+        $data['state'] = $request->state;
+        $data['city'] = $request->city;
+        $data['refnum'] = str_random(25);
+        $data['name'] = $request->name;
+        $data['amount'] = $request->total;
+        $data['email'] = $request->email;
+        $data['user_id'] = $user->user_id;
+        $data['total'] = $request->total;
+        dd($data);
+        Transaction::create($data);
+        $data['cart'] = DB::table('cart')
+        ->where('user_id', $user->id)
+        ->delete();
+      }else{
+        //for guest
+        $data['address'] = $request->Address;
+        $data['state'] = $request->state;
+        $data['city'] = $request->city;
+        $data['refnum'] = str_random(25);
+        $data['name'] = $request->name;
+        $data['email'] =$request->email;
+        $data['user_id'] = 0;
+        $data['total'] = $request->total;
+          // dd($data);
+        Transaction::create($data);
+        session()->flush('cart');
+      }
+      return redirect('/card/details')->with('success', 'Thank you for your payment!');
 
-    if ($user){
-      $data['cart'] = DB::table('cart')
-      ->where('user_id', $user->id)
-      ->get(); //get all data from db table.cart based on user id
-    }else{
-      //for guest
     }
-    // TODO: insert to transaction table db for guest and user
   }
 
   public function checkout()
@@ -215,7 +237,6 @@ class CardController extends Controller
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      $data['cart'] =$data['cart'];
       return view('checkout',$data);
     }else{
       //for guest
@@ -226,6 +247,7 @@ class CardController extends Controller
         //check if cart empty
         if (!empty($data2)){
           $data['cart'] =$data;
+          $data['items'] =$data2; 
           return view('checkout',$data);
         }else{
           return view('checkout');
@@ -326,12 +348,9 @@ class CardController extends Controller
       ->update($input);
     }else{
       //for guest
-      // TODO: UPDATE FUNCTION FOR EDIT for guest (should delete current then add to cart again for update)
-      // dd($input['id']);
       $data2 = session()->get('cart.items');
       foreach ($data2 as $key => $value){
         if($value['id'] == $input['id']){
-          // dd(session()->get('cart.items.'. $key));
           session()->pull('cart.items.'. $key);
           session()->forget('cart.items.'. $key);
           session()->save();
@@ -386,18 +405,15 @@ class CardController extends Controller
       ->delete(); //delete data from db table.cart based on item id
     }else{
       //for guest
-      // dd(session()->forget('cart.items.' . $id));
       $data2 = session()->get('cart.items');
       foreach ($data2 as $key => $value){
         if($value['id'] == $id){
-          // dd(session()->get('cart.items.'. $key));
           session()->pull('cart.items.'. $key);
           session()->forget('cart.items.'. $key);
           session()->save();
         }
       }
-      // session()->put('cart.items', $data2);
     }
-    return back()->with('success', 'Removed Item From Cart!');
+    return redirect('/card/details')->with('success', 'Removed Item From Cart!');
   }
 }

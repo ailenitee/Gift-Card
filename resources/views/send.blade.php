@@ -62,11 +62,14 @@
     </div>
     <div class="form-group">
       <label>Recipient's Email</label>
-      <input type="email" class="form-control" name="email" required value="{{$email ? $email : ''}}">
+      <input type="email" class="form-control r_email" name="email" required value="{{$email ? $email : ''}}">
+    </div>
+    <div class="alert alert-danger alert-email" style="display:none;opacity:0;">
+      <p>Emails don't match</p>
     </div>
     <div class="form-group">
       <label>Confirm Recipient's Email</label>
-      <input type="email" class="form-control">
+      <input type="email" class="form-control cr_email">
     </div>
   </div>
 </div>
