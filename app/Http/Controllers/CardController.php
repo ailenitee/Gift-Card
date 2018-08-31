@@ -196,6 +196,7 @@ class CardController extends Controller
       echo "cURL Error #:" . $err;
     } else {
       if ($user){
+        // dd($user);
         $data['address'] = $request->Address;
         $data['state'] = $request->state;
         $data['city'] = $request->city;
@@ -203,9 +204,9 @@ class CardController extends Controller
         $data['name'] = $request->name;
         $data['amount'] = $request->total;
         $data['email'] = $request->email;
-        $data['user_id'] = $user->user_id;
+        $data['user_id'] = $user->id;
         $data['total'] = $request->total;
-        dd($data);
+        // dd($data);
         Transaction::create($data);
         $data['cart'] = DB::table('cart')
         ->where('user_id', $user->id)
@@ -247,7 +248,7 @@ class CardController extends Controller
         //check if cart empty
         if (!empty($data2)){
           $data['cart'] =$data;
-          $data['items'] =$data2; 
+          $data['items'] =$data2;
           return view('checkout',$data);
         }else{
           return view('checkout');

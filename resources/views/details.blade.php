@@ -33,7 +33,7 @@
           <button type="submit" class="btn-border btn-center" value="update" name='submitbutton'>UPDATE ITEM</button>
         </div>
         <div class="col-md-6">
-          <button type="submit" class="btn-red btn-center" name='submitbutton' value="update_cart" style="background-color: #f2574f">UPDATE AND CHECKOUT</button>
+          <button type="submit" class="btn-red btn-center" name='submitbutton' value="update_cart">UPDATE AND CHECKOUT</button>
         </div>
         @else
         <div class="col-md-6">
@@ -42,7 +42,7 @@
         </div>
         <div class="col-md-6">
           <button type="submit" class="btn-red btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">CONFIRM AND CHECKOUT</button>
-          <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="save_cart" style="background-color: #f2574f">CONFIRM AND CHECKOUT</button>
+          <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="save_cart">CONFIRM AND CHECKOUT</button>
         </div>
         @endif
       </div>

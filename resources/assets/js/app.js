@@ -176,6 +176,7 @@ $(function() {
       $('.form_details .n_disabled').css('opacity', '1');
       $('.form_details .disabled').css('display', 'none');
       $('.form_details .disabled').css('opacity', '0');
+
       if($(".r_email").val() != $(".cr_email").val())
       {
         $('.form_details .disabled').css('display', 'block');
@@ -192,7 +193,7 @@ $(function() {
         $('.alert-email').css('display', 'none');
         $('.alert-email').css('opacity', '0');
       }
-    } else {
+    }else {
       $('.form_details .disabled').css('display', 'block');
       $('.form_details .disabled').css('opacity', '1');
       $('.form_details .n_disabled').css('display', 'none');

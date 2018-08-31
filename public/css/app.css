@@ -10539,6 +10539,15 @@ a:focus {
   text-overflow: ellipsis;
 }
 
+.alert-email {
+  color: #db4437;
+  background-color: transparent;
+  background-image: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 0;
+}
+
 .navbar {
   margin-bottom: 0;
   height: 85px;
@@ -10666,7 +10675,7 @@ a:focus {
   }
 
   #navbarNavDropdown .nav-link.btn-border {
-    color: #f2574f;
+    color: #ff0000;
   }
 }
 
@@ -10677,11 +10686,11 @@ a:focus {
 }
 
 .nav-pills .nav-item .nav-link {
-  color: #f2574f;
+  color: #ff0000;
 }
 
 .nav-pills .nav-item .nav-link.active {
-  background-color: #f2574f;
+  background-color: #ff0000;
   color: #fff;
 }
 
@@ -10756,28 +10765,37 @@ a:focus {
   padding: 5px 10px;
 }
 
+.modal-dialog .modal-footer {
+  display: block;
+}
+
+.modal-dialog .modal-footer .btn-secondary {
+  float: left;
+}
+
 .btn-border {
-  border: 1px solid #f2574f;
-  color: #f2574f !important;
+  border: 1px solid #ff0000;
+  color: #ff0000 !important;
   padding: 10px 15px !important;
   text-align: center;
+  background-color: transparent;
 }
 
 .btn-border:hover {
-  background-color: #f2574f !important;
+  background-color: #ff0000 !important;
   color: #fff !important;
 }
 
 .btn-red {
-  background-color: #f2574f;
+  background-color: #ff0000;
   color: #fff !important;
-  border: 1px solid #f2574f;
+  border: 1px solid #ff0000;
   padding: 10px;
   text-align: center;
 }
 
 .btn-red:hover {
-  color: #f2574f;
+  color: #ff0000;
 }
 
 .btn-g {
@@ -11318,10 +11336,6 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 30px;
 }
 
-.form_details button {
-  background-color: transparent;
-}
-
 .form_details h2 {
   color: #000;
 }
@@ -11370,7 +11384,7 @@ input[type=number]::-webkit-outer-spin-button {
 .login_form form button.nav-link:hover,
 .login-content .login-box .login-box-right form button.nav-link:hover,
 .login-content .signup-box .login-box-right form button.nav-link:hover {
-  background-color: #f2574f;
+  background-color: #ff0000;
 }
 
 .carousel-inner .item {
@@ -11936,7 +11950,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .login-content .signup-box input.btn-border:hover {
   color: #fff;
-  background: #f2574f;
+  background: #ff0000;
 }
 
 .login-content .signup-box .custom-control-label::before,

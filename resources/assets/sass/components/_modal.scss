@@ -16,4 +16,10 @@
     font-size: 13px;
     padding: 5px 10px;
   }
+  .modal-footer{
+    display: block;
+    .btn-secondary{
+      float: left;
+    }
+  }
 }

@@ -57,7 +57,12 @@ a{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.alert-email{
+  color: #db4437;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border: 0;}
 //Custom css
 @import 'components/nav';
 @import 'components/navpills';
