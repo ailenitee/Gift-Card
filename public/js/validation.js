@@ -77,6 +77,12 @@ $(function () {
       $('.reg-btn').attr('disabled', 'disabled');
     }
   });
+  $('.q-val').on('input propertychange paste', function (e) {
+    var reg = /^0+/gi;
+    if (this.value.match(reg)) {
+      this.value = this.value.replace(reg, '');
+    }
+  });
 });
 
 /***/ }),

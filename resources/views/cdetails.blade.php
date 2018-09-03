@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
       <br><label>Quantity</label>
-      <input type="number" class="form-control" value="{{$quantity ? $quantity : ''}}" name="quantity" required  min="1">
+      <input type="number" class="form-control q-val" value="{{$quantity ? $quantity : ''}}" name="quantity" required  min="1">
     </div>
   </div>
 </div>
