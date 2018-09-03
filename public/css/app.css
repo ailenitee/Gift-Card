@@ -10548,6 +10548,46 @@ a:focus {
   border: 0;
 }
 
+.m-bottom {
+  margin-bottom: 30px !important;
+}
+
+@media (max-width: 991px) {
+  .hid-xs {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .hid-xs {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .hids-xs {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .hids-xs {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .hid-sm {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .hid-sm {
+    display: block;
+  }
+}
+
 .navbar {
   margin-bottom: 0;
   height: 85px;
@@ -10874,6 +10914,10 @@ a:focus {
   opacity: 0;
 }
 
+.action_buttons {
+  margin-top: 20px;
+}
+
 #cartModal .modal-dialog {
   width: 50%;
   max-width: none;
@@ -10903,10 +10947,15 @@ a:focus {
   display: block;
 }
 
+.cart-btn {
+  width: 200px;
+}
+
 @media (max-width: 768px) {
   .cart-btn {
-    float: none !important;
     margin-top: 20px;
+    width: auto;
+    padding: 10px 30px;
   }
 }
 
@@ -11585,6 +11634,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 auto;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+.content.confirm .confirm-box .inner-box:last-child .border-bottom {
+  border: 0 !important;
 }
 
 .content .content-link {

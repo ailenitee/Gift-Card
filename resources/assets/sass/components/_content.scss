@@ -85,12 +85,8 @@
       margin-bottom: 30px;
     }
     .m-top{
-        margin-top: 30px;
+      margin-top: 30px;
     }
-    // .checkout_pay{
-    //   width: 90%;
-    //   margin: 30px auto;
-    // }
     .confirm-box{
       padding: 20px 0;
       margin: 20px 0;
@@ -108,6 +104,12 @@
         margin: 0 auto;
         padding-bottom: 20px;
         padding-top: 20px;
+
+      } 
+      .inner-box:last-child{
+        .border-bottom{
+          border: 0!important;
+        }
       }
     }
   }

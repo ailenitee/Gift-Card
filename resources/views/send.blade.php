@@ -3,7 +3,8 @@
     <h2 class="text-center send-gift">Send Your Gift Card</h2>
     <br>
   </div>
-  <div class="col-md-offset-3 col-md-6">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
     <div class="form-group">
       <label>Recipient's Name</label>
       <input type="name" class="form-control" name="name" required value="{{$name ? $name : ''}}">
