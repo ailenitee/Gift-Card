@@ -40,7 +40,7 @@
         <div class="col-md-4">
           <div class="works">
             <div class="works_img">
-              <img src="{{URL::asset('/img/s41.png')}}">
+              <img src="{{URL::asset('/img/GiftCard/Section3/s41.png')}}">
             </div>
             <h3>Choose Gift Card</h3>
             <p>
@@ -51,7 +51,7 @@
         <div class="col-md-4">
           <div class="works">
             <div class="works_img">
-              <img src="{{URL::asset('/img/s42.png')}}">
+              <img src="{{URL::asset('/img/GiftCard/Section3/s42.png')}}">
             </div>
             <h3>Design your Gift Card</h3>
             <p>
@@ -62,7 +62,7 @@
         <div class="col-md-4">
           <div class="works">
             <div class="works_img">
-              <img src="{{URL::asset('/img/s43.png')}}">
+              <img src="{{URL::asset('/img/GiftCard/Section3/s43.png')}}">
             </div>
             <h3>Complete Your Purchase</h3>
             <p>
@@ -81,6 +81,6 @@
       <a class="nav-link btn-red btn-center" href="{{ url('/card/details') }}">Start Now</a>
     </div>
   </div>
-</div> 
+</div>
 @include('index/partners')
 @include('index/steps')
