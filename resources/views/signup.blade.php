@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="custom-control custom-checkbox">
+          <div class="custom-control custom-checkbox" style="margin-top:30px;">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">I agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.</label>
           </div>
