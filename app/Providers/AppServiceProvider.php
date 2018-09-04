@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      URL::forceSchema('https');
+      URL::forceScheme('https');
       if(!session('cart'))
       {
           session(['cart' => new EasyCart()]);
