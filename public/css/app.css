@@ -10610,6 +10610,14 @@ a:focus {
   }
 }
 
+.navbar .navbar-collapse {
+  display: none;
+}
+
+.navbar .navbar-collapse.show {
+  display: block;
+}
+
 .navbar .navbar-brand {
   font-size: 21px;
   color: #116DB6;
@@ -10626,6 +10634,12 @@ a:focus {
   margin: 0 15px;
   height: 100%;
   display: block;
+}
+
+@media (max-width: 767px) {
+  .navbar .navbar-brand img {
+    float: right;
+  }
 }
 
 .navbar .navbar-nav {
@@ -10668,6 +10682,22 @@ a:focus {
     height: auto;
     border-bottom: 1px solid #ccc;
   }
+}
+
+@media (max-width: 767px) {
+  .navbar .navbar-burger {
+    width: 100%;
+  }
+}
+
+.navbar .navbar-burger .hamburger {
+  float: left;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.navbar .navbar-burger .navbar-brand {
+  float: right;
 }
 
 .navbar-top {

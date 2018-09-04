@@ -14,6 +14,12 @@
       width: auto;
     }
   }
+  .navbar-collapse{
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
   .navbar-brand {
     font-size: 21px;
     color: $headertext;
@@ -28,6 +34,9 @@
       margin: 0 15px;
       height: 100%;
       display: block;
+      @media( max-width : 767px ){
+        float: right;
+      }
     }
   }
   .navbar-nav{
@@ -58,6 +67,20 @@
   @media( max-width : 991px ){
     height:auto;
     border-bottom: 1px solid #ccc;
+  }
+  .navbar-burger{
+
+    @media( max-width : 767px ){
+      width: 100%;
+    }
+    .hamburger{
+      float: left;
+      margin: 30px;
+      cursor: pointer;
+    }
+    .navbar-brand{
+      float: right;
+    }
   }
 }
 .navbar-top{
@@ -98,7 +121,7 @@
     z-index: 1;
     text-align: center;
     width: 100%;
-    .nav-link{ 
+    .nav-link{
       &.btn-border{
         color: $button;
       }
