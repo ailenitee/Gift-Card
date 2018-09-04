@@ -160,6 +160,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Cyvelnet\EasyCart\EasyCartServiceProvider::class,
+        Ecrmnn\LaravelHttps\Providers\ServiceProvider::class,
     ],
 
     /*
