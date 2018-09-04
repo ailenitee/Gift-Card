@@ -10591,6 +10591,10 @@ a:focus {
 .navbar {
   margin-bottom: 0;
   height: 85px;
+  box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);
+  -webkit-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);
+  border-radius: 0;
 }
 
 .navbar .navbar-toggle {
@@ -10634,6 +10638,7 @@ a:focus {
   margin: 0 15px;
   height: 100%;
   display: block;
+  padding: 5px 0;
 }
 
 @media (max-width: 767px) {
