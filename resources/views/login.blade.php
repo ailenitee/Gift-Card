@@ -37,8 +37,8 @@
             </div>
             <div class="col-md-8">
               <div class="login-box-right">
-                <h2 class="text-center">
-                  <i class="fas fa-user-circle"></i>&nbsp;Login
+                <h2 class="text-center" style="text-transform:unset;">
+                  <i class="fas fa-user"></i>&nbsp;Login
                 </h2>
                 <form class="login_form" action="{{ route('user_login') }}" method="post">
                   {!! csrf_field() !!}
