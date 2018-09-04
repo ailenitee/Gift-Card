@@ -97,11 +97,8 @@
   #navbarNavDropdown{
     z-index: 1;
     text-align: center;
-    // background: rgba(0, 0, 0, 1);
-    // color: #fff!important;
     width: 100%;
-    .nav-link{
-      // color: #fff!important;
+    .nav-link{ 
       &.btn-border{
         color: $button;
       }

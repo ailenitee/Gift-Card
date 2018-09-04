@@ -8,6 +8,7 @@ require('./components/validation.js');
 require('./components/slick.js');
 require('./components/upload.js');
 require('./components/cartmodal.js');
+require('./components/nav.js');
 
 
 /**
@@ -162,7 +163,7 @@ $(function() {
     sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText
     $('.total_sum').text(sum);
     $('.total_sum').val(sum);
-  }); 
+  });
 
   if ($('.radiobtns').is(':checked')) {
     $('.radiobtns').parent().removeClass('active');

@@ -19,10 +19,11 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-gray">
     <a class="navbar-brand" href="{{ url('/') }}">
+      <div class="hamburger hid-sm"><span>Menu</span></div>
       <img src="{{URL::asset('/img/logo.png')}}" alt="">
       <!-- <img src="{{URL::asset('/img/logo-text.png')}}" alt=""> -->
     </a>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" style="display:none;">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -41,4 +42,6 @@
         </li>
       </ul>
     </div>
+
+    <div class="dimmer"></div>
   </nav>
