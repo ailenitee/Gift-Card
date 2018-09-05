@@ -10588,6 +10588,11 @@ a:focus {
   }
 }
 
+.fa-edit,
+.fa-trash {
+  font-size: 20px;
+}
+
 .navbar {
   margin-bottom: 0;
   height: 85px;

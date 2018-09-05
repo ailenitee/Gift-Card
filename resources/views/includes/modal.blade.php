@@ -43,13 +43,13 @@
                       <td>
                         @if(isset($cards['id']))
                           <input type="hidden" name="id" value="{{$cards['id']}}">
-                          <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>
+                          <a href="{{url('/edit-cart',$cards['id'])}}"><i class="fas fa-edit"></i></a>
                         @endif
                       </td>
                       <td>
                         @if(isset($cards['id']))
                           <input type="hidden" name="id" value="{{$cards['id']}}">
-                          <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a>
+                          <a href="{{url('/delete-cart',$cards['id'])}}"><i class="fas fa-trash"></i></a>
                         @endif
                       </td>
                     </tr>
@@ -74,10 +74,10 @@
                       <td>{{$card->quantity}}</td>
                       <td>{{$card->total}}</td>
                       <td>
-                          <a href="{{url('/edit-cart',$card->id)}}">Edit</a>
+                          <a href="{{url('/edit-cart',$card->id)}}"><i class="fas fa-edit"></i></a>
                       </td>
                       <td>
-                          <a href="{{url('/delete-cart',$card->id)}}">Delete</a>
+                          <a href="{{url('/delete-cart',$card->id)}}"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
@@ -94,7 +94,7 @@
           </tbody>
         </table>
       </div>
-      <div class="modal-footer"> 
+      <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
         @if(!empty($cart))
           @if(count($cart) == 0)

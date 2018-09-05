@@ -91,7 +91,9 @@ a{
   @media( max-width : 991px ){
     display: block;
   }
-
+}
+.fa-edit, .fa-trash{
+  font-size: 20px;
 }
 //Custom css
 @import 'components/nav';
