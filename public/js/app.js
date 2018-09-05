@@ -209,7 +209,7 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(7);
 
 
 /***/ }),
@@ -226,7 +226,7 @@ __webpack_require__(0);
 __webpack_require__(1);
 __webpack_require__(2);
 __webpack_require__(5);
-__webpack_require__(14);
+__webpack_require__(6);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -335,7 +335,6 @@ $(function () {
       }
     }
   });
-
   $('.show-less').click(function () {
     var length = parseInt($('.length').val());
     $('.themes:lt(13)').hide();
@@ -343,6 +342,7 @@ $(function () {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'block');
   });
+
   ////////design choose between standard or upload own photo
   $('.own').css('display', 'none');
   $('.own').css('opacity', '0');
@@ -364,7 +364,7 @@ $(function () {
     $('.standard').css('opacity', '0');
   });
 
-  ////////// on click theme change preview
+  ////////// on click theme img change preview
   $('.themes img').click(function () {
     var imgsrc = $(this).attr('src');
     $('#img-upload').attr('src', imgsrc);
@@ -373,9 +373,10 @@ $(function () {
   $('.cart-btn').on('click', function () {
     $('#cartModal').modal('show');
   });
+
   var sum = 0;
   $('.total-cart').each(function () {
-    sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
+    sum += parseFloat($(this).text());
     $('.total_sum').text(sum);
     $('.total_sum').val(sum);
   });
@@ -400,24 +401,17 @@ $(function () {
 /* 6 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ (function(module, exports) {
-
 $(function () {
   $('.hamburger').click(function () {
     $('.navbar-collapse').slideToggle('show');
   });
 });
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
