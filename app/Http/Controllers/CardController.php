@@ -27,8 +27,6 @@ class CardController extends Controller
 
   /**
   * Send a Gift Card.
-  *
-  * @return \Illuminate\Http\Response
   */
   public function index()
   {
@@ -50,7 +48,7 @@ class CardController extends Controller
     }else{
       //for guest
       $data = session()->get('cart');
-      $data2 = session()->get('cart.items'); 
+      $data2 = session()->get('cart.items');
       if (session()->exists('cart')){
         $data3['quantity'] = '';
         $data3['id'] = '';
@@ -72,6 +70,9 @@ class CardController extends Controller
       }
     }
   }
+  /**
+  * Store to Cart.
+  */
   public function store(Request $request)
   {
     $request->total = $request->quantity*$request->amount; //get total amount per item
@@ -116,12 +117,8 @@ class CardController extends Controller
     }
   }
 
-
   /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
+  * Confirmation Page.
   */
   public function confirm()
   {
@@ -151,6 +148,10 @@ class CardController extends Controller
       }
     }
   }
+
+  /**
+  * Store to Transaction table from Cart and process Payment.
+  */
   public function transaction(Request $request)
   {
     $user = Auth::user();
@@ -188,14 +189,11 @@ class CardController extends Controller
 
     $response = curl_exec($curl);
     $err = curl_error($curl);
-
     curl_close($curl);
-
     if ($err) {
       echo "cURL Error #:" . $err;
     } else {
       if ($user){
-        // dd($user);
         $data['address'] = $request->Address;
         $data['state'] = $request->state;
         $data['city'] = $request->city;
@@ -205,8 +203,8 @@ class CardController extends Controller
         $data['email'] = $request->email;
         $data['user_id'] = $user->id;
         $data['total'] = $request->total;
-        // dd($data);
         Transaction::create($data);
+        // delete all data from cart
         $data['cart'] = DB::table('cart')
         ->where('user_id', $user->id)
         ->delete();
@@ -220,8 +218,8 @@ class CardController extends Controller
         $data['email'] =$request->email;
         $data['user_id'] = 0;
         $data['total'] = $request->total;
-          // dd($data);
         Transaction::create($data);
+        // delete all data from cart
         session()->flush('cart');
       }
       return redirect('/card/details')->with('success', 'Thank you for your payment!');
@@ -229,6 +227,9 @@ class CardController extends Controller
     }
   }
 
+  /**
+  * Checkout Page.
+  */
   public function checkout()
   {
     //for logged on user
@@ -257,11 +258,9 @@ class CardController extends Controller
       }
     }
   }
+
   /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
+  * Update Cart Item Page.
   */
   public function edit($id)
   {
@@ -287,12 +286,10 @@ class CardController extends Controller
       //for guest
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
-      // dd($data2['id']);
       if (session()->exists('cart')){
         if (!empty($data2)){
           $data['cart'] =$data;
           foreach ($data2 as $key => $value){
-            // dd($value['id']);
             if($value['id'] == $id){
               $data['quantity'] = $value['quantity'];
               $data['name'] = $value['name'];
@@ -316,11 +313,7 @@ class CardController extends Controller
 
 
   /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
+  * Update Cart Item Functionality.
   */
   public function update(Request $request)
   {
@@ -351,9 +344,9 @@ class CardController extends Controller
       $data2 = session()->get('cart.items');
       foreach ($data2 as $key => $value){
         if($value['id'] == $input['id']){
-          session()->pull('cart.items.'. $key);
-          session()->forget('cart.items.'. $key);
-          session()->save();
+          session()->pull('cart.items.'. $key); //get selected cart item
+          session()->forget('cart.items.'. $key); //delete selected cart item
+          session()->save(); //save cart
         }
       }
       if ($request->session()->exists('cart')) {
@@ -369,19 +362,16 @@ class CardController extends Controller
     }
     switch($request->submitbutton) {
       case 'update':
-      return back()->with('success', 'Updated Cart Item Succesfully!');
+      return back()->with('success', 'Updated Cart Item Succesfully!'); //Update Cart
       break;
       case 'update_cart':
-      return redirect('/confirm');
+      return redirect('/confirm'); //Update and Checkout
       break;
     }
   }
 
   /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
+  * Clear Cart Function.
   */
   public function clearCart(Request $request){
     $user = Auth::user();
