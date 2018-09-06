@@ -46,16 +46,17 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="custom-control custom-checkbox" style="margin-top:30px;">
+          <div class="alert alert-danger alert-password" style="display:none;opacity:0;margin-top: 20px;margin-bottom: 0;">
+            <p>Passwords don't match</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="custom-control custom-checkbox" style="margin-top:20px;">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">I agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.</label>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="alert alert-danger alert-password" style="display:none;opacity:0;">
-            <p>Passwords don't match</p>
-          </div>
-        </div>
+
       </div>
       <hr class="colorgraph">
       <div class="row">

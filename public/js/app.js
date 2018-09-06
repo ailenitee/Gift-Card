@@ -103,8 +103,12 @@ $(function () {
       if ($(".pw").val().length != 0 && $(".cpw").val().length != 0) {
         if ($(".pw").val() != $(".cpw").val()) {
           $('.reg-btn').attr('disabled', 'disabled');
+          $('.alert-password').css('display', 'block');
+          $('.alert-password').css('opacity', '1');
         } else {
           $('.reg-btn').attr('disabled', false);
+          $('.alert-password').css('display', 'none');
+          $('.alert-password').css('opacity', '0');
         }
       }
     } else {
