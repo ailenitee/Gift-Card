@@ -13,10 +13,11 @@ body{
   font-size:15px;
   font-family: $font-body;
   letter-spacing: 1.5px;
+  font-weight: $font-body-weight;
 }
 .fonts {
   margin-bottom: 0.5rem;
-  font-weight: 700;
+  font-weight: $font-header-weight;
   line-height: 1.2;
   text-transform: uppercase;
 }

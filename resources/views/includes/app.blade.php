@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
   <title>AllGiftCards</title>
   <link rel="icon" href="{{URL::asset('/img/logo-only.png')}}">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Sans:400,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Sans:400,700" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Open+Sans:400,700" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Montserrat:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/v4-shims.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

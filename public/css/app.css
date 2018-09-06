@@ -10475,8 +10475,9 @@ a.text-dark:focus {
 
 body {
   font-size: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 1.5px;
+  font-weight: 400;
 }
 
 .fonts,
@@ -10496,14 +10497,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   color: #116DB6;
 }
 
 h1,
 h2 {
   color: #161d8e;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 hr {
