@@ -1,13 +1,6 @@
 .bg-gray{
   background-color: $graybg;
   &.partners{
-    // .p-img{
-    //   padding: 10px;
-    //   height: 100px;
-    //   display: flex;
-    //   width: 100%;
-    //   margin-bottom: 20px;
-    // }
     img{
       width: 100%;
       object-fit: contain;
@@ -105,7 +98,7 @@
         padding-bottom: 20px;
         padding-top: 20px;
 
-      } 
+      }
       .inner-box:last-child{
         .border-bottom{
           border: 0!important;
@@ -312,5 +305,5 @@
   }
 }
 .details-bg{
-  background-color: #fff;
+    background-color: #fafaff;
 }
