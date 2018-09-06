@@ -49,9 +49,8 @@ class CardController extends Controller
       return view('details',$data);
     }else{
       //for guest
-      // dd(session()->all());
       $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
+      $data2 = session()->get('cart.items'); 
       if (session()->exists('cart')){
         $data3['quantity'] = '';
         $data3['id'] = '';

@@ -96,15 +96,25 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-        @if(!empty($cart))
-          @if(count($cart) == 0)
-          <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
-          <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+          @if(Auth::guest())
+            @if(empty($cart))
+              <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
+              <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+            @else
+              <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
+              <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
+            @endif
           @else
-          <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
-          <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
+            @if(!empty($cart))
+              @if(count($cart) == 0)
+              <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
+              <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+              @else
+              <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
+              <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
+              @endif
+            @endif
           @endif
-        @endif
       </div>
     </div>
   </div>
