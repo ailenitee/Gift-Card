@@ -11836,8 +11836,8 @@ input[type=number]::-webkit-outer-spin-button {
           box-shadow: 0px 5px 14px #bdbdbd;
 }
 
-.content.design_card h2 {
-  margin-bottom: 0;
+.content.design_card h2.send-gift {
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -11971,7 +11971,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   height: auto;
   margin: 30px auto;
-  margin-top: 50px;
+  margin-top: 80px;
   display: block;
   background: #fff;
   position: relative;

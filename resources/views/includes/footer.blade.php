@@ -16,8 +16,7 @@
               <div class="text-center">
                 Sitemap
               </div>
-            </div>
-
+            </div> 
         </div>
     </div>
 </div>

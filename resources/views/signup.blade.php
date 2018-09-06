@@ -3,7 +3,7 @@
     <form role="form" class="signup_form" method="POST" action="{{ route('register') }}">
       {!! csrf_field() !!}
       <h2>Sign up</h2>
-      <hr class="colorgraph">
+      <hr class="colorgraph" style="border:0;border-top: 1.5px solid #116DB6;">
       @if(session()->has('success'))
       <div class="alert alert-success">
         {{ session()->get('success') }}
@@ -58,10 +58,10 @@
         </div>
 
       </div>
-      <hr class="colorgraph">
+      <hr class="colorgraph" style="border:0;border-top: 2px solid #116DB6;">
       <div class="row">
         <div class="col-md-8">
-          <p>Already have an account?&nbsp;<a href="#" class="back_login"><b>Sign In</b></a></p>
+          <p style="margin-top: 12px;">Already have an account?&nbsp;<a href="#" class="back_login"><b>Sign In</b></a></p>
         </div>
         <div class=" col-xs-12 col-md-4">
           <input type="submit" value="Register" class="btn btn-border btn-center reg-btn" tabindex="7" style="width:100%;">

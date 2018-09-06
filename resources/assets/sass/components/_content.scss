@@ -227,7 +227,9 @@
     margin: 0;
     box-shadow: 0px 5px 14px #bdbdbd;
     h2{
-      margin-bottom: 0;
+      &.send-gift{
+            margin-bottom: 20px;
+      }
       @media( max-width : 768px ){
         margin-bottom: 20px;
         text-align: center;
@@ -305,5 +307,5 @@
   }
 }
 .details-bg{
-    background-color: #fafaff;
+  background-color: #fafaff;
 }
