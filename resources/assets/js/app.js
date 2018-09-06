@@ -127,7 +127,7 @@ $(function() {
     $('.show-less').css('display','none');
     $('.show-more').css('display','block');
   });
-  
+
   ////////design choose between standard or upload own photo
   $('.own').css('display','none');
   $('.own').css('opacity','0');
@@ -161,7 +161,7 @@ $(function() {
 
   var sum = 0;
   $('.total-cart').each(function(){
-    sum += parseFloat($(this).text());
+    sum += parseFloat($(this).text()); 
     $('.total_sum').text(sum);
     $('.total_sum').val(sum);
   });

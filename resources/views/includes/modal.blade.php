@@ -11,7 +11,7 @@
         <table class="table table-hover">
           <thead class="">
             <tr>
-              <th scope="col">#</th>
+              <!-- <th scope="col">#</th> -->
               <th scope="col">Product</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
@@ -25,7 +25,7 @@
                   @foreach ($cart as $card)
                     @foreach ($card as $cards)
                     <tr>
-                      <td></td>
+                      <!-- <td></td> -->
                       @if(isset($cards['giftcard']))
                       <td>
                         <img src="{{$cards['giftcard']}}" alt="">
@@ -68,7 +68,7 @@
                 @if(count($cart) > 0)
                   @foreach ($cart as $card)
                     <tr>
-                      <th scope="row">{{$card->id}}</th>
+                      <!-- <th scope="row">{{$card->id}}</th> -->
                       <td><img src="{{$card->giftcard}}" alt=""></td>
                       <td>{{$card->amount}}</td>
                       <td>{{$card->quantity}}</td>

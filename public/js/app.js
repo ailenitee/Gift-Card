@@ -116,6 +116,14 @@ $(function () {
       $('.form_details .n_disabled').css('opacity', '0');
     }
   });
+  if ($(".cr_email").val()) {
+    if ($(".cr_email").val().length == 0) {
+      $('.form_details .disabled').css('display', 'block');
+      $('.form_details .disabled').css('opacity', '1');
+      $('.form_details .n_disabled').css('display', 'none');
+      $('.form_details .n_disabled').css('opacity', '0');
+    }
+  }
 });
 
 /***/ }),
