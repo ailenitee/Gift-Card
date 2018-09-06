@@ -37,18 +37,23 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+            <input type="password" name="password" id="password" class="form-control input-lg pw" placeholder="Password" tabindex="5">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type="password" name="" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+            <input type="password" name="" id="password_confirmation" class="form-control input-lg cpw" placeholder="Confirm Password" tabindex="6">
           </div>
         </div>
         <div class="col-md-12">
           <div class="custom-control custom-checkbox" style="margin-top:30px;">
             <input type="checkbox" class="custom-control-input" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">I agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>.</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="alert alert-danger alert-password" style="display:none;opacity:0;">
+            <p>Passwords don't match</p>
           </div>
         </div>
       </div>
