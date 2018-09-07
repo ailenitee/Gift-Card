@@ -67,11 +67,11 @@
           </div>
         </div>
         <div class="row" style="margin:30px 0;">
-          <div class="col-md-6">
-            <a  href="{{url('/card/details')}}"class="btn-border btn-center" style="width: 70%;">ADD ANOTHER GIFT</a>
+          <div class="col-sm-12 col-md-6">
+            <a  href="{{url('/card/details')}}"class="btn-border btn-center btn-checkout" style="margin-bottom:15px;">ADD ANOTHER GIFT</a>
           </div>
-          <div class="col-md-6">
-            <button type="submit" name="button" class="btn-red btn-center" style="width: 70%;">CONFIRM AND PAY</button>
+          <div class="col-sm-12 col-md-6">
+            <button type="submit" name="button" class="btn-red btn-center btn-checkout" >CONFIRM AND PAY</button>
           </div>
         </div>
         </form>

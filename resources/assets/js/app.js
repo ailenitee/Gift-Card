@@ -1,4 +1,4 @@
-
+// require('./bootstrap.js');
 /**
 * First we will load all of this project's JavaScript dependencies which
 * includes Vue and other libraries. It is a great starting point when
@@ -11,6 +11,7 @@ require('./components/cartmodal.js');
 require('./components/nav.js');
 
 
+
 /**
 * Next, we will create a fresh Vue application instance and attach it to
 * the page. Then, you may begin adding components to this application
@@ -19,6 +20,10 @@ require('./components/nav.js');
 
 $(function() {
   var referrer =  document.referrer;
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    e.target // newly activated tab
+    e.relatedTarget // previous active tab
+  })
   $('.navbar-nav>li>a').on('click', function(){
     $('.navbar-collapse').collapse('hide');
   });

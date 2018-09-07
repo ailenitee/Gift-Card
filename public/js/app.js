@@ -297,7 +297,7 @@ module.exports = __webpack_require__(7);
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+// require('./bootstrap.js');
 /**
 * First we will load all of this project's JavaScript dependencies which
 * includes Vue and other libraries. It is a great starting point when
@@ -317,6 +317,10 @@ __webpack_require__(6);
 
 $(function () {
   var referrer = document.referrer;
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    e.target; // newly activated tab
+    e.relatedTarget; // previous active tab
+  });
   $('.navbar-nav>li>a').on('click', function () {
     $('.navbar-collapse').collapse('hide');
   });

@@ -10914,10 +10914,14 @@ a:focus {
   width: 50%;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .btn-center {
     width: 100%;
   }
+}
+
+.btn-center.btn-checkout {
+  width: 80%;
 }
 
 .btn-group-toggle .btn {
@@ -10966,6 +10970,7 @@ a:focus {
 @media (max-width: 768px) {
   #cartModal .modal-dialog {
     width: 80%;
+    margin: 50px auto;
   }
 }
 
@@ -11653,6 +11658,12 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: left;
 }
 
+@media (max-width: 991px) {
+  .content.confirm .checkout_bg {
+    width: 100%;
+  }
+}
+
 .content.confirm .order_summary {
   margin-bottom: 30px;
 }
@@ -11793,11 +11804,22 @@ input[type=number]::-webkit-outer-spin-button {
 @media (max-width: 768px) {
   .content.d-content #img-upload {
     min-height: 300px;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
   }
 }
 
 .content.d-content .themes img {
   cursor: pointer;
+}
+
+@media (max-width: 575px) {
+  .content.d-content .themes img {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 .content.d-content .own {
@@ -11929,6 +11951,10 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #fafaff;
 }
 
+.details-bg .design img {
+  width: 100%;
+}
+
 .login-content {
   height: 100vh;
   overflow: hidden;
@@ -12022,6 +12048,7 @@ input[type=number]::-webkit-outer-spin-button {
   .login-content .signup-box .login-box-left img {
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 30%;
   }
 }
 

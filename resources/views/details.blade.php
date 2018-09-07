@@ -29,20 +29,20 @@
       </div>
       <div class="row">
         @if($edit == 'edit')
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <button type="submit" class="btn-border btn-center n_disabled" value="update" name='submitbutton'>UPDATE ITEM</button>
           <button type="submit" class="btn-border btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">UPDATE ITEM</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <button type="submit" class="btn-red btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">UPDATE AND CHECKOUT</button>
           <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="update_cart">UPDATE AND CHECKOUT</button>
         </div>
         @else
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <button type="submit" class="btn-border btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">ADD TO CART</button>
           <button type="submit" class="btn-border btn-center n_disabled" value="save" name='submitbutton'>ADD TO CART</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <button type="submit" class="btn-red btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">CONFIRM AND CHECKOUT</button>
           <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="save_cart">CONFIRM AND CHECKOUT</button>
         </div>

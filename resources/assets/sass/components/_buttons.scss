@@ -50,8 +50,11 @@
   margin: 0 auto;
   display: block;
   width: 50%;
-  @media( max-width : 575px ){
+  @media( max-width : 767px ){
     width: 100%;
+  }
+  &.btn-checkout{
+    width: 80%;
   }
 }
 .btn-group-toggle{

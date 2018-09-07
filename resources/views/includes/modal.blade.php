@@ -78,6 +78,7 @@
                       </td>
                       <td>
                           <a href="{{url('/delete-cart',$card->id)}}"><i class="fas fa-trash"></i></a>
+                          <?php // TODO: delete confirmation ?>
                       </td>
                     </tr>
                   @endforeach

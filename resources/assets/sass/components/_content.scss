@@ -73,6 +73,9 @@
       p{
         text-align: left;
       }
+      @media( max-width : 991px ){
+        width: 100%; 
+      }
     }
     .order_summary{
       margin-bottom: 30px;
@@ -190,11 +193,19 @@
       max-height: 450px;
       @media( max-width : 768px ){
         min-height: 300px;
+        width: 50%;
+        margin: 0 auto;
+        display: block;
       }
     }
     .themes{
       img{
         cursor: pointer;
+        @media( max-width : 575px ){
+          width: 50%;
+          margin: 0 auto;
+          display: block;
+        }
       }
     }
     .own{
@@ -308,4 +319,9 @@
 }
 .details-bg{
   background-color: #fafaff;
+  .design{
+    img{
+      width: 100%;
+    }
+  }
 }
