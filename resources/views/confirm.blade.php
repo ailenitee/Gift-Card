@@ -4,6 +4,19 @@
   <div class="content confirm">
     <h1 class="text-center egift">Confirm &amp; Checkout</h1>
     <div class="confirm-box">
+      <div class="row" style="width: 100%;margin: 0;">
+        <div class="col-sm-12" style="width: 100%;">
+          <div class="alert alert-danger alert-cart-confirmation" style="display:none;opacity:0;margin: 0 20px; margin-bottom:20px;">
+            <input type="hidden" value="" id="pass_id">
+            <p>
+              Are you sure you want to delete this item from cart?
+              <span style="float:right;">
+                <span class="custom_link cart_confirm" style="color: #fff;font-weight:700;"><span id="yes">Yes</span>&nbsp;|&nbsp;<span class="cancel">Cancel</span></span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
       <div class="row hids-xs" style="width: 90%;margin: 0 auto;">
         <div class="col-md-offset-5 col-md-2">
           <h4 class="text-center">Price</h4>
@@ -57,11 +70,13 @@
               <div class="col-md-2">
                 @if(isset($cards['id']))
                 <input type="hidden" name="id" value="{{$cards['id']}}">
-                <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>&nbsp;|&nbsp;
+                <a href="{{url('/edit-cart',$cards['id'])}}"><i class="fas fa-edit"></i></a>
                 @endif
                 @if(isset($cards['id']))
-                <input type="hidden" name="id" value="{{$cards['id']}}">
-                <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a>
+                <!-- <input type="hidden" name="id" value="{{$cards['id']}}">
+                <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a> -->
+                <input type="hidden" name="id" value="{{$cards['id']}}" class="get_id">
+                <div class="custom_link delete_link"><i class="fas fa-trash"></i></div>
                 @endif
               </div>
             </div>
@@ -76,8 +91,10 @@
                   <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>&nbsp;|&nbsp;
                   @endif
                   @if(isset($cards['id']))
-                  <input type="hidden" name="id" value="{{$cards['id']}}">
-                  <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a>
+                  <!-- <input type="hidden" name="id" value="{{$cards['id']}}">
+                  <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a> -->
+                  <input type="hidden" name="id" value="{{$cards['id']}}" class="get_id">
+                  <div class="custom_link delete_link">Delete</div>
                   @endif
                 </div>
               </div>
@@ -139,9 +156,11 @@
               </div>
               <div class="col-md-2">
                 <input type="hidden" name="id" value="{{$card->id}}">
-                <a href="{{url('/edit-cart',$card->id)}}">Edit</a>&nbsp;|&nbsp;
-                <input type="hidden" name="id" value="{{$card->id}}">
-                <a href="{{url('/delete-cart',$card->id)}}">Delete</a>
+                <a href="{{url('/edit-cart',$card->id)}}"><i class="fas fa-edit"></i></a>
+                <!-- <input type="hidden" name="id" value="{{$card->id}}">
+                <a href="{{url('/delete-cart',$card->id)}}">Delete</a> -->
+                <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
+                <div class="custom_link delete_link"><i class="fas fa-trash"></i></div>
               </div>
             </div>
             <div class="hid-sm">
@@ -149,9 +168,11 @@
                 <img src="{{$card->giftcard}}" alt="" class="confirm_img">
                 <div class="action_buttons">
                   <input type="hidden" name="id" value="{{$card->id}}">
-                  <a href="{{url('/edit-cart',$card->id)}}">Edit</a>&nbsp;|&nbsp;
-                  <input type="hidden" name="id" value="{{$card->id}}">
-                  <a href="{{url('/delete-cart',$card->id)}}">Delete</a>
+                  <a href="{{url('/edit-cart',$card->id)}}">Edit</a>&nbsp;
+                  <!-- <input type="hidden" name="id" value="{{$card->id}}">
+                  <a href="{{url('/delete-cart',$card->id)}}">Delete</a> -->
+                  <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
+                  <div class="custom_link delete_link">Delete</div>
                 </div>
               </div>
               <div class="col-xs-8">

@@ -19,6 +19,24 @@
               <th scope="col"></th>
             </tr>
           </thead>
+          <div class="alert alert-danger alert-cart-confirmation" style="display:none;opacity:0;">
+            <input type="hidden" value="" id="pass_id">
+            <p>
+              Are you sure you want to delete this item from cart?
+              <span style="float:right;">
+                <span class="custom_link cart_confirm"><span id="yes">Yes</span>&nbsp;|&nbsp;<span class="cancel">Cancel</span></span>
+              </span>
+            </p>
+          </div>
+          <div class="alert alert-danger alert-cart-confirmation-clear" style="display:none;opacity:0;">
+            <input type="hidden" value="" id="pass_id">
+            <p>
+              Are you sure you want to clear your cart?
+              <span style="float:right;">
+                <span class="custom_link cart_confirm"><span id="clear_cart_confirm">Yes</span>&nbsp;|&nbsp;<span class="cancel">Cancel</span></span>
+              </span>
+            </p>
+          </div>
           <tbody>
               @if(Auth::guest())
                 @if(!empty($cart))
@@ -48,8 +66,8 @@
                       </td>
                       <td>
                         @if(isset($cards['id']))
-                          <input type="hidden" name="id" value="{{$cards['id']}}">
-                          <a href="{{url('/delete-cart',$cards['id'])}}"><i class="fas fa-trash"></i></a>
+                          <input type="hidden" name="id" value="{{$cards['id']}}" class="get_id">
+                          <div class="custom_link delete_link"><i class="fas fa-trash"></i><div>
                         @endif
                       </td>
                     </tr>
@@ -77,8 +95,8 @@
                           <a href="{{url('/edit-cart',$card->id)}}"><i class="fas fa-edit"></i></a>
                       </td>
                       <td>
-                          <a href="{{url('/delete-cart',$card->id)}}"><i class="fas fa-trash"></i></a>
-                          <?php // TODO: delete confirmation ?>
+                          <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
+                          <div class="custom_link delete_link"><i class="fas fa-trash"></i><div>
                       </td>
                     </tr>
                   @endforeach
@@ -99,19 +117,19 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
           @if(Auth::guest())
             @if(empty($cart))
-              <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
-              <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+              <a href="" class="btn btn-red disabled" style="float: right;">CLEAR CART</a>
+              <a href="" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
             @else
-              <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
+              <div class="btn btn-red clear_link" style="float: right; ">CLEAR CART</div>
               <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
             @endif
           @else
             @if(!empty($cart))
               @if(count($cart) == 0)
-              <a href="{{url('/clear-cart')}}" class="btn btn-red disabled" style="float: right;">Clear Cart</a>
-              <a href="{{url('/confirm')}}" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
+              <a href="" class="btn btn-red disabled" style="float: right;">CLEAR CART</a>
+              <a href="" class="btn btn-red disabled" style="float: right;">Confirm &amp; Checkout</a>
               @else
-              <a href="{{url('/clear-cart')}}" class="btn btn-red" style="float: right; ">Clear Cart</a>
+              <div class="btn btn-red clear_link" style="float: right; ">CLEAR CART</div>
               <a href="{{url('/confirm')}}" class="btn btn-red" style="float: right; ">Confirm &amp; Checkout</a>
               @endif
             @endif

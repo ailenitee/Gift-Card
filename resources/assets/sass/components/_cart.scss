@@ -23,6 +23,13 @@
     }
 
   }
+
+  .cart_confirm{
+    text-align:  right;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+  }
 }
 
 .cart-btn{
@@ -31,5 +38,17 @@
     margin-top: 20px;
     width: auto;
     padding: 10px 30px;
+  }
+}
+.custom_link{
+  color: #007bff;
+  cursor: pointer;
+  width: auto;
+  text-transform: uppercase;
+}
+.inner-box{
+  i{
+    float: left;
+    margin: 0 10px;
   }
 }
