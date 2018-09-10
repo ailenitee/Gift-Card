@@ -58,7 +58,7 @@
         </div>
 
       </div>
-      <hr class="colorgraph" style="border:0;border-top: 2px solid #116DB6;">
+      <hr class="colorgraph" style="border:0;border-top: 1px solid #116DB6;">
       <div class="row">
         <div class="col-md-8">
           <p style="margin-top: 12px;">Already have an account?&nbsp;<a href="#" class="back_login"><b>Sign In</b></a></p>

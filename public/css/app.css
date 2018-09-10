@@ -11449,6 +11449,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 30px;
 }
 
+.form_details button.btn-outline-primary {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
 .form_details h2 {
   color: #000;
 }
