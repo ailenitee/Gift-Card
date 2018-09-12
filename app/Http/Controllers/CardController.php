@@ -157,21 +157,21 @@ class CardController extends Controller
     $user = Auth::user();
     $data1 = [
       'name' => $request->name,
-      'bot_name' => "",
-      'bot_alias' => "",
+      'bot_name' => "GiftCard",
+      'bot_alias' => "GiftCard",
       'email' => $request->email,
       'contact' => $request->mobile,
       'amount' => $request->total,
       'payment_method' => 'credit_card',
-      'product_title' => "",
+      'product_title' => 'Gift Card',
       'page_access_token' => $request->_token,
-      'scoped_id' => "",
+      'scoped_id' => str_random(25),
       'item_code' => "",
     ];
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88/ipay88-handler",
+      CURLOPT_URL => "https://nt6kh0sqzb.execute-api.us-east-1.amazonaws.com/dev/ipay88/ipay88-handler",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -180,7 +180,7 @@ class CardController extends Controller
       CURLOPT_CUSTOMREQUEST => "POST",
       CURLOPT_POSTFIELDS => json_encode($data1),
       CURLOPT_HTTPHEADER => array(
-        // Set here requred headers
+        // Set here required headers
         "accept: */*",
         "accept-language: en-US,en;q=0.8",
         "content-type: application/json",
@@ -188,6 +188,7 @@ class CardController extends Controller
     ));
 
     $response = curl_exec($curl);
+    $res = json_decode($response);
     $err = curl_error($curl);
     curl_close($curl);
     if ($err) {
@@ -222,8 +223,8 @@ class CardController extends Controller
         // delete all data from cart
         session()->flush('cart');
       }
-      return redirect('/card/details')->with('success', 'Thank you for your payment!');
-
+      // return redirect('/card/details')->with('success', 'Thank you for your payment!');
+      return redirect('https://nt6kh0sqzb.execute-api.us-east-1.amazonaws.com/dev/ipay88'.$res->payment_url);
     }
   }
 

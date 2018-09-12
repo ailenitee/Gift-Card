@@ -77,17 +77,27 @@ class RegisterController extends Controller
 
   public function register(Request $request)
   {
-        $user= new \App\User;
-        $user->name=$request->get('first_name');
-        $user->email=$request->get('email');
-        $user->username=$request->get('user_name');
-        $user->mobile=$request->get('mnumber');
-        $user->password=Hash::make($request->get('password'));
-        $date=date_create($request->get('date'));
-        $format = date_format($date,"Y-m-d");
-        $user->created_at = strtotime($format);
-        $user->save();
+    $user= new \App\User;
+    $user->name=$request->get('first_name');
+    $user->email=$request->get('email');
+    $user->username=$request->get('user_name');
+    $user->mobile=$request->get('mnumber');
+    $user->password=Hash::make($request->get('password'));
+    $user->roles=2;
+    $user->status=1;
+    $date=date_create($request->get('date'));
+    $format = date_format($date,"Y-m-d");
+    $user->created_at = strtotime($format);
+    try{
+      $user->save();
+      return redirect('/login#signup')->with('success', 'Registered Succesfully!');
+    }
+    catch(\Exception $e){
+      // dd($e->errorInfo[2]);
+      return redirect('/login#signup')->with('error', $e->errorInfo[2]);
+    }
 
-        return redirect('/login#signup')->with('success', 'Registered Succesfully!');
+
+
   }
 }

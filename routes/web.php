@@ -35,4 +35,7 @@ Route::group(['middleware' => 'web'], function () {
   Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
   Route::post('/login-user',['as' => 'user_login', 'uses' => 'Auth\LoginController@loginProcess']);
   Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
+
+  //CMS
+  Route::get('/cms/dashboard', ['as' => 'index', 'uses' => 'CmsController@index']); 
 });

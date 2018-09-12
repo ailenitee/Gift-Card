@@ -9,6 +9,11 @@
         {{ session()->get('success') }}
       </div>
       @endif
+      @if(session()->has('error'))
+      <div class="alert alert-danger">
+        {{ session()->get('error') }}
+      </div>
+      @endif
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
