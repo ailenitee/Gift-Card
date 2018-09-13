@@ -82,9 +82,15 @@ $(function() {
       $('.signup-content-box').css('opacity','0');
       $('.details').removeClass('btn-red');
     }
-  }else if(window.location.href.indexOf("card") > -1){
+  }
+  if(window.location.href.indexOf("card") > -1){
     $('.nav-link').removeClass('active');
     $('.details').addClass('btn-red');
+  }
+   if(window.location.href.indexOf("contact") > -1){
+    $('.nav-link').removeClass('active');
+    $('.details').removeClass('btn-red');
+    $('.contact').addClass('active');
   }
   var is_root = location.pathname == "/";
   if(is_root){

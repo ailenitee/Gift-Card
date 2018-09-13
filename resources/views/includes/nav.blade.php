@@ -23,7 +23,7 @@
       <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{URL::asset('/img/logo.png')}}" alt="">
       </a>
-    </div> 
+    </div>
     <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" style="display:none;">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
@@ -36,7 +36,7 @@
           <a class="nav-link active home" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+          <a class="nav-link contact" href="{{ url('/contact') }}">Contact Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link btn-border details" href="{{ url('/card/details') }}">Send A Gift Card</a>

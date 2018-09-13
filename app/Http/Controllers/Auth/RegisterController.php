@@ -93,11 +93,10 @@ class RegisterController extends Controller
       return redirect('/login#signup')->with('success', 'Registered Succesfully!');
     }
     catch(\Exception $e){
-      // dd($e->errorInfo[2]);
-      return redirect('/login#signup')->with('error', $e->errorInfo[2]);
+      if($e->errorInfo[2]){
+        return redirect('/login#signup')->with('error', 'The email address you have entered is already registered.');
+      }
+
     }
-
-
-
   }
 }

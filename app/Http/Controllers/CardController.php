@@ -171,7 +171,7 @@ class CardController extends Controller
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://nt6kh0sqzb.execute-api.us-east-1.amazonaws.com/dev/ipay88/ipay88-handler",
+      CURLOPT_URL => "https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88/ipay88-handler",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -204,11 +204,12 @@ class CardController extends Controller
         $data['email'] = $request->email;
         $data['user_id'] = $user->id;
         $data['total'] = $request->total;
+        $data['status'] = $request->status;
         Transaction::create($data);
-        // delete all data from cart
-        $data['cart'] = DB::table('cart')
-        ->where('user_id', $user->id)
-        ->delete();
+      //   // delete all data from cart
+      //   $data['cart'] = DB::table('cart')
+      //   ->where('user_id', $user->id)
+      //   ->delete();
       }else{
         //for guest
         $data['address'] = $request->Address;
@@ -219,13 +220,46 @@ class CardController extends Controller
         $data['email'] =$request->email;
         $data['user_id'] = 0;
         $data['total'] = $request->total;
+        $data['status'] = $request->status;
         Transaction::create($data);
         // delete all data from cart
-        session()->flush('cart');
+        // session()->flush('cart');
       }
-      // return redirect('/card/details')->with('success', 'Thank you for your payment!');
-      return redirect('https://nt6kh0sqzb.execute-api.us-east-1.amazonaws.com/dev/ipay88'.$res->payment_url);
+      return redirect('https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88'.$res->payment_url);
     }
+  }
+  public function success()
+  {
+    return view('success');
+    // if ($user){
+    //   $data['address'] = $request->Address;
+    //   $data['state'] = $request->state;
+    //   $data['city'] = $request->city;
+    //   $data['refnum'] = str_random(25);
+    //   $data['name'] = $request->name;
+    //   $data['amount'] = $request->total;
+    //   $data['email'] = $request->email;
+    //   $data['user_id'] = $user->id;
+    //   $data['total'] = $request->total;
+    //   Transaction::create($data);
+    //   // delete all data from cart
+    //   $data['cart'] = DB::table('cart')
+    //   ->where('user_id', $user->id)
+    //   ->delete();
+    // }else{
+    //   //for guest
+    //   $data['address'] = $request->Address;
+    //   $data['state'] = $request->state;
+    //   $data['city'] = $request->city;
+    //   $data['refnum'] = str_random(25);
+    //   $data['name'] = $request->name;
+    //   $data['email'] =$request->email;
+    //   $data['user_id'] = 0;
+    //   $data['total'] = $request->total;
+    //   Transaction::create($data);
+    //   // delete all data from cart
+    //   session()->flush('cart');
+    // }
   }
 
   /**

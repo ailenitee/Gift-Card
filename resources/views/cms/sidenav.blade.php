@@ -1,6 +1,8 @@
 <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
   <span class="navbar-toggler-icon leftmenutrigger"></span>
-  <a class="navbar-brand" href="#">LOGO</a>
+  <a class="navbar-brand" href="/">
+    <!-- <img src="{{URL::asset('/img/logo-text.png')}}" alt=""> -->
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
   aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -26,9 +28,9 @@
     </li>
   </ul>
   <ul class="navbar-nav ml-md-auto d-md-flex">
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
-    </li>
+    </li> -->
     <li class="nav-item">
       <a class="nav-link" href="{{url('/logout')}}"><i class="fas fa-key"></i> Logout</a>
     </li>

@@ -22,6 +22,7 @@
               @endif
               <p>&#8369;<span class="total_sum"></span></p>
               <input type="hidden" name="total" value="" class="total_sum">
+              <input type="hidden" name="status" value="pending">
             </div>
           </div>
           @if(Auth::guest())

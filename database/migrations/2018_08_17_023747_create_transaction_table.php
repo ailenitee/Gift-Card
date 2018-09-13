@@ -23,7 +23,8 @@ class CreateTransactionTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('refnum');
-            $table->timestamps(); 
+            $table->string('status');
+            $table->timestamps();
         });
     }
 

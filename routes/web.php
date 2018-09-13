@@ -30,6 +30,9 @@ Route::group(['middleware' => 'web'], function () {
   Route::post('/cartcheckout', ['as' => 'cartcheckout', 'uses' => 'CardController@cartcheckout']);
   Route::post('/cart/transaction', ['as' => 'cart_transaction', 'uses' => 'CardController@transaction']);
 
+  //payment
+  Route::post('/payment/success', ['as' => 'success', 'uses' => 'CardController@success']);
+
   //Auth
   Route::get('/login', 'Auth\LoginController@login');
   Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
@@ -37,5 +40,5 @@ Route::group(['middleware' => 'web'], function () {
   Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
 
   //CMS
-  Route::get('/cms/dashboard', ['as' => 'index', 'uses' => 'CmsController@index']); 
+  Route::get('/cms/dashboard', ['as' => 'index', 'uses' => 'CmsController@index']);
 });
