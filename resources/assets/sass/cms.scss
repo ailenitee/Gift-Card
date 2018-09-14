@@ -2,8 +2,9 @@
 // Variables
 @import "variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// // Bootstrap
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+// @import '~bootstrap/dist/css/bootstrap-theme.min.css';
 
-@import 'cms/content'; 
+@import 'cms/content';
 @import 'cms/nav';

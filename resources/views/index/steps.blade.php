@@ -8,7 +8,7 @@
       <div class="row">
         <div class="board">
           <div class="board-inner">
-            <ul class="nav nav-tabs" id="myTab">
+            <ul class="nav nav-tabs" id="navTabSteps">
               <div class="liner"></div>
               <li class="click active">
                 <a href="#home" data-toggle="tab" title="Activate Extension">

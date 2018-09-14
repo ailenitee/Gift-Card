@@ -8,6 +8,7 @@ require('./components/validation.js');
 require('./components/slick.js');
 require('./components/upload.js');
 require('./components/cartmodal.js');
+require('./components/tabs.js');
 require('./components/nav.js');
 
 
@@ -20,10 +21,7 @@ require('./components/nav.js');
 
 $(function() {
   var referrer =  document.referrer;
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    e.target // newly activated tab
-    e.relatedTarget // previous active tab
-  })
+
   $('.navbar-nav>li>a').on('click', function(){
     $('.navbar-collapse').collapse('hide');
   });
@@ -35,11 +33,8 @@ $(function() {
   $('#detailModalShow').on('click', function () {
     $('#detailModal').modal('show');
   });
-  $('.click').on('click', function () {
-    $('.click').removeClass('active');
-    $(this).addClass('active');
-  });
-  $('a[title]').tooltip();
+
+
   $('.create_gc').click(function() {
     window.location.href = '/card/details';
     return false;
