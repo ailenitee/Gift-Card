@@ -1,6 +1,5 @@
 @extends('includes.app')
-@section('content')
-<?php // TODO: fix last section ?>
+@section('content') 
 @include('includes.carousel')
 @include('layout1')
 @stop
