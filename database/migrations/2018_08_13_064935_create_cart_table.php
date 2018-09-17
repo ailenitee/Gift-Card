@@ -16,11 +16,15 @@ class CreateCartTable extends Migration
       Schema::create('cart', function (Blueprint $table) {
           $table->increments('id');
           $table->unsignedInteger('user_id');
-          $table->string('name');
+          $table->string('sender');
+          $table->string('name')->nullable();
+          $table->string('dname')->nullable();
           $table->string('amount');
           $table->string('quantity');
           $table->string('total');
-          $table->string('email');
+          $table->string('email')->nullable();
+          $table->string('address')->nullable();
+          $table->string('mobile')->nullable();
           $table->text('message')->nullable();
           $table->string('giftcard');
           $table->timestamps();

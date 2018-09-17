@@ -63,7 +63,7 @@
                 <br><br>
               </h2>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/s1.png')}}">
+                <img src="{{URL::asset('/img/gc/00.png')}}">
               </div>
               <div class="col-md-4">
                 <img src="{{URL::asset('/img/gc/01.png')}}">
@@ -77,17 +77,17 @@
               <h2 class="text-center">
                 <b>On Facebook Messenger</b> when chatting with your friend,<br>
                 <b>Tap</b> the <b>Plus</b> button at the lower left of the screen
-                and <b>Tap SM Gift Cards</b>.
+                and <b>Tap All Gift Cards</b>.
                 <br><br>
               </h2>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/s2.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 1.png')}}">
               </div>
               <div class="col-md-4">
                 <img src="{{URL::asset('/img/gc/Screen 2.png')}}">
               </div>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/s2b.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 3.png')}}">
               </div>
             </div>
             <!-- STEP THREE -->
@@ -97,10 +97,10 @@
                 <br><br>
               </h2>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 3.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 4.png')}}">
               </div>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 4.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 3.png')}}">
               </div>
               <div class="col-md-4">
                 <img src="{{URL::asset('/img/gc/Screen 5.png')}}">
@@ -135,7 +135,7 @@
                 <img src="{{URL::asset('/img/gc/Screen 9.png')}}">
               </div>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 11.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 10.png')}}">
               </div>
             </div>
             <!-- STEP Six -->
@@ -145,7 +145,7 @@
                 <br><br>
               </h2>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 12.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 11.png')}}">
               </div>
               <div class="col-md-4">
                 <img src="{{URL::asset('/img/gc/Screen 13.png')}}">

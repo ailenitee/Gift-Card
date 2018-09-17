@@ -9,18 +9,18 @@
       </p>
       <hr>
     </div>
-    <h1 class="text-center">GIFTCARD - always the perfect gift!</h1>
+    <h1 class="text-center" style="text-transform: initial;">eGift Cards – Your Perfect Gift</h1>
     <br>
     <div class="about">
       <div class="row">
         <div class="col-md-6">
           <div class="list">
             <ul>
-              <li>Takes the guess-work out of gift giving. Recipients are sure to get exactly what they want.</li>
-              <li>Frees the giver from the hassles of gift-wrapping and delivery.</li>
-              <li>Gives the recipient an endless selection of items sold in all SM retail establishments.</li>
-              <li>Recipients can shop when they want, where they want.</li>
-              <li>Practical, value driven solution for employee recognition, sales and performance incentives and corporate gifting.</li>
+              <li>Eliminates the hassle of going to the malls avoiding traffic and gift wrapping.</li>
+              <li>This is available online making purchasing very easy.</li>
+              <li>You can select a theme for your eGift card to match special occasions like birthdays, Christmas and other holidays.</li>
+              <li>No need for a separate app, you can use your existing Facebook Messenger or Viber accounts to buy your gift.</li>
+              <li>They are the perfect last minute gift ideas.</li>
             </ul>
           </div>
         </div>

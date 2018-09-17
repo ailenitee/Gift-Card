@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 0:
 /***/ (function(module, exports) {
 
 $(function () {
@@ -125,22 +125,31 @@ $(function () {
       }
     });
     if (empty == true) {
-      if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
-        if ($(".r_email").val() != $(".cr_email").val()) {
-          $('.form_details .disabled').css('display', 'block');
-          $('.form_details .disabled').css('opacity', '1');
-          $('.form_details .n_disabled').css('display', 'none');
-          $('.form_details .n_disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'block');
-          $('.alert-email').css('opacity', '1');
-        } else {
-          $('.form_details .n_disabled').css('display', 'block');
-          $('.form_details .n_disabled').css('opacity', '1');
-          $('.form_details .disabled').css('display', 'none');
-          $('.form_details .disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'none');
-          $('.alert-email').css('opacity', '0');
+      if ($('#pillsEmailContent').hasClass('show active')) {
+        if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
+          if ($(".r_email").val() != $(".cr_email").val()) {
+            $('.form_details .disabled').css('display', 'block');
+            $('.form_details .disabled').css('opacity', '1');
+            $('.form_details .n_disabled').css('display', 'none');
+            $('.form_details .n_disabled').css('opacity', '0');
+            $('.alert-email').css('display', 'block');
+            $('.alert-email').css('opacity', '1');
+          } else {
+            $('.form_details .n_disabled').css('display', 'block');
+            $('.form_details .n_disabled').css('opacity', '1');
+            $('.form_details .disabled').css('display', 'none');
+            $('.form_details .disabled').css('opacity', '0');
+            $('.alert-email').css('display', 'none');
+            $('.alert-email').css('opacity', '0');
+          }
         }
+      } else {
+        $('.form_details .n_disabled').css('display', 'block');
+        $('.form_details .n_disabled').css('opacity', '1');
+        $('.form_details .disabled').css('display', 'none');
+        $('.form_details .disabled').css('opacity', '0');
+        $('.alert-email').css('display', 'none');
+        $('.alert-email').css('opacity', '0');
       }
     } else {
       $('.form_details .disabled').css('display', 'block');
@@ -202,10 +211,10 @@ $(function () {
 
 /***/ }),
 
-/***/ 47:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(0);
 
 
 /***/ })

@@ -101,7 +101,7 @@ $(function() {
   var x=3;
   var last = size_li-x;
   $('.hidden_input').val(6);
-  $('.themes:lt(13)').hide();
+  $('.themes:lt(20)').hide();
   $('.themes:lt(-'+last+')').show();
   $('.show-less').css('display','none');
   $('.show-more').click(function () {

@@ -31,16 +31,16 @@
       width: 58px;
       line-height: 38px;
       height: 58px;
-      border: 1px solid #444;
+      border: 1px solid #232323;
       i{
-        color: #444!important;
+        color: #00038e;
       }
       &.active{
-        background-color: $gray!important;
         i{
           color: #fff!important;
         }
       }
+
       &:hover{
         color: $darkheadertext!important;
       }

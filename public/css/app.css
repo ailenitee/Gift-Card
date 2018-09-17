@@ -10802,15 +10802,11 @@ a:focus {
   width: 58px;
   line-height: 38px;
   height: 58px;
-  border: 1px solid #444;
+  border: 1px solid #232323;
 }
 
 .send-pills .nav-item a i {
-  color: #444 !important;
-}
-
-.send-pills .nav-item a.active {
-  background-color: #545b62 !important;
+  color: #00038e;
 }
 
 .send-pills .nav-item a.active i {
@@ -11929,7 +11925,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .content .send-tab-content {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .egift {

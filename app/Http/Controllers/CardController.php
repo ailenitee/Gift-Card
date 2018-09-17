@@ -38,12 +38,16 @@ class CardController extends Controller
       ->get(); //get all data from db table.cart based on user id
       $data['quantity'] = '';
       $data['name'] = '';
+      $data['dname'] = '';
       $data['email'] = '';
       $data['message'] = '';
       $data['giftcard'] = '';
       $data['amount'] = '500';
       $data['edit'] = '';
       $data['id'] = '';
+      $data['sender'] = '';
+      $data['address'] = '';
+      $data['mobile'] = '';
       return view('details',$data);
     }else{
       //for guest
@@ -53,11 +57,15 @@ class CardController extends Controller
         $data3['quantity'] = '';
         $data3['id'] = '';
         $data3['name'] = '';
+        $data3['dname'] = '';
         $data3['email'] = '';
         $data3['message'] = '';
         $data3['giftcard'] = '';
         $data3['amount'] = '500';
         $data3['edit'] = '';
+        $data3['sender'] = '';
+        $data3['address'] = '';
+        $data3['mobile'] = '';
         if (!empty($data2)){
           $data['cart'] =$data;
           $array = array_merge($data, $data3);
@@ -92,7 +100,7 @@ class CardController extends Controller
     if ($request->user_id != '0'){
       $messages   = [
         'required' => 'The :attribute is required',
-      ];
+      ]; 
       Cart::create($input); //insert all inputs to db
     }else{
       //for guest
@@ -104,9 +112,11 @@ class CardController extends Controller
     }
     $cart                       = $this->cart->getItems();
     $data['cart']               = $cart;
+
     if($request->type =="json"){
       return $data;
     }
+
     switch($request->submitbutton) {
       case 'save':
       return back()->with('success', 'Added to Cart Succesfully!');
@@ -200,6 +210,7 @@ class CardController extends Controller
         $data['city'] = $request->city;
         $data['refnum'] = str_random(25);
         $data['name'] = $request->name;
+        $data['dname'] = $request->dname;
         $data['amount'] = $request->total;
         $data['email'] = $request->email;
         $data['user_id'] = $user->id;
@@ -217,6 +228,7 @@ class CardController extends Controller
         $data['city'] = $request->city;
         $data['refnum'] = str_random(25);
         $data['name'] = $request->name;
+        $data['dname'] = $request->dname;
         $data['email'] =$request->email;
         $data['user_id'] = 0;
         $data['total'] = $request->total;
@@ -310,10 +322,14 @@ class CardController extends Controller
       ->get(); //get all data from db table.cart based on user id
       $data['quantity'] = $data['item']->quantity;
       $data['name'] = $data['item']->name;
+      $data['dname'] = $data['item']->dname;
       $data['email'] = $data['item']->email;
       $data['message'] = $data['item']->message;
       $data['giftcard'] = $data['item']->giftcard;
       $data['amount'] = $data['item']->amount;
+      $data['sender'] = $data['item']->sender;
+      $data['address'] = $data['item']->address;
+      $data['mobile'] = $data['item']->mobile;
       $data['edit'] = 'edit';
       $data['id'] = $id;
       return view('details',$data);
@@ -328,12 +344,16 @@ class CardController extends Controller
             if($value['id'] == $id){
               $data['quantity'] = $value['quantity'];
               $data['name'] = $value['name'];
+              $data['dname'] = $value['dname'];
               $data['email'] = $value['email'];
               $data['message'] = $value['message'];
               $data['giftcard'] = $value['giftcard'];
               $data['amount'] = $value['amount'];
               $data['edit'] = 'edit';
               $data['id'] = $id;
+              $data['sender'] =$value['sender'];
+              $data['address'] = $value['address'];
+              $data['mobile'] = $value['mobile'];
             }
           }
           return view('details',$data);

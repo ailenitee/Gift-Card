@@ -8,7 +8,6 @@ $(function() {
     $('.click').removeClass('active');
     $(this).addClass('active');
     var url = $(this).children('a').attr('href');
-    console.log(url);
     if (url == '#home'){
       $('.tab-pane').removeClass('in active');
       $(url).addClass('in active');
@@ -33,5 +32,52 @@ $(function() {
       $('.tab-pane').removeClass('in active');
       $(url).addClass('in active');
     }
+  });
+  $('.click').on('click', function () {
+    $('.click').removeClass('active');
+    $(this).addClass('active');
+    var url = $(this).children('a').attr('href');
+    if (url == '#home'){
+      $('.tab-pane').removeClass(' active');
+      $(url).addClass(' active');
+    }
+    if (url == '#profile'){
+      $('.tab-pane').removeClass('in active');
+      $(url).addClass(' active');
+    }
+    if (url == '#messages'){
+      $('.tab-pane').removeClass('in active');
+      $(url).addClass(' active');
+    }
+  });
+
+  //Send gift section
+  $('.p-item').on('click', function () {
+    $('.p-item').removeClass('show active');
+  });
+  $('#pillsEmail').children('a').css('background','#00038e');
+  $('#pillsEmail a i').css('color','#fff');
+  $('.p-item').css('cursor','pointer');
+  $('#pillsEmail').on('click', function () {
+    $('#pills-tabContent .tab-pane').removeClass('show active');
+    $('#pillsEmailContent').addClass('show active');
+    $(this).children('a').css('background','#00038e');
+    $('#pillsEmail a i').css('color','#fff');
+    $('#pillsDeliver a i').css('color','#00038e');
+    $('#pillsDeliver').children('a').css('background','transparent');
+    $('#pillsEmailContent input').prop('required',true);
+    $('#pillsDeliverContent input').prop('required',false);
+    $('.email-content input').val('');
+  });
+  $('#pillsDeliver').on('click', function () {
+    $('#pills-tabContent .tab-pane').removeClass('show active');
+    $('#pillsDeliverContent').addClass('show active');
+    $(this).children('a').css('background','#00038e');
+    $('#pillsDeliver a i').css('color','#fff');
+    $('#pillsEmail a i').css('color','#00038e');
+    $('#pillsEmail').children('a').css('background','transparent');
+    $('#pillsDeliverContent input').prop('required',true);
+    $('#pillsEmailContent input').prop('required',false);
+    $('.deliver-content input').val('');
   });
 });

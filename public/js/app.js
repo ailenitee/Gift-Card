@@ -60,22 +60,251 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
 
-/***/ 13:
+$(function () {
+  $('.reg-btn').attr('disabled', 'disabled');
+  $('#customCheck1').change(function () {
+    if ($(this).is(':checked')) {
+      //sign up form validation
+      $('.signup_form input').each(function () {
+        if ($(this).val().length == 0) {
+          empty = true;
+        }
+      });
+      if (empty == true) {
+        if ($(".pw").val().length != 0 && $(".cpw").val().length != 0) {
+          if ($(".pw").val() != $(".cpw").val()) {
+            $('.reg-btn').attr('disabled', 'disabled');
+          } else {
+            $('.reg-btn').attr('disabled', false);
+          }
+        }
+      } else {
+        $('.reg-btn').attr('disabled', 'disabled');
+      }
+    } else {
+      $('.reg-btn').attr('disabled', 'disabled');
+    }
+  });
+  //sign up form validation
+  $('.signup_form input').keyup(function () {
+    $('.signup_form input').each(function () {
+      if ($(this).val().length == 0) {
+        empty = true;
+      }
+    });
+    if (empty == true) {
+      if ($(".pw").val().length != 0 && $(".cpw").val().length != 0) {
+        if ($(".pw").val() != $(".cpw").val()) {
+          $('.reg-btn').attr('disabled', 'disabled');
+          $('.alert-password').css('display', 'block');
+          $('.alert-password').css('opacity', '1');
+        } else {
+          $('.reg-btn').attr('disabled', false);
+          $('.alert-password').css('display', 'none');
+          $('.alert-password').css('opacity', '0');
+        }
+      }
+    } else {
+      $('.reg-btn').attr('disabled', 'disabled');
+    }
+  });
+  // send gift card empty input validation
+  $('.form_details input').keyup(function () {
+    var empty = false;
+    $('.form_details input').each(function () {
+      if ($(this).val().length == 0) {
+        empty = true;
+      }
+    });
+    if (empty == true) {
+      if ($('#pillsEmailContent').hasClass('show active')) {
+        if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
+          if ($(".r_email").val() != $(".cr_email").val()) {
+            $('.form_details .disabled').css('display', 'block');
+            $('.form_details .disabled').css('opacity', '1');
+            $('.form_details .n_disabled').css('display', 'none');
+            $('.form_details .n_disabled').css('opacity', '0');
+            $('.alert-email').css('display', 'block');
+            $('.alert-email').css('opacity', '1');
+          } else {
+            $('.form_details .n_disabled').css('display', 'block');
+            $('.form_details .n_disabled').css('opacity', '1');
+            $('.form_details .disabled').css('display', 'none');
+            $('.form_details .disabled').css('opacity', '0');
+            $('.alert-email').css('display', 'none');
+            $('.alert-email').css('opacity', '0');
+          }
+        }
+      } else {
+        $('.form_details .n_disabled').css('display', 'block');
+        $('.form_details .n_disabled').css('opacity', '1');
+        $('.form_details .disabled').css('display', 'none');
+        $('.form_details .disabled').css('opacity', '0');
+        $('.alert-email').css('display', 'none');
+        $('.alert-email').css('opacity', '0');
+      }
+    } else {
+      $('.form_details .disabled').css('display', 'block');
+      $('.form_details .disabled').css('opacity', '1');
+      $('.form_details .n_disabled').css('display', 'none');
+      $('.form_details .n_disabled').css('opacity', '0');
+    }
+  });
+
+  $('.q-val').on('input propertychange paste', function (e) {
+    var reg = /^0+/gi;
+    if (this.value.match(reg)) {
+      this.value = this.value.replace(reg, '');
+    }
+  });
+
+  // send gift card empty input validation
+  $('.form_details input').keyup(function () {
+    var empty = false;
+    $('.form_details input').each(function () {
+      if ($(this).val().length == 0) {
+        empty = true;
+      }
+    });
+    if (empty == true) {
+      if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
+        if ($(".r_email").val() != $(".cr_email").val()) {
+          $('.form_details .disabled').css('display', 'block');
+          $('.form_details .disabled').css('opacity', '1');
+          $('.form_details .n_disabled').css('display', 'none');
+          $('.form_details .n_disabled').css('opacity', '0');
+          $('.alert-email').css('display', 'block');
+          $('.alert-email').css('opacity', '1');
+        } else {
+          $('.form_details .n_disabled').css('display', 'block');
+          $('.form_details .n_disabled').css('opacity', '1');
+          $('.form_details .disabled').css('display', 'none');
+          $('.form_details .disabled').css('opacity', '0');
+          $('.alert-email').css('display', 'none');
+          $('.alert-email').css('opacity', '0');
+        }
+      }
+    } else {
+      $('.form_details .disabled').css('display', 'block');
+      $('.form_details .disabled').css('opacity', '1');
+      $('.form_details .n_disabled').css('display', 'none');
+      $('.form_details .n_disabled').css('opacity', '0');
+    }
+  });
+  if ($(".cr_email").val()) {
+    if ($(".cr_email").val().length == 0) {
+      $('.form_details .disabled').css('display', 'block');
+      $('.form_details .disabled').css('opacity', '1');
+      $('.form_details .n_disabled').css('display', 'none');
+      $('.form_details .n_disabled').css('opacity', '0');
+    }
+  }
+});
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+$(function () {
+  //partner slide
+  $('.customer-logos').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: false,
+    dots: false,
+    pauseOnHover: false,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3
+      }
+    }, {
+      breakpoint: 520,
+      settings: {
+        slidesToShow: 2
+      }
+    }]
+  });
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+$(function () {
+  ////////// upload photo with preview
+  $(document).on('change', '.btn-file :file', function () {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+  });
+  $('.btn-file :file').on('fileselect', function (event, label) {
+
+    var input = $(this).parents('.input-group').find(':text'),
+        log = label;
+
+    if (input.length) {
+      input.val(log);
+    } else {
+      if (log) alert(log);
+    }
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img-upload').attr('src', e.target.result);
+        $('#img-upload').css('display', 'block');
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#imgInp").change(function () {
+    readURL(this);
+  });
+
+  $(".img-input-upload").val($('#img-upload').attr('src'));
+
+  $(".themes img").click(function () {
+    var image = $(this).attr('src');
+    $(".img-input-upload").val(image);
+  });
+
+  $('#img-upload').on('load', function () {
+    var image = $(this).attr('src');
+    $(".img-input-upload").val(image);
+  });
+
+  if ($('.getgc').val() == '') {
+    console.log('empty');
+  } else {
+    console.log($('#imgInp').val());
+    $('#img-upload').attr('src', $('.getgc').val());
+  }
+});
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(14);
-__webpack_require__(41);
-module.exports = __webpack_require__(42);
+__webpack_require__(4);
+__webpack_require__(8);
+module.exports = __webpack_require__(9);
 
 
 /***/ }),
-
-/***/ 14:
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // require('./bootstrap.js');
@@ -84,12 +313,12 @@ module.exports = __webpack_require__(42);
 * includes Vue and other libraries. It is a great starting point when
 * building robust, powerful web applications using Vue and Laravel.
 */
+__webpack_require__(0);
+__webpack_require__(1);
 __webpack_require__(2);
-__webpack_require__(3);
-__webpack_require__(4);
-__webpack_require__(39);
-__webpack_require__(53);
-__webpack_require__(40);
+__webpack_require__(5);
+__webpack_require__(6);
+__webpack_require__(7);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -178,7 +407,7 @@ $(function () {
   var x = 3;
   var last = size_li - x;
   $('.hidden_input').val(6);
-  $('.themes:lt(13)').hide();
+  $('.themes:lt(20)').hide();
   $('.themes:lt(-' + last + ')').show();
   $('.show-less').css('display', 'none');
   $('.show-more').click(function () {
@@ -260,174 +489,7 @@ $(function () {
 });
 
 /***/ }),
-
-/***/ 2:
-/***/ (function(module, exports) {
-
-$(function () {
-  $('.reg-btn').attr('disabled', 'disabled');
-  $('#customCheck1').change(function () {
-    if ($(this).is(':checked')) {
-      //sign up form validation
-      $('.signup_form input').each(function () {
-        if ($(this).val().length == 0) {
-          empty = true;
-        }
-      });
-      if (empty == true) {
-        if ($(".pw").val().length != 0 && $(".cpw").val().length != 0) {
-          if ($(".pw").val() != $(".cpw").val()) {
-            $('.reg-btn').attr('disabled', 'disabled');
-          } else {
-            $('.reg-btn').attr('disabled', false);
-          }
-        }
-      } else {
-        $('.reg-btn').attr('disabled', 'disabled');
-      }
-    } else {
-      $('.reg-btn').attr('disabled', 'disabled');
-    }
-  });
-  //sign up form validation
-  $('.signup_form input').keyup(function () {
-    $('.signup_form input').each(function () {
-      if ($(this).val().length == 0) {
-        empty = true;
-      }
-    });
-    if (empty == true) {
-      if ($(".pw").val().length != 0 && $(".cpw").val().length != 0) {
-        if ($(".pw").val() != $(".cpw").val()) {
-          $('.reg-btn').attr('disabled', 'disabled');
-          $('.alert-password').css('display', 'block');
-          $('.alert-password').css('opacity', '1');
-        } else {
-          $('.reg-btn').attr('disabled', false);
-          $('.alert-password').css('display', 'none');
-          $('.alert-password').css('opacity', '0');
-        }
-      }
-    } else {
-      $('.reg-btn').attr('disabled', 'disabled');
-    }
-  });
-  // send gift card empty input validation
-  $('.form_details input').keyup(function () {
-    var empty = false;
-    $('.form_details input').each(function () {
-      if ($(this).val().length == 0) {
-        empty = true;
-      }
-    });
-    if (empty == true) {
-      if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
-        if ($(".r_email").val() != $(".cr_email").val()) {
-          $('.form_details .disabled').css('display', 'block');
-          $('.form_details .disabled').css('opacity', '1');
-          $('.form_details .n_disabled').css('display', 'none');
-          $('.form_details .n_disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'block');
-          $('.alert-email').css('opacity', '1');
-        } else {
-          $('.form_details .n_disabled').css('display', 'block');
-          $('.form_details .n_disabled').css('opacity', '1');
-          $('.form_details .disabled').css('display', 'none');
-          $('.form_details .disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'none');
-          $('.alert-email').css('opacity', '0');
-        }
-      }
-    } else {
-      $('.form_details .disabled').css('display', 'block');
-      $('.form_details .disabled').css('opacity', '1');
-      $('.form_details .n_disabled').css('display', 'none');
-      $('.form_details .n_disabled').css('opacity', '0');
-    }
-  });
-
-  $('.q-val').on('input propertychange paste', function (e) {
-    var reg = /^0+/gi;
-    if (this.value.match(reg)) {
-      this.value = this.value.replace(reg, '');
-    }
-  });
-
-  // send gift card empty input validation
-  $('.form_details input').keyup(function () {
-    var empty = false;
-    $('.form_details input').each(function () {
-      if ($(this).val().length == 0) {
-        empty = true;
-      }
-    });
-    if (empty == true) {
-      if ($(".r_email").val().length != 0 && $(".cr_email").val().length != 0) {
-        if ($(".r_email").val() != $(".cr_email").val()) {
-          $('.form_details .disabled').css('display', 'block');
-          $('.form_details .disabled').css('opacity', '1');
-          $('.form_details .n_disabled').css('display', 'none');
-          $('.form_details .n_disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'block');
-          $('.alert-email').css('opacity', '1');
-        } else {
-          $('.form_details .n_disabled').css('display', 'block');
-          $('.form_details .n_disabled').css('opacity', '1');
-          $('.form_details .disabled').css('display', 'none');
-          $('.form_details .disabled').css('opacity', '0');
-          $('.alert-email').css('display', 'none');
-          $('.alert-email').css('opacity', '0');
-        }
-      }
-    } else {
-      $('.form_details .disabled').css('display', 'block');
-      $('.form_details .disabled').css('opacity', '1');
-      $('.form_details .n_disabled').css('display', 'none');
-      $('.form_details .n_disabled').css('opacity', '0');
-    }
-  });
-  if ($(".cr_email").val()) {
-    if ($(".cr_email").val().length == 0) {
-      $('.form_details .disabled').css('display', 'block');
-      $('.form_details .disabled').css('opacity', '1');
-      $('.form_details .n_disabled').css('display', 'none');
-      $('.form_details .n_disabled').css('opacity', '0');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports) {
-
-$(function () {
-  //partner slide
-  $('.customer-logos').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    arrows: false,
-    dots: false,
-    pauseOnHover: false,
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 3
-      }
-    }, {
-      breakpoint: 520,
-      settings: {
-        slidesToShow: 2
-      }
-    }]
-  });
-});
-
-/***/ }),
-
-/***/ 39:
+/* 5 */
 /***/ (function(module, exports) {
 
 $(function () {
@@ -463,92 +525,7 @@ $(function () {
 });
 
 /***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-$(function () {
-  ////////// upload photo with preview
-  $(document).on('change', '.btn-file :file', function () {
-    var input = $(this),
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [label]);
-  });
-  $('.btn-file :file').on('fileselect', function (event, label) {
-
-    var input = $(this).parents('.input-group').find(':text'),
-        log = label;
-
-    if (input.length) {
-      input.val(log);
-    } else {
-      if (log) alert(log);
-    }
-  });
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        $('#img-upload').attr('src', e.target.result);
-        $('#img-upload').css('display', 'block');
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#imgInp").change(function () {
-    readURL(this);
-  });
-
-  $(".img-input-upload").val($('#img-upload').attr('src'));
-
-  $(".themes img").click(function () {
-    var image = $(this).attr('src');
-    $(".img-input-upload").val(image);
-  });
-
-  $('#img-upload').on('load', function () {
-    var image = $(this).attr('src');
-    $(".img-input-upload").val(image);
-  });
-
-  if ($('.getgc').val() == '') {
-    console.log('empty');
-  } else {
-    console.log($('#imgInp').val());
-    $('#img-upload').attr('src', $('.getgc').val());
-  }
-});
-
-/***/ }),
-
-/***/ 40:
-/***/ (function(module, exports) {
-
-$(function () {
-  $('.hamburger').click(function () {
-    $('.navbar-collapse').slideToggle('show');
-  });
-});
-
-/***/ }),
-
-/***/ 41:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 53:
+/* 6 */
 /***/ (function(module, exports) {
 
 $(function () {
@@ -561,7 +538,6 @@ $(function () {
     $('.click').removeClass('active');
     $(this).addClass('active');
     var url = $(this).children('a').attr('href');
-    console.log(url);
     if (url == '#home') {
       $('.tab-pane').removeClass('in active');
       $(url).addClass('in active');
@@ -587,8 +563,76 @@ $(function () {
       $(url).addClass('in active');
     }
   });
+  $('.click').on('click', function () {
+    $('.click').removeClass('active');
+    $(this).addClass('active');
+    var url = $(this).children('a').attr('href');
+    if (url == '#home') {
+      $('.tab-pane').removeClass(' active');
+      $(url).addClass(' active');
+    }
+    if (url == '#profile') {
+      $('.tab-pane').removeClass('in active');
+      $(url).addClass(' active');
+    }
+    if (url == '#messages') {
+      $('.tab-pane').removeClass('in active');
+      $(url).addClass(' active');
+    }
+  });
+
+  //Send gift section
+  $('.p-item').on('click', function () {
+    $('.p-item').removeClass('show active');
+  });
+  $('#pillsEmail').children('a').css('background', '#00038e');
+  $('#pillsEmail a i').css('color', '#fff');
+  $('.p-item').css('cursor', 'pointer');
+  $('#pillsEmail').on('click', function () {
+    $('#pills-tabContent .tab-pane').removeClass('show active');
+    $('#pillsEmailContent').addClass('show active');
+    $(this).children('a').css('background', '#00038e');
+    $('#pillsEmail a i').css('color', '#fff');
+    $('#pillsDeliver a i').css('color', '#00038e');
+    $('#pillsDeliver').children('a').css('background', 'transparent');
+    $('#pillsEmailContent input').prop('required', true);
+    $('#pillsDeliverContent input').prop('required', false);
+    $('.email-content input').val('');
+  });
+  $('#pillsDeliver').on('click', function () {
+    $('#pills-tabContent .tab-pane').removeClass('show active');
+    $('#pillsDeliverContent').addClass('show active');
+    $(this).children('a').css('background', '#00038e');
+    $('#pillsDeliver a i').css('color', '#fff');
+    $('#pillsEmail a i').css('color', '#00038e');
+    $('#pillsEmail').children('a').css('background', 'transparent');
+    $('#pillsDeliverContent input').prop('required', true);
+    $('#pillsEmailContent input').prop('required', false);
+    $('.deliver-content input').val('');
+  });
 });
 
-/***/ })
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
 
-/******/ });
+$(function () {
+  $('.hamburger').click(function () {
+    $('.navbar-collapse').slideToggle('show');
+  });
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

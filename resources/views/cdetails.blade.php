@@ -8,7 +8,7 @@
     <input type="hidden" value="{{$id}}" name="id">
     <div class="form-group">
       <label>Sender Name</label>
-      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@else{{$name}}@endif" name="name" required>
+      <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@else{{$name}}@endif" name="sender" required>
     </div>
     <div class="form-group">
       <label>Optional Message</label>
