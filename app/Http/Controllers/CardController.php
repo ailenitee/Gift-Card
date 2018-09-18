@@ -32,12 +32,12 @@ class CardController extends Controller
   {
     //for logged on user
     $user = Auth::user();
-    $data['themes'] = DB::table('themes')->limit(6)
-    ->get();
     if ($user){
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
+      $data['themes'] = DB::table('themes')->limit(6)
+      ->get();
       $data['quantity'] = '';
       $data['name'] = '';
       $data['dname'] = '';
@@ -55,6 +55,8 @@ class CardController extends Controller
       //for guest
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
+      $data3['themes'] = DB::table('themes')->limit(6)
+      ->get();
       if (session()->exists('cart')){
         $data3['quantity'] = '';
         $data3['id'] = '';
@@ -468,9 +470,10 @@ class CardController extends Controller
   {
     //for logged on user
     $user = Auth::user();
-    $data['themes'] = DB::table('themes')
-    ->get(); //get all data from db table.themes
+
     if ($user){
+      $data['themes'] = DB::table('themes')
+      ->get(); //get all data from db table.themes
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
@@ -491,6 +494,8 @@ class CardController extends Controller
       //for guest
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
+      $data3['themes'] = DB::table('themes')
+      ->get(); //get all data from db table.themes
       if (session()->exists('cart')){
         $data3['quantity'] = '';
         $data3['id'] = '';
