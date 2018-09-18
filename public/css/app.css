@@ -10849,6 +10849,11 @@ a:focus {
   float: left;
 }
 
+#themesModal .modal-dialog {
+  width: 60%;
+  max-width: none;
+}
+
 .btn-border {
   border: 1px solid #ff0000;
   color: #ff0000 !important;
@@ -11458,6 +11463,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 15px;
 }
 
+.form_details .themes1 {
+  margin-top: 15px;
+}
+
 .form_details .show-more {
   background: none;
   font-size: 15px;
@@ -11850,6 +11859,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .content.d-content .themes img {
   cursor: pointer;
+  height: 135px;
+  width: 139px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 @media (max-width: 575px) {
@@ -11858,6 +11871,24 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0 auto;
     display: block;
   }
+}
+
+.content.d-content .themes1 img {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 135px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .content.d-content .own {

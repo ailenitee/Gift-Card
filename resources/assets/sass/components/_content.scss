@@ -201,11 +201,25 @@
     .themes{
       img{
         cursor: pointer;
+        height: 135px;
+        width: 139px;
+        object-fit: contain;
         @media( max-width : 575px ){
           width: 50%;
           margin: 0 auto;
           display: block;
         }
+      }
+    }
+    .themes1{
+      img{
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 135px;
+        object-fit: contain;
       }
     }
     .own{

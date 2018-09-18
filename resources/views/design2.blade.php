@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="standard">
-      @include('includes.themes') 
+      @include('backup.themes') 
     </div>
     <div class="own">
       <div class="col-md-12">

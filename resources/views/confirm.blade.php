@@ -40,14 +40,36 @@
                 @if(isset($cards['giftcard']))
                 <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
                 @endif
+                <br>
+                @if(isset($cards['sender']))
+                <p class="text-center">From: {{$cards['sender']}}</p>
+                @endif
               </div>
               <div class="col-md-3">
+
+                <!-- eGiftCard -->
                 @if(isset($cards['email']))
                 <p>Send to: <b>{{$cards['email']}}</b></p>
                 @endif
-                @if(isset($cards['name']))
-                <p>From: {{$cards['name']}}</p>
+                <!-- end eGiftCard -->
+
+                <!-- Deliver -->
+                @if(isset($cards['dname']))
+                <p>
+                  Deliver to:
+                  <br>
+                  {{$cards['dname']}}
+                  <br>
+                  @if(isset($cards['mobile']))
+                  {{$cards['mobile']}}
+                  @endif
+                  <br>
+                  @if(isset($cards['address']))
+                  {{$cards['address']}}
+                  @endif
+                </p>
                 @endif
+                <!-- end Deliver -->
                 @if(isset($cards['message']))
                 <p class="text-overflow">Message: {{$cards['message']}}</p>
                 @endif
@@ -91,8 +113,6 @@
                   <a href="{{url('/edit-cart',$cards['id'])}}">Edit</a>&nbsp;|&nbsp;
                   @endif
                   @if(isset($cards['id']))
-                  <!-- <input type="hidden" name="id" value="{{$cards['id']}}">
-                  <a href="{{url('/delete-cart',$cards['id'])}}">Delete</a> -->
                   <input type="hidden" name="id" value="{{$cards['id']}}" class="get_id">
                   <div class="custom_link delete_link">Delete</div>
                   @endif
@@ -100,7 +120,7 @@
               </div>
               <div class="col-xs-8">
                 @if(isset($cards['email']))
-                <p>Send to: <b>{{$cards['email']}}</b></p>
+                <p>Send to: {{$cards['email']}}</p>
                 @endif
                 @if(isset($cards['name']))
                 <p>From: {{$cards['name']}}</p>
@@ -137,10 +157,25 @@
             <div class="hid-xs">
               <div class="col-md-2">
                 <img src="{{$card->giftcard}}" alt="" class="confirm_img">
+                <br>
+                <p class="text-center">From: {{$card->name}}</p>
               </div>
               <div class="col-md-3">
-                <p>Send to: <b>{{$card->email}}</b></p>
-                <p>From: {{$card->name}}</p>
+                @if($card->email)
+                <p>Send to: {{$card->email}}</p>
+                <!-- Deliver -->
+                @else
+                <p>
+                  Deliver to:
+                  <br>
+                  {{$card->dname}}
+                  <br>
+                  {{$card->mobile}}
+                  <br>
+                  {{$card->address}}
+                </p>
+                <!-- end Deliver -->
+                @endif
                 <p class="text-overflow">Message: {{$card->message}}</p>
               </div>
               <div class="col-md-2">

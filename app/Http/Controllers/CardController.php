@@ -32,6 +32,8 @@ class CardController extends Controller
   {
     //for logged on user
     $user = Auth::user();
+    $data['themes'] = DB::table('themes')->limit(6)
+    ->get();
     if ($user){
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
@@ -100,7 +102,7 @@ class CardController extends Controller
     if ($request->user_id != '0'){
       $messages   = [
         'required' => 'The :attribute is required',
-      ]; 
+      ];
       Cart::create($input); //insert all inputs to db
     }else{
       //for guest
@@ -460,5 +462,58 @@ class CardController extends Controller
       }
     }
     return redirect('/card/details')->with('success', 'Removed Item From Cart!');
+  }
+
+  public function index2()
+  {
+    //for logged on user
+    $user = Auth::user();
+    $data['themes'] = DB::table('themes')
+    ->get(); //get all data from db table.themes
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get(); //get all data from db table.cart based on user id
+      $data['quantity'] = '';
+      $data['name'] = '';
+      $data['dname'] = '';
+      $data['email'] = '';
+      $data['message'] = '';
+      $data['giftcard'] = '';
+      $data['amount'] = '500';
+      $data['edit'] = '';
+      $data['id'] = '';
+      $data['sender'] = '';
+      $data['address'] = '';
+      $data['mobile'] = '';
+      return view('details2',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      if (session()->exists('cart')){
+        $data3['quantity'] = '';
+        $data3['id'] = '';
+        $data3['name'] = '';
+        $data3['dname'] = '';
+        $data3['email'] = '';
+        $data3['message'] = '';
+        $data3['giftcard'] = '';
+        $data3['amount'] = '500';
+        $data3['edit'] = '';
+        $data3['sender'] = '';
+        $data3['address'] = '';
+        $data3['mobile'] = '';
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          $array = array_merge($data, $data3);
+          return view('details2',$array);
+        }else{
+          return view('details2',$data3);
+        }
+      }else{
+        return view('details2',$data);
+      }
+    }
   }
 }
