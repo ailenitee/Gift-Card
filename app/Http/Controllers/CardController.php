@@ -38,6 +38,8 @@ class CardController extends Controller
       ->get(); //get all data from db table.cart based on user id
       $data['themes'] = DB::table('themes')->limit(6)
       ->get();
+      $data['themesAll'] = DB::table('themes')
+      ->get();
       $data['quantity'] = '';
       $data['name'] = '';
       $data['dname'] = '';
@@ -56,6 +58,8 @@ class CardController extends Controller
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
       $data3['themes'] = DB::table('themes')->limit(6)
+      ->get();
+      $data3['themesAll'] = DB::table('themes')
       ->get();
       if (session()->exists('cart')){
         $data3['quantity'] = '';
@@ -324,6 +328,10 @@ class CardController extends Controller
       ->first(); //get specific data to edit from db table.cart based on user id
       $data['cart'] = DB::table('cart')
       ->get(); //get all data from db table.cart based on user id
+      $data['themes'] = DB::table('themes')->limit(6)
+      ->get();
+      $data['themesAll'] = DB::table('themes')
+      ->get();
       $data['quantity'] = $data['item']->quantity;
       $data['name'] = $data['item']->name;
       $data['dname'] = $data['item']->dname;
@@ -336,31 +344,39 @@ class CardController extends Controller
       $data['mobile'] = $data['item']->mobile;
       $data['edit'] = 'edit';
       $data['id'] = $id;
+
       return view('details',$data);
     }else{
       //for guest
       $data = session()->get('cart');
       $data2 = session()->get('cart.items');
+      $data3['themes'] = DB::table('themes')
+      ->limit(6)
+      ->get();
+      $data3['themesAll'] = DB::table('themes')
+      ->get();
       if (session()->exists('cart')){
         if (!empty($data2)){
-          $data['cart'] =$data;
+
           foreach ($data2 as $key => $value){
             if($value['id'] == $id){
-              $data['quantity'] = $value['quantity'];
-              $data['name'] = $value['name'];
-              $data['dname'] = $value['dname'];
-              $data['email'] = $value['email'];
-              $data['message'] = $value['message'];
-              $data['giftcard'] = $value['giftcard'];
-              $data['amount'] = $value['amount'];
-              $data['edit'] = 'edit';
-              $data['id'] = $id;
-              $data['sender'] =$value['sender'];
-              $data['address'] = $value['address'];
-              $data['mobile'] = $value['mobile'];
+              $data3['quantity'] = $value['quantity'];
+              $data3['name'] = $value['name'];
+              $data3['dname'] = $value['dname'];
+              $data3['email'] = $value['email'];
+              $data3['message'] = $value['message'];
+              $data3['giftcard'] = $value['giftcard'];
+              $data3['amount'] = $value['amount'];
+              $data3['edit'] = 'edit';
+              $data3['id'] = $id;
+              $data3['sender'] =$value['sender'];
+              $data3['address'] = $value['address'];
+              $data3['mobile'] = $value['mobile'];
             }
           }
-          return view('details',$data);
+          $data['cart'] =$data;
+          $array = array_merge($data, $data3);
+          return view('details',$array);
         }else{
           return view('details');
         }
@@ -477,6 +493,10 @@ class CardController extends Controller
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
+      $data['themes'] = DB::table('themes')->limit(6)
+      ->get();
+      $data['themesAll'] = DB::table('themes')
+      ->get();
       $data['quantity'] = '';
       $data['name'] = '';
       $data['dname'] = '';
@@ -496,6 +516,8 @@ class CardController extends Controller
       $data2 = session()->get('cart.items');
       $data3['themes'] = DB::table('themes')
       ->get(); //get all data from db table.themes
+      $data3['themesAll'] = DB::table('themes')
+      ->get();
       if (session()->exists('cart')){
         $data3['quantity'] = '';
         $data3['id'] = '';

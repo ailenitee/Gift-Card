@@ -10819,8 +10819,11 @@ a:focus {
 
 .modal-dialog {
   margin-top: 10%;
-  max-height: 460px;
+}
+
+.modal-dialog .modal-body {
   overflow: auto;
+  max-height: 460px;
 }
 
 .modal-dialog h5 {
@@ -10847,6 +10850,18 @@ a:focus {
 
 .modal-dialog .modal-footer .btn-secondary {
   float: left;
+}
+
+.modal-dialog .modal-footer .btn-secondary.close {
+  float: right;
+}
+
+.modal-dialog .modal-footer .btn-secondary.close:hover {
+  background-color: transparent;
+}
+
+.modal-dialog.modal-themes {
+  margin-top: 6%;
 }
 
 #themesModal .modal-dialog {

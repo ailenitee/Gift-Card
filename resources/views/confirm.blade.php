@@ -49,7 +49,7 @@
 
                 <!-- eGiftCard -->
                 @if(isset($cards['email']))
-                <p>Send to: <b>{{$cards['email']}}</b></p>
+                <p>Send to: {{$cards['email']}}</p>
                 @endif
                 <!-- end eGiftCard -->
 

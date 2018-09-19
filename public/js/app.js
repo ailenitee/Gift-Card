@@ -561,6 +561,10 @@ $(function () {
     var imgsrc = $(this).attr('src');
     $('#img-upload').attr('src', imgsrc);
   });
+  $('.themes1 img').click(function () {
+    var imgsrc = $(this).attr('src');
+    $('#img-upload').attr('src', imgsrc);
+  });
   //on click open modal for all themes
   $('.show-more-designs').css('cursor', 'pointer');
   $('.show-more-designs').on('click', function () {
@@ -629,6 +633,31 @@ $(function () {
     $('.own').css('opacity', '1');
     $('.standard').css('display', 'none');
     $('.standard').css('opacity', '0');
+  });
+
+  $('input[type=radio]').click(function () {
+    if ($('input[name=category]:checked').val() == "all") {
+      $('.cat-themes').css('display', 'none');
+      $('.all-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "birthday") {
+      $('.cat-themes').css('display', 'none');
+      $('.bday-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "christmas") {
+      $('.cat-themes').css('display', 'none');
+      $('.christmas-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "congratulations") {
+      $('.cat-themes').css('display', 'none');
+      $('.congratulations-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "generic") {
+      $('.cat-themes').css('display', 'none');
+      $('.generic-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "getwell") {
+      $('.cat-themes').css('display', 'none');
+      $('.getwell-themes').css('display', 'block');
+    } else if ($('input[name=category]:checked').val() == "love") {
+      $('.cat-themes').css('display', 'none');
+      $('.love-themes').css('display', 'block');
+    }
   });
 });
 

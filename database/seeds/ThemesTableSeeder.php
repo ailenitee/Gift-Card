@@ -57,7 +57,7 @@ class ThemesTableSeeder extends Seeder
           'category'					=> 'christmas'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/xmas22.jpg',
+          'theme'				=> url()->current().'/img/themes/xmas-22.jpg',
           'category'					=> 'christmas'
         ],
         [

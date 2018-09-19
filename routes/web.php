@@ -15,8 +15,8 @@ Route::get('/', function () {
   return view('index');
 });
 Route::group(['middleware' => 'web'], function () {
-  Route::get('/card/details', 'CardController@index2');
-  Route::get('/card/details2', 'CardController@index'); //backup layout details
+  Route::get('/card/details', 'CardController@index');
+  Route::get('/card/details2', 'CardController@index2'); //backup layout details
   Route::get('/categories', 'HomeController@categories');
   Route::get('/contact', 'HomeController@contact');
   Route::get('/confirm', 'CardController@confirm');

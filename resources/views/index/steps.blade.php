@@ -135,7 +135,7 @@
                 <img src="{{URL::asset('/img/gc/Screen 9.png')}}">
               </div>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 10.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 11.png')}}">
               </div>
             </div>
             <!-- STEP Six -->
@@ -145,7 +145,7 @@
                 <br><br>
               </h2>
               <div class="col-md-4">
-                <img src="{{URL::asset('/img/gc/Screen 11.png')}}">
+                <img src="{{URL::asset('/img/gc/Screen 12.png')}}">
               </div>
               <div class="col-md-4">
                 <img src="{{URL::asset('/img/gc/Screen 13.png')}}">

@@ -1,7 +1,9 @@
 .modal-dialog{
   margin-top: 10%;
-  max-height: 460px;
-  overflow: auto;
+  .modal-body{
+    overflow: auto;
+    max-height: 460px;
+  }
   h5{
     font-size: 15px;
   }
@@ -20,7 +22,16 @@
     display: block;
     .btn-secondary{
       float: left;
+      &.close{
+        float: right;
+        &:hover{
+          background-color: transparent;
+        }
+      }
     }
+  }
+  &.modal-themes{
+      margin-top: 6%;
   }
 }
 #themesModal{

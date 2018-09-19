@@ -3,7 +3,7 @@
     <h2>Design</h2>
   </div>
   <div class="col-md-6">
-    <img src="{{URL::asset('/img/themes/bday-1.jpg')}}" id='img-upload'>
+    <img src="{{$giftcard ? $giftcard : 'http://gift-card.test/img/themes/bday-1.jpg'}}" id='img-upload'>
     <h4>Choose a theme</h4>
     <div class="choose_btn">
       <div class="row">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="standard">
-      @include('includes.themes') 
+      @include('includes.themes')
     </div>
     <div class="own">
       <div class="col-md-12">
@@ -27,7 +27,7 @@
             <!-- <input type="text" class="form-control" readonly> -->
             <span class="input-group-btn">
               <span class="btn btn-default btn-file">
-                <input type="text" id="imgInp"  name="giftcard"  class="img-input-upload">
+                <input type="text" id="imgInp"  name="giftcard"  class="img-input-upload" value="{{$giftcard ? $giftcard : 'http://gift-card.test/img/themes/bday-1.jpg'}}">
               </span>
             </span>
           </div>
