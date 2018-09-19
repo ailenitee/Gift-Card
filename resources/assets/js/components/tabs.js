@@ -55,15 +55,15 @@ $(function() {
   $('.p-item').on('click', function () {
     $('.p-item').removeClass('show active');
   });
-  $('#pillsEmail').children('a').css('background','#00038e');
+  $('#pillsEmail').children('a').css('background','#116DB6');
   $('#pillsEmail a i').css('color','#fff');
   $('.p-item').css('cursor','pointer');
   $('#pillsEmail').on('click', function () {
     $('#pills-tabContent .tab-pane').removeClass('show active');
     $('#pillsEmailContent').addClass('show active');
-    $(this).children('a').css('background','#00038e');
+    $(this).children('a').css('background','#116DB6');
     $('#pillsEmail a i').css('color','#fff');
-    $('#pillsDeliver a i').css('color','#00038e');
+    $('#pillsDeliver a i').css('color','#116DB6');
     $('#pillsDeliver').children('a').css('background','transparent');
     $('#pillsEmailContent input').prop('required',true);
     $('#pillsDeliverContent input').prop('required',false);
@@ -72,9 +72,9 @@ $(function() {
   $('#pillsDeliver').on('click', function () {
     $('#pills-tabContent .tab-pane').removeClass('show active');
     $('#pillsDeliverContent').addClass('show active');
-    $(this).children('a').css('background','#00038e');
+    $(this).children('a').css('background','#116DB6');
     $('#pillsDeliver a i').css('color','#fff');
-    $('#pillsEmail a i').css('color','#00038e');
+    $('#pillsEmail a i').css('color','#116DB6');
     $('#pillsEmail').children('a').css('background','transparent');
     $('#pillsDeliverContent input').prop('required',true);
     $('#pillsEmailContent input').prop('required',false);
