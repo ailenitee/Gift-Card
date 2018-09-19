@@ -10824,7 +10824,6 @@ a:focus {
 .modal-dialog .modal-body {
   overflow: auto;
   max-height: 460px;
-  min-height: 460px;
 }
 
 .modal-dialog h5 {
@@ -10863,6 +10862,11 @@ a:focus {
 
 .modal-dialog.modal-themes {
   margin-top: 6%;
+}
+
+.modal-dialog.modal-themes .modal-body {
+  min-height: 460px;
+  max-height: 460px;
 }
 
 #themesModal .modal-dialog {

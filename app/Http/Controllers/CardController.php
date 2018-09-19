@@ -172,82 +172,84 @@ class CardController extends Controller
   */
   public function transaction(Request $request)
   {
-    $user = Auth::user();
-    $data1 = [
-      'name' => $request->name,
-      'bot_name' => "GiftCard",
-      'bot_alias' => "GiftCard",
-      'email' => $request->email,
-      'contact' => $request->mobile,
-      'amount' => $request->total,
-      'payment_method' => 'credit_card',
-      'product_title' => 'Gift Card',
-      'page_access_token' => $request->_token,
-      'scoped_id' => str_random(25),
-      'item_code' => "",
-    ];
-
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88/ipay88-handler",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30000,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => json_encode($data1),
-      CURLOPT_HTTPHEADER => array(
-        // Set here required headers
-        "accept: */*",
-        "accept-language: en-US,en;q=0.8",
-        "content-type: application/json",
-      ),
-    ));
-
-    $response = curl_exec($curl);
-    $res = json_decode($response);
-    $err = curl_error($curl);
-    curl_close($curl);
-    if ($err) {
-      echo "cURL Error #:" . $err;
-    } else {
-      if ($user){
-        $data['address'] = $request->Address;
-        $data['state'] = $request->state;
-        $data['city'] = $request->city;
-        $data['refnum'] = str_random(25);
-        $data['name'] = $request->name;
-        $data['dname'] = $request->dname;
-        $data['amount'] = $request->total;
-        $data['email'] = $request->email;
-        $data['user_id'] = $user->id;
-        $data['total'] = $request->total;
-        $data['status'] = $request->status;
-        Transaction::create($data);
-      //   // delete all data from cart
-      //   $data['cart'] = DB::table('cart')
-      //   ->where('user_id', $user->id)
-      //   ->delete();
-      }else{
-        //for guest
-        $data['address'] = $request->Address;
-        $data['state'] = $request->state;
-        $data['city'] = $request->city;
-        $data['refnum'] = str_random(25);
-        $data['name'] = $request->name;
-        $data['dname'] = $request->dname;
-        $data['email'] =$request->email;
-        $data['user_id'] = 0;
-        $data['total'] = $request->total;
-        $data['status'] = $request->status;
-        Transaction::create($data);
-        // delete all data from cart
-        // session()->flush('cart');
-      }
-      return redirect('https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88'.$res->payment_url);
-    }
+    return view('errors.construction');
+    // $user = Auth::user();
+    // $data1 = [
+    //   'name' => $request->name,
+    //   'bot_name' => "GiftCard",
+    //   'bot_alias' => "GiftCard",
+    //   'email' => $request->email,
+    //   'contact' => $request->mobile,
+    //   'amount' => $request->total,
+    //   'payment_method' => 'credit_card',
+    //   'product_title' => 'Gift Card',
+    //   'page_access_token' => $request->_token,
+    //   'scoped_id' => str_random(25),
+    //   'item_code' => "",
+    // ];
+    //
+    // $curl = curl_init();
+    // curl_setopt_array($curl, array(
+    //   CURLOPT_URL => "https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88/ipay88-handler",
+    //   CURLOPT_RETURNTRANSFER => true,
+    //   CURLOPT_ENCODING => "",
+    //   CURLOPT_MAXREDIRS => 10,
+    //   CURLOPT_TIMEOUT => 30000,
+    //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    //   CURLOPT_CUSTOMREQUEST => "POST",
+    //   CURLOPT_POSTFIELDS => json_encode($data1),
+    //   CURLOPT_HTTPHEADER => array(
+    //     // Set here required headers
+    //     "accept: */*",
+    //     "accept-language: en-US,en;q=0.8",
+    //     "content-type: application/json",
+    //   ),
+    // ));
+    //
+    // $response = curl_exec($curl);
+    // $res = json_decode($response);
+    // $err = curl_error($curl);
+    // curl_close($curl);
+    // if ($err) {
+    //   echo "cURL Error #:" . $err;
+    // } else {
+    //   if ($user){
+    //     $data['address'] = $request->Address;
+    //     $data['state'] = $request->state;
+    //     $data['city'] = $request->city;
+    //     $data['refnum'] = str_random(25);
+    //     $data['name'] = $request->name;
+    //     $data['dname'] = $request->dname;
+    //     $data['amount'] = $request->total;
+    //     $data['email'] = $request->email;
+    //     $data['user_id'] = $user->id;
+    //     $data['total'] = $request->total;
+    //     $data['status'] = $request->status;
+    //     Transaction::create($data);
+    //     // delete all data from cart
+    //     $data['cart'] = DB::table('cart')
+    //     ->where('user_id', $user->id)
+    //     ->delete();
+    //   }else{
+    //     //for guest
+    //     $data['address'] = $request->Address;
+    //     $data['state'] = $request->state;
+    //     $data['city'] = $request->city;
+    //     $data['refnum'] = str_random(25);
+    //     $data['name'] = $request->name;
+    //     $data['dname'] = $request->dname;
+    //     $data['email'] =$request->email;
+    //     $data['user_id'] = 0;
+    //     $data['total'] = $request->total;
+    //     $data['status'] = $request->status;
+    //     Transaction::create($data);
+    //     // delete all data from cart
+    //     // session()->flush('cart');
+    //   }
+    //   return redirect('https://igaw1ooqk0.execute-api.us-east-1.amazonaws.com/test/ipay88'.$res->payment_url);
+    // }
   }
+
   public function success()
   {
     return view('success');
