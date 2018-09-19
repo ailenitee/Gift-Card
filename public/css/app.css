@@ -10824,6 +10824,7 @@ a:focus {
 .modal-dialog .modal-body {
   overflow: auto;
   max-height: 460px;
+  min-height: 460px;
 }
 
 .modal-dialog h5 {
