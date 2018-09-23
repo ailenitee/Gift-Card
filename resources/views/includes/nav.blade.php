@@ -39,7 +39,7 @@
           <a class="nav-link contact" href="{{ url('/contact') }}">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn-border details" href="{{ url('/card/details') }}">Send A Gift Card</a>
+          <a class="nav-link btn-border details" href="{{ url('/brand') }}">Send A Gift Card</a>
         </li>
       </ul>
     </div>

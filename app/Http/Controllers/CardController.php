@@ -52,6 +52,7 @@ class CardController extends Controller
       $data['sender'] = '';
       $data['address'] = '';
       $data['mobile'] = '';
+      // dd($data);
       return view('details',$data);
     }else{
       //for guest

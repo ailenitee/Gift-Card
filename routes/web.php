@@ -21,6 +21,9 @@ Route::group(['middleware' => 'web'], function () {
   Route::get('/contact', 'HomeController@contact');
   Route::get('/confirm', 'CardController@confirm');
   Route::get('/checkout', 'CardController@checkout');
+  Route::get('/brand', ['as' => 'brand','uses' => 'HomeController@brand']);
+  Route::get('brand/giftcard', ['as' => 'giftcard','uses' => 'HomeController@giftcard']);
+
   Route::get('/clear-cart',['as' => 'clear_cart','uses' => 'CardController@clearCart']);
   Route::get('/delete-cart/{id}',['as' => 'delete_cart','uses' => 'CardController@deleteCart']);
   Route::get('/edit-cart/{id}', ['as' => 'edit_cart','uses' => 'CardController@edit']);
