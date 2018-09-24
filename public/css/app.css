@@ -10594,6 +10594,18 @@ a:focus {
   font-size: 20px;
 }
 
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .navbar {
   margin-bottom: 0;
   height: 85px;
@@ -11981,6 +11993,42 @@ input[type=number]::-webkit-outer-spin-button {
 
 .content.brands img {
   width: 100%;
+  margin: 10px 0;
+}
+
+.content.denums .denums-margins {
+  margin: 10px 30px;
+  text-align: center;
+}
+
+.content.denums .denoms-top {
+  margin-top: 50px;
+}
+
+.content.denums img {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.content.denums .quantity {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.content.denums .quantity .input-group-btn {
+  width: auto;
+}
+
+.content.denums .quantity input {
+  padding: 6px 12px !important;
+}
+
+.content.denums .quantity label {
+  width: 100%;
+}
+
+.content.denums .r-details {
+  margin-top: 50px;
 }
 
 .egift {

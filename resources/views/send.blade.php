@@ -45,15 +45,15 @@
       @endif
         <div class="form-group">
           <label>Recipient's Name</label>
-          <input type="name" class="form-control" name="dname" value="{{$dname ? $dname : ''}}">
+          <input type="name" class="form-control" name="dname" value=" ">
         </div>
         <div class="form-group">
           <label>Recipient's Address</label>
-          <input type="text" class="form-control" name="address" value="{{$address ? $address : ''}}">
+          <input type="text" class="form-control" name="address" value=" ">
         </div>
         <div class="form-group">
           <label>Recipient's Mobile</label>
-          <input type="number" class="form-control" name="mobile" value="{{$mobile ? $mobile : ''}}">
+          <input type="number" class="form-control" name="mobile" value=" ">
         </div>
       </div>
     </div>

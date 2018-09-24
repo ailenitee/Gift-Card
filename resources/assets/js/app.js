@@ -11,6 +11,7 @@ require('./components/cartmodal.js');
 require('./components/tabs.js');
 require('./components/nav.js');
 require('./components/themes.js');
+require('./components/quantity.js');
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -31,7 +32,7 @@ $(function() {
   $('#detailModalShow').css('cursor','pointer');
   $('#detailModalShow').on('click', function () {
     $('#detailModal').modal('show');
-  }); 
+  });
 
   $('.create_gc').click(function() {
     window.location.href = '/card/details';
@@ -80,7 +81,7 @@ $(function() {
     $('.nav-link').removeClass('active');
     $('.details').addClass('btn-red');
   }
-   if(window.location.href.indexOf("contact") > -1){
+  if(window.location.href.indexOf("contact") > -1){
     $('.nav-link').removeClass('active');
     $('.details').removeClass('btn-red');
     $('.contact').addClass('active');
@@ -106,4 +107,19 @@ $(function() {
     $('.radiobtns').parent().removeClass('active');
     $("input[type=radio][name='amount']:checked").parent().addClass('active');
   }
+
+  var url = $(location).attr('href'),
+    parts = url.split("/"),
+    last_part = parts[parts.length-1];
+  var decode = decodeURI(last_part);
+  $('#geturl').val(decode);
+
+  var str = $("#geturl").val();
+  var spaceChar = str.indexOf(" ");
+  var reqstr = str.substring(0,spaceChar);
+  $('#gettemplate').val(reqstr);
+  $('.template-name').text(decode+" Gift Card");
+
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
 });

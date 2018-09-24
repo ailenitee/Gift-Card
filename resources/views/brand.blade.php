@@ -9,7 +9,7 @@
       </div>
       @foreach ($res as $k => $result)
         <div class="col-md-4">
-          <a href="{{url('/brand/giftcard#')}}{{$result['template']}}">
+          <a href="{{url('/brand/giftcard')}}/{{$result['template']}}">
             <img src="{{$result['thumbnail']}}" alt="">
           </a>
         </div>

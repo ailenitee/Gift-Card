@@ -253,7 +253,7 @@
     box-shadow: 0px 5px 14px #bdbdbd;
     h2{
       &.send-gift{
-            margin-bottom: 20px;
+        margin-bottom: 20px;
       }
       @media( max-width : 768px ){
         margin-bottom: 20px;
@@ -284,6 +284,36 @@
   &.brands{
     img{
       width: 100%;
+      margin:  10px 0;
+    }
+  }
+  &.denums{
+    .denums-margins{
+      margin: 10px 30px;
+      text-align: center;
+    }
+    .denoms-top{
+      margin-top: 50px;
+    }
+    img{
+      width: 100%;
+      padding: 0 10px;
+    }
+    .quantity{
+      width: 100%;
+      padding: 0 10px;
+      .input-group-btn{
+        width: auto;
+      }
+      input{
+        padding: 6px 12px!important;
+      }
+      label{
+        width: 100%;
+      }
+    }
+    .r-details{
+      margin-top: 50px;
     }
   }
 }

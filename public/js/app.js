@@ -320,6 +320,7 @@ __webpack_require__(5);
 __webpack_require__(6);
 __webpack_require__(7);
 __webpack_require__(8);
+__webpack_require__(21);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -415,6 +416,21 @@ $(function () {
     $('.radiobtns').parent().removeClass('active');
     $("input[type=radio][name='amount']:checked").parent().addClass('active');
   }
+
+  var url = $(location).attr('href'),
+      parts = url.split("/"),
+      last_part = parts[parts.length - 1];
+  var decode = decodeURI(last_part);
+  $('#geturl').val(decode);
+
+  var str = $("#geturl").val();
+  var spaceChar = str.indexOf(" ");
+  var reqstr = str.substring(0, spaceChar);
+  $('#gettemplate').val(reqstr);
+  $('.template-name').text(decode + " Gift Card");
+
+  var getUrl = window.location;
+  var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
 });
 
 /***/ }),
@@ -672,6 +688,52 @@ $(function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */
+/***/ (function(module, exports) {
+
+$(function () {
+
+        var quantitiy = 0;
+        $('.quantity-right-plus').click(function (e) {
+
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+
+                // If is not undefined
+
+                $('#quantity').val(quantity + 1);
+
+                // Increment
+        });
+
+        $('.quantity-left-minus').click(function (e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+
+                // If is not undefined
+
+                // Increment
+                if (quantity > 0) {
+                        $('#quantity').val(quantity - 1);
+                }
+        });
+});
 
 /***/ })
 /******/ ]);
