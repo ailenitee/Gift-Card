@@ -286,10 +286,7 @@ $(function () {
     $(".img-input-upload").val(image);
   });
 
-  if ($('.getgc').val() == '') {
-    console.log('empty');
-  } else {
-    console.log($('#imgInp').val());
+  if ($('.getgc').val() == '') {} else {
     $('#img-upload').attr('src', $('.getgc').val());
   }
 });
@@ -299,8 +296,8 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-__webpack_require__(9);
-module.exports = __webpack_require__(10);
+__webpack_require__(10);
+module.exports = __webpack_require__(11);
 
 
 /***/ }),
@@ -320,7 +317,7 @@ __webpack_require__(5);
 __webpack_require__(6);
 __webpack_require__(7);
 __webpack_require__(8);
-__webpack_require__(21);
+__webpack_require__(9);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -681,7 +678,34 @@ $(function () {
 /* 9 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+$(function () {
+  var counter = parseInt($('#counter').val());
+  for (var i = 0; i < counter; i++) {
+    // alert(i);
+    $('.quantity-right-plus').click(function (e) {
+      // Stop acting like a button
+      e.preventDefault();
+      // Get the field name
+      quantity[i] = parseInt($('.quantity-' + i).val());
+      // console.log(quantity[i]);
+      // If is not undefined
+      $('.quantity-' + i).val(quantity[i] + 1);
+      // Increment
+    });
+
+    $('.quantity-left-minus').click(function (e) {
+      // Stop acting like a button
+      e.preventDefault();
+      // Get the field name
+      quantity[i] = parseInt($('.quantity-' + i).val());
+      // If is not undefined
+      // Increment
+      if (quantity > 0) {
+        $('.quantity-' + i).val(quantity[i] - 1);
+      }
+    });
+  }
+});
 
 /***/ }),
 /* 10 */
@@ -690,50 +714,10 @@ $(function () {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */
+/* 11 */
 /***/ (function(module, exports) {
 
-$(function () {
-
-        var quantitiy = 0;
-        $('.quantity-right-plus').click(function (e) {
-
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                $('#quantity').val(quantity + 1);
-
-                // Increment
-        });
-
-        $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                // Increment
-                if (quantity > 0) {
-                        $('#quantity').val(quantity - 1);
-                }
-        });
-});
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

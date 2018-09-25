@@ -45,9 +45,7 @@ $(function() {
   });
 
     if( $('.getgc').val() == '' ) {
-      console.log('empty');
-    }else {
-      console.log($('#imgInp').val());
+    }else { 
       $('#img-upload').attr('src', $('.getgc').val());
     }
 });

@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 14:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
@@ -122,10 +122,7 @@ $(function () {
     $(".img-input-upload").val(image);
   });
 
-  if ($('.getgc').val() == '') {
-    console.log('empty');
-  } else {
-    console.log($('#imgInp').val());
+  if ($('.getgc').val() == '') {} else {
     $('#img-upload').attr('src', $('.getgc').val());
   }
 });

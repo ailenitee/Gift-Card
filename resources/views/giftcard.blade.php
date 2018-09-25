@@ -11,8 +11,13 @@
           @foreach ($res as $k => $result)
           @foreach ($result['denominations'] as $key => $denum)
           <div class="col-md-4">
+            @if (File::exists(public_path("/img/denomination/".$fword[0]."-".$denum.".jpg")))
             <img alt="" class="denum" src="{{URL::asset('/img/denomination/')}}/{{$fword[0]}}-{{$denum}}.jpg">
+            @else
+            <img alt="" class="denum" src="{{URL::asset('/img/denomination/generic-')}}{{$denum}}.jpg">
+            @endif
             <br>
+            <input type="hidden" name="" value="{{$loop->count}}" id="counter">
             <div class="denums-margins">
               <label class="radio-inline">
                 &#8369; {{$denum}}
@@ -27,7 +32,7 @@
                     <span class="glyphicon glyphicon-minus"></span>
                   </button>
                 </span>
-                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                <input type="text" name="quantity" class="form-control input-number quantity-{{$key}}" value="10" min="1" max="100">
                 <span class="input-group-btn">
                   <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                     <span class="glyphicon glyphicon-plus"></span>
@@ -45,15 +50,28 @@
           <div class="r-details">
             <div class="form-group">
               <label>Recipient's Name</label>
-              <input type="name" class="form-control" name="name" required value="">
+              <input type="name" class="form-control" name="dname" value=" ">
             </div>
             <div class="form-group">
-              <label>Recipient's Email</label>
-              <input type="email" class="form-control r_email" name="email" required value="">
+              <label>Recipient's Address</label>
+              <input type="text" class="form-control" name="address" value=" ">
             </div>
             <div class="form-group">
-              <label>Confirm Recipient's Email</label>
-              <input type="email" class="form-control cr_email" required>
+              <label>Recipient's Mobile</label>
+              <input type="number" class="form-control" name="mobile" value=" ">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-12">
+          <div class="r-details">
+            <div class="col-sm-6">
+              <button type="submit" class="btn-border btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">ADD TO CART</button>
+              <button type="submit" class="btn-border btn-center n_disabled" value="save" name='submitbutton'>ADD TO CART</button>
+            </div>
+            <div class="col-sm-6">
+              <button type="submit" class="btn-red btn-center disabled" style="background-color: #ddd; border:1px solid #ddd;">CONFIRM AND CHECKOUT</button>
+              <button type="submit" class="btn-red btn-center n_disabled" name='submitbutton' value="save_cart">CONFIRM AND CHECKOUT</button>
             </div>
           </div>
         </div>
