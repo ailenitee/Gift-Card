@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
   <meta http-equiv="Content-Style-Type" content="text/css">
+  <base href="/">
+
   <title>AllGiftCards</title>
   <link rel="icon" href="{{URL::asset('/img/logo-only.png')}}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Montserrat:400,700">
