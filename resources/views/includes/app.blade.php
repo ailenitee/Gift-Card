@@ -11,11 +11,12 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/v4-shims.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-  <link  rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}" title="Default Styles" media="screen">
+  <link  rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
   <!--stylesheets-->
 </head>
 <body>
-  @include('includes.nav') 
+  @include('includes.nav')
+
   @yield('content')
   @include('includes.footer')
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>

@@ -11,7 +11,7 @@
           <div class="slide"><img src="https://s3.amazonaws.com/smgiftcard/images/thumbnails/national.png"></div>
           <div class="slide"><img src="https://s3.amazonaws.com/smgiftcard/images/thumbnails/supermarket.png"></div>
           <div class="slide"><img src="https://s3.amazonaws.com/smgiftcard/images/thumbnails/uniqlo.png"></div>
-          <div class="slide"><img src="{{URL::asset('/img/partners/AceHardware.png')}}"></div>
+          <div class="slide"><img src="{{asset('/img/partners/AceHardware.png')}}"></div>
           <div class="slide"><img src="{{URL::asset('/img/partners/beautymnl.png')}}"></div>
           <div class="slide"><img src="{{URL::asset('/img/partners/EverBilena.png')}}"></div>
           <div class="slide"><img src="{{URL::asset('/img/partners/Shakeys.png')}}"></div>
