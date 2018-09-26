@@ -5,9 +5,10 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+  <meta http-equiv="Content-Style-Type" content="text/css">
   <title>AllGiftCards</title>
   <link rel="icon" href="{{URL::asset('/img/logo-only.png')}}">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Montserrat:400,700">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/v4-shims.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
