@@ -11,7 +11,7 @@ require('./components/cartmodal.js');
 require('./components/tabs.js');
 require('./components/nav.js');
 require('./components/themes.js');
-require('./components/quantity.js');
+// require('./components/quantity.js');
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to

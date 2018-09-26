@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/v4-shims.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-  <link type="text/css" href="{{asset('css/app.css')}}">
+  <link  rel="stylesheet" href="{{ URL::asset('css/app.css') }}" type="text/css">
   <!--stylesheets-->
 </head>
 <body>
