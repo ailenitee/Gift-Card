@@ -11,7 +11,9 @@ class DatabaseSeeder extends Seeder
   */
   public function run()
   {
+    $this->call(BrandTableSeeder::class);
     $this->call(ThemesTableSeeder::class);
+    $this->call(DenominationTableSeeder::class);
     $data = [
       [
         'name'				=> 'superadmin',

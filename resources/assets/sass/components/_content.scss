@@ -281,12 +281,7 @@
   .send-tab-content{
     margin-top: 30px;
   }
-  &.brands{
-    img{
-      width: 100%;
-      margin:  10px 0;
-    }
-  }
+  @extend .brands;
   &.denums{
     .denums-margins{
       margin: 10px 30px;
@@ -298,19 +293,6 @@
     img{
       width: 100%;
       padding: 0 10px;
-    }
-    .quantity{
-      width: 100%;
-      padding: 0 10px;
-      .input-group-btn{
-        width: auto;
-      }
-      input{
-        padding: 6px 12px!important;
-      }
-      label{
-        width: 100%;
-      }
     }
     .r-details{
       margin-top: 50px;

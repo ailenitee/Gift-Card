@@ -8,8 +8,8 @@
       <h1 class="template-name text-center"></h1><br>
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          @foreach ($brand as $k => $result)
-            @foreach ($result->denomination as $key => $denum)
+          @foreach ($res as $k => $result)
+            @foreach (array_unique($result['denominations']) as $key => $denum) 
             <div class="col-md-4">
               <div class="brand-container">
                 @if (File::exists(public_path("/img/denomination/".$fword[0]."-".$denum.".jpg")))
