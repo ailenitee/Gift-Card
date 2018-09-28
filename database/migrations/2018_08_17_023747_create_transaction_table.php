@@ -25,6 +25,7 @@ class CreateTransactionTable extends Migration
             $table->string('refnum');
             $table->string('status');
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 

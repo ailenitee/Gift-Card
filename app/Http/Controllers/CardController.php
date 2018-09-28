@@ -92,6 +92,7 @@ class CardController extends Controller
   */
   public function store(Request $request)
   {
+    // TODO: insert to cart
     $request->total = $request->quantity*$request->amount; //get total amount per item
     $input      = $request->except(['_token']);
     $input['total'] = $request->total;

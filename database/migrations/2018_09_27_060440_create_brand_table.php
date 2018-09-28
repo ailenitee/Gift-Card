@@ -19,6 +19,7 @@ class CreateBrandTable extends Migration
             $table->string('denomination');
             $table->string('logo');
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 

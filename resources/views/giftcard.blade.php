@@ -6,22 +6,23 @@
     <input type="hidden" name="" value="" id="gettemplate">
     <form class="" action="index.html" method="post" style="width:100%;">
       <h1 class="template-name text-center"></h1><br>
+      <input type="hidden" value="{{Auth::user() ? Auth::user()->id : '0'}}" name="user_id">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          @foreach ($brand as $k => $result)
-            @foreach ($result->denomination as $key => $denum)
+          @foreach ($denum as $k => $result)
+            @foreach ($result as $key => $denum)
             <div class="col-md-4">
               <div class="brand-container">
-                @if (File::exists(public_path("/img/denomination/".$fword[0]."-".$denum.".jpg")))
-                <img alt="" class="denum" src="{{URL::asset('/img/denomination/')}}/{{$fword[0]}}-{{$denum}}.jpg">
+                @if (File::exists(public_path("/img/denomination/".$fword[0]."-".$denum->denomination.".jpg")))
+                <img alt="" class="denum" src="{{URL::asset('/img/denomination/')}}/{{$fword[0]}}-{{$denum->denomination}}.jpg">
                 @else
-                <img alt="" class="denum" src="{{URL::asset('/img/denomination/generic-')}}{{$denum}}.jpg">
+                <img alt="" class="denum" src="{{URL::asset('/img/denomination/generic-')}}{{$denum->denomination}}.jpg">
                 @endif
                 <br>
                 <input type="hidden" name="" value="{{$loop->count}}" id="counter">
                 <div class="denums-margins">
                   <label class="radio-inline">
-                    &#8369; {{$denum}}
+                    &#8369; {{$denum->denomination}}
                   </label>
                 </div>
                 <div class="quantity">
@@ -49,6 +50,10 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <div class="r-details">
+            <div class="form-group">
+              <label>Sender Name</label>
+              <input type="text" class="form-control" value="@if(Auth::user()){{ Auth::user()->name }}@else{{$name}}@endif" name="sender" required>
+            </div>
             <div class="form-group">
               <label>Recipient's Name</label>
               <input type="name" class="form-control" name="dname" value=" ">

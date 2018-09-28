@@ -18,6 +18,7 @@ class CreateThemesTable extends Migration
             $table->string('theme');
             $table->string('category');
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 

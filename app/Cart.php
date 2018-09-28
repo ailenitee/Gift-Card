@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class Cart extends Model
 {
     protected $table = "cart";
-    protected $fillable = ["dname","name","sender","address","mobile","message","amount","quantity","email","user_id","total","giftcard"];
+    protected $fillable = ["brand_id","denomination_id","guest_id","transaction_id","sender","name","quantity","address","mobile","user_id","giftcard","theme"];
 
     public function getFillable(){
         return $this->fillable;

@@ -24,22 +24,22 @@ class BrandTableSeeder extends Seeder
         ],
         [
           'brand'				          => 'Uniqlo',
-          'denomination'					=> '1,2',
+          'denomination'					=> '2,3',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/uniqlo.png'
         ],
         [
           'brand'				          => 'SM Supermarket',
-          'denomination'					=> '1,2',
+          'denomination'					=> '2,3',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/supermarket.png'
         ],
         [
           'brand'				          => 'Jollibee',
-          'denomination'					=> '1,2',
+          'denomination'					=> '2,3,4',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/jollibee.png'
         ],
         [
           'brand'				          => 'Bench',
-          'denomination'					=> '1,2',
+          'denomination'					=> '2,3',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/bench.png'
         ],
         [

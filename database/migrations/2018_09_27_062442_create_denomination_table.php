@@ -14,9 +14,10 @@ class CreateDenominationTable extends Migration
     public function up()
     {
         Schema::create('denomination', function (Blueprint $table) {
-            $table->increments('id'); 
+            $table->increments('id')->unsigned();
             $table->string('denomination');
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 

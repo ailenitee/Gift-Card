@@ -31,22 +31,37 @@ class HomeController extends Controller
   public function giftcard()
   {
     // TODO: logged in or guest
+    $user = Auth::user();
+    if ($user){
+
+    }else{
+      $data['name'] = '';
+    }
+
     $var = preg_split("/\//", $this->url->current());
     $new = str_replace('%20', ' ', $var[5]);
+    $fword = explode(' ' ,$new);
+    $data['fword'] = explode(' ' ,$fword[0]);
     $data['brand'] = DB::table('brand')
     ->where('brand', $new)
     ->get();
-    foreach ($data as $key => $value){
-      $denum = explode(',' ,$value[0]->denomination);
+
+    foreach ($data['brand'] as $key => $value){
+      $denum = explode(',' ,$value->denomination);
     }
     $count = count($denum);
     // dd($count);
-    for($i = 0;$i<=$count;$i++){
-      $data['denum'] = DB::table('denomination')
-      ->where('id',(int)$denum[$i])
-      ->get(); // TODO: fix error
+    for($i =0;$i<$count;$i++){
+      if($i == 0){
+        $data['denum'][] = DB::table('denomination')
+        ->where('id',(int)$denum[0])
+        ->get(); // TODO: fix error
+      }else{
+        $data['denum'][] = DB::table('denomination')
+        ->where('id',(int)$denum[$i])
+        ->get(); // TODO: fix error
+      }
     }
-
     return view('giftcard',$data);
   }
 
