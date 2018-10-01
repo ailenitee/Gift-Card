@@ -15,7 +15,11 @@
             @foreach ($result as $key => $denum)
             <div class="col-md-4">
               <div class="brand-container">
-                <img alt="" class="denum" src="{{$denum->theme}}">
+                @if (File::exists(public_path("/img/denomination/".$fword[0]."-".$denum->denomination.".jpg")))
+                <img alt="" class="denum" src="{{URL::asset('/img/denomination/')}}/{{$fword[0]}}-{{$denum->denomination}}.jpg">
+                @else
+                <img alt="" class="denum" src="{{URL::asset('/img/denomination/generic-')}}{{$denum->denomination}}.jpg">
+                @endif
                 <br>
                 <input type="hidden" name="" value="{{$loop->count}}" id="counter">
                 <div class="denums-margins">
@@ -31,7 +35,7 @@
                         <span class="glyphicon glyphicon-minus"></span>
                       </button>
                     </span>
-                    <input type="text" name="quantity" class="form-control input-number quantity-{{$key}}" value="0" min="0" max="100">
+                    <input type="text" name="{{$denum->denomination}}" class="form-control input-number quantity-{{$key}}" value="0" min="0" max="100">
                     <span class="input-group-btn">
                       <button type="button" style="margin-top:0;" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                         <span class="glyphicon glyphicon-plus"></span>

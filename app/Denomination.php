@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Denomination;
 use Illuminate\Database\Eloquent\Model;
 
 class Denomination extends Model

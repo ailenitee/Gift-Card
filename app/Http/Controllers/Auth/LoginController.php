@@ -37,7 +37,7 @@ class LoginController extends Controller
   *
   * @var string
   */
-  protected $redirectTo = '/card/details';
+  protected $redirectTo = '/brand';
 
   /**
   * Create a new controller instance.
@@ -70,8 +70,8 @@ class LoginController extends Controller
     if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
       if($data['user']->roles == 0){
         return redirect('/cms/dashboard');
-      }else{ 
-        return redirect('/card/details');
+      }else{
+        return redirect('/brand');
       }
     }else{
       return redirect('/login')->with('error', 'Invalid Email or Password');

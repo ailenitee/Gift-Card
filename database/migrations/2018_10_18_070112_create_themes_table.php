@@ -16,9 +16,15 @@ class CreateThemesTable extends Migration
         Schema::create('themes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('theme');
-            $table->string('category');
+            $table->unsignedInteger('category_id')->unsigned();
+            $table->unsignedInteger('denomination_id')->unsigned();
             $table->timestamps();
             $table->engine = "InnoDB";
+        });
+        Schema::table('themes', function(Blueprint $table)
+        {
+          $table->foreign('category_id')->references('id')->on('category')->onDelete('restrict')->onUpdate('restrict');
+          $table->foreign('denomination_id')->references('id')->on('denomination')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

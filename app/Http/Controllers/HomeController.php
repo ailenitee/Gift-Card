@@ -47,21 +47,37 @@ class HomeController extends Controller
     ->get();
 
     foreach ($data['brand'] as $key => $value){
-      $denum = explode(',' ,$value->denomination);
+      $data['brand_id'] = $value->id;
+      $denum = explode(',' ,$value->themes);
     }
     $count = count($denum);
-    // dd($count);
-    for($i =0;$i<$count;$i++){
-      if($i == 0){
-        $data['denum'][] = DB::table('denomination')
-        ->where('id',(int)$denum[0])
-        ->get(); // TODO: fix error
-      }else{
-        $data['denum'][] = DB::table('denomination')
-        ->where('id',(int)$denum[$i])
-        ->get(); // TODO: fix error
+    foreach ($data['brand']  as $key => $value){
+      for($i =0;$i<$count;$i++){
+        if($i == 0){
+          $data['denum'][] = DB::table('themes')
+          ->join('denomination', 'denomination.id', '=', 'themes.denomination_id')
+          ->where('themes.id',(int)$denum[0])
+          ->get();
+        }else{
+          $data['denum'][] = DB::table('themes')
+          ->join('denomination', 'denomination.id', '=', 'themes.denomination_id')
+          ->where('themes.id',(int)$denum[$i])
+          ->get();
+        }
       }
     }
+    // dd($count);
+    // for($i =0;$i<$count;$i++){
+    //   if($i == 0){
+    //     $data['denum'][] = DB::table('denomination')
+    //     ->where('id',(int)$denum[0])
+    //     ->get();
+    //   }else{
+    //     $data['denum'][] = DB::table('denomination')
+    //     ->where('id',(int)$denum[$i])
+    //     ->get();
+    //   }
+    // } 
     return view('giftcard',$data);
   }
 

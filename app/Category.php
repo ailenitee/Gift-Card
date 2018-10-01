@@ -1,13 +1,13 @@
 <?php
 
 namespace App;
-
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 
-class Theme extends Model
+class Category extends Model
 {
-  protected $table = "themes";
-  protected $fillable = ["theme","category_id","denomination_id"];
+  protected $table = "category";
+  protected $fillable = ["category"];
 
   public function getFillable(){
       return $this->fillable;

@@ -14,62 +14,62 @@ class BrandTableSeeder extends Seeder
       $data = [
         [
           'brand'				          => 'Mercury Drug',
-          'denomination'					=> '1,2',
+          'themes'				      	=> '1,2,5,8',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/mercurydrug.jpg'
         ],
         [
           'brand'				          => 'National Bookstore',
-          'denomination'					=> '1,2',
+          'themes'					      => '3,4,5,6,7',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/national.png'
         ],
         [
           'brand'				          => 'Uniqlo',
-          'denomination'					=> '2,3',
+          'themes'				      	=> '2,3,8',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/uniqlo.png'
         ],
         [
           'brand'				          => 'SM Supermarket',
-          'denomination'					=> '2,3',
+          'themes'					      => '1,2,3',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/supermarket.png'
         ],
         [
           'brand'				          => 'Jollibee',
-          'denomination'					=> '2,3,4',
+          'themes'					      => '2,5,9,10',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/jollibee.png'
         ],
         [
           'brand'				          => 'Bench',
-          'denomination'					=> '2,3',
+          'themes'					      => '1,2,3,4,5',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/bench.png'
         ],
         [
           'brand'				          => 'Ace Hardware',
-          'denomination'					=> '1,2',
+          'themes'					      => '8,9,11,12',
           'logo'					        => url()->current().'/img/partners/AceHardware.png'
         ],
         [
           'brand'				          => 'Beauty Manila',
-          'denomination'					=> '1,2',
+          'themes'					      => '1,2',
           'logo'					        => url()->current().'/img/partners/beautymnl.png'
         ],
         [
           'brand'				          => 'Ever Bilena',
-          'denomination'					=> '1,2',
+          'themes'					      => '1,2',
           'logo'					        => url()->current().'/img/partners/EverBilena.png'
         ],
         [
           'brand'				          => 'Shakeys',
-          'denomination'					=> '1,2',
+          'themes'				       	=> '1,2',
           'logo'					        => url()->current().'/img/partners/Shakeys.png'
         ],
         [
           'brand'				          => 'Toy Kingdom',
-          'denomination'					=> '1,2',
+          'themes'					      => '1,2',
           'logo'					        => url()->current().'/img/partners/toykingdom.png'
         ],
         [
           'brand'				          => 'True Value',
-          'denomination'					=> '1,2',
+          'themes'					      => '1,2',
           'logo'					        => url()->current().'/img/partners/TrueValue.png'
         ]
       ];
@@ -77,7 +77,7 @@ class BrandTableSeeder extends Seeder
       {
         Brand::create([
           'brand'                => $key['brand'],
-          'denomination'         => $key['denomination'],
+          'themes'               => $key['themes'],
           'logo'                 => $key['logo']
         ]);
       }

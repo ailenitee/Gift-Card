@@ -98,49 +98,44 @@ class CardController extends Controller
     $input['brand_id']     = $request->brand_id;
     $input['denomination'] = DB::table('denomination')
     ->get();
+    if($request->hasFile('giftcard')){
+      $messages   = [
+        'image|mimes' => 'should be jpeg,png,jpg,gif,svg!',
+      ];
+      $imageName = time().'.'.$request->giftcard->getClientOriginalExtension(); //set a name for the image
+      $request->giftcard->move(public_path('/img/uploads'), $imageName); //move the image to a folder
+      $imageFile = $this->url->to('/').'/img/uploads/'.$imageName; //the full url of the image
+      $input['giftcard'] = $imageFile; //new name/link of the image
+    }
 
     foreach ($input['denomination'] as $key => $value){
       if($request['100'] > '0'){
         if($value->denomination == '100'){
           $input['denomination_id'] = $value->id;
           $input['total'] = $request['100']*$value->denomination;
-          $input['quantity'] = $request['100'];
           return $this->storeCart($request,$input);
         }
-      }
-      if($request['500'] > '0'){
+      }elseif($request['500'] > '0'){
         if($value->denomination == '500'){
           $input['denomination_id'] = $value->id;
           $input['total'] = $request['500']*$value->denomination;
-          $input['quantity'] = $request['500'];
           return $this->storeCart($request,$input);
         }
-      }
-      if($request['1000'] > '0'){
+      }elseif($request['1000'] > '0'){
         if($value->denomination == '1000'){
           $input['denomination_id'] = $value->id;
           $input['total'] = $request['1000']*$value->denomination;
-          $input['quantity'] = $request['1000'];
           return $this->storeCart($request,$input);
         }
-      }
-      if($request['2000'] > '0'){
+      }elseif($request['2000'] > '0'){
         if($value->denomination == '2000'){
           $input['denomination_id'] = $value->id;
           $input['total'] = $request['2000']*$value->denomination;
-          $input['quantity'] = $request['2000'];
           return $this->storeCart($request,$input);
         }
       }
     }
-    switch($request->submitbutton) {
-      case 'save':
-      return back()->with('success', 'Added to Cart Succesfully!');
-      break;
-      case 'save_cart':
-      return redirect('/confirm');
-      break;
-    }
+
   }
   //storing to cart function
   public function storeCart($request,$input){
@@ -167,6 +162,14 @@ class CardController extends Controller
       return $data;
     }
 
+    switch($request->submitbutton) {
+      case 'save':
+      return back()->with('success', 'Added to Cart Succesfully!');
+      break;
+      case 'save_cart':
+      return redirect('/confirm');
+      break;
+    }
   }
   /**
   * Confirmation Page.

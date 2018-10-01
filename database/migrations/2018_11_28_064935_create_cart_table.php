@@ -17,24 +17,22 @@ class CreateCartTable extends Migration
       $table->increments('id');
       $table->unsignedInteger('user_id')->unsigned();
       $table->unsignedInteger('brand_id')->unsigned();
-      $table->unsignedInteger('denomination_id')->unsigned();
-      $table->string('guest_id');
+      $table->unsignedInteger('theme_id')->unsigned();
       $table->string('transaction_id');
       $table->string('sender');
       $table->string('name');
       $table->string('quantity');
       $table->string('address');
       $table->string('mobile');
-      $table->string('theme')->nullable();
-      $table->string('giftcard');
+      $table->string('email')->nullable();
       $table->timestamps();
       $table->engine = "InnoDB";
     });
     Schema::table('cart', function(Blueprint $table)
     {
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-      $table->foreign('denomination_id')->references('id')->on('denomination')->onDelete('restrict')->onUpdate('restrict');
       $table->foreign('brand_id')->references('id')->on('brand')->onDelete('restrict')->onUpdate('restrict');
+      $table->foreign('theme_id')->references('id')->on('themes')->onDelete('restrict')->onUpdate('restrict');
     });
   }
 

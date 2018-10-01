@@ -13,99 +13,117 @@ class ThemesTableSeeder extends Seeder
     {
       $data = [
         [
-          'theme'				=> url()->current().'/img/themes/bday-1.jpg',
-          'category'					=> 'birthday'
+          'theme'				      => url()->current().'/img/denomination/500/Birthday_500.jpg',
+          'category_id'			  => '1',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/bday-2.jpg',
-          'category'					=> 'birthday'
+          'theme'				      => url()->current().'/img/denomination/500/Christmas1_500.jpg',
+          'category_id'			  => '2',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/bday-11.jpg',
-          'category'					=> 'birthday'
+          'theme'				      => url()->current().'/img/denomination/500/Congratulations_500.jpg',
+          'category_id'			  => '3',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/bday-22.jpg',
-          'category'					=> 'birthday'
+          'theme'				      => url()->current().'/img/denomination/500/ForHer_500.jpg',
+          'category_id'			  => '4',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Birthday.jpg',
-          'category'					=> 'birthday'
+          'theme'				      => url()->current().'/img/denomination/500/ForHim_500.jpg',
+          'category_id'			  => '5',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Christmas1.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/500/Love_500.jpg',
+          'category_id'			  => '6',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Christmas2.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/500/GetWellSoon_500.jpg',
+          'category_id'			  => '7',
+          'denomination_id'   => '2'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/xmas-3.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/1000/Birthday_1000.jpg',
+          'category_id'			  => '1',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/XMAS-4.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/1000/Christmas1_1000.jpg',
+          'category_id'			  => '2',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/XMAS-33.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/1000/Congratulations_1000.jpg',
+          'category_id'			  => '3',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/xmas-11.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/1000/ForHer_1000.jpg',
+          'category_id'			  => '4',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/xmas-22.jpg',
-          'category'					=> 'christmas'
+          'theme'				      => url()->current().'/img/denomination/1000/ForHim_1000.jpg',
+          'category_id'			  => '5',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/ForHer.jpg',
-          'category'					=> 'love'
+          'theme'				      => url()->current().'/img/denomination/1000/Love_1000.jpg',
+          'category_id'			  => '6',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/ForHim.jpg',
-          'category'					=> 'love'
+          'theme'				      => url()->current().'/img/denomination/1000/GetWellSoon_1000.jpg',
+          'category_id'			  => '7',
+          'denomination_id'   => '3'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Hearts.jpg',
-          'category'					=> 'love'
+          'theme'				      => url()->current().'/img/denomination/2000/Birthday_2000.jpg',
+          'category_id'			  => '1',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/ILY.jpg',
-          'category'					=> 'love'
+          'theme'				      => url()->current().'/img/denomination/2000/Christmas1_2000.jpg',
+          'category_id'			  => '2',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Love.jpg',
-          'category'					=> 'love'
+          'theme'				      => url()->current().'/img/denomination/2000/Congratulations_2000.jpg',
+          'category_id'			  => '3',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/generic1-1.jpg',
-          'category'					=> 'generic'
+          'theme'				      => url()->current().'/img/denomination/2000/ForHer_2000.jpg',
+          'category_id'			  => '4',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/generic1-2.jpg',
-          'category'					=> 'generic'
+          'theme'				      => url()->current().'/img/denomination/2000/ForHim_2000.jpg',
+          'category_id'			  => '5',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/generic1-3.jpg',
-          'category'					=> 'generic'
+          'theme'				      => url()->current().'/img/denomination/2000/Love_2000.jpg',
+          'category_id'			  => '6',
+          'denomination_id'   => '4'
         ],
         [
-          'theme'				=> url()->current().'/img/themes/Congratulations.jpg',
-          'category'					=> 'congratulations'
-        ],
-        [
-          'theme'				=> url()->current().'/img/themes/HetWellSoon.jpg',
-          'category'					=> 'getwell'
-        ],
+          'theme'				      => url()->current().'/img/denomination/2000/GetWellSoon_2000.jpg',
+          'category_id'			  => '7',
+          'denomination_id'   => '4'
+        ]
       ];
       foreach ($data as $key)
       {
         Theme::create([
-          'theme'          => $key['theme'],
-          'category'         => $key['category']
+          'theme'               => $key['theme'],
+          'category_id'         => $key['category_id'],
+          'denomination_id'     => $key['denomination_id']
         ]);
       }
     }
