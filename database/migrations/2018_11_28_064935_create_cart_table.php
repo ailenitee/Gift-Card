@@ -24,6 +24,7 @@ class CreateCartTable extends Migration
       $table->string('quantity');
       $table->string('address');
       $table->string('mobile');
+      $table->string('total');
       $table->string('email')->nullable();
       $table->timestamps();
       $table->engine = "InnoDB";

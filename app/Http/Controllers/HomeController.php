@@ -23,20 +23,52 @@ class HomeController extends Controller
     $this->cart = session('cart');
   }
   public function brand() {
+    $user = Auth::user();
     $data['brand'] = DB::table('brand')
     ->get();
-    // dd($data);
-    return view('brand',$data);
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get();
+      // dd($data);
+      return view('brand',$data);
+    }else{
+      //for guest
+      $data = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      if (session()->exists('cart')){
+        if (!empty($data2)){
+          $data['cart'] =$data;
+          return view('brand',$data);
+        }else{
+          return view('brand',$data);
+        }
+      }else{
+        return view('brand',$data);
+      }
+      // return view('brand',$data);
+    }
   }
   public function giftcard()
   {
-    // TODO: logged in or guest
-    $user = Auth::user();
-    if ($user){
-
-    }else{
-      $data['name'] = '';
-    }
+    // TODO: join themes
+    // $user = Auth::user();
+    // if ($user){
+    //   $data['cart'] = DB::table('cart')
+    //   ->where('user_id', $user->id)
+    //   ->get();
+    //   foreach ($data['cart'] as $key => $value){
+    //     // Joined cart and themes to get themes details
+    //     $data['cartThemes'][$key] = DB::table('themes')
+    //     ->join('cart', 'themes.id', '=', 'cart.theme_id')
+    //     ->where('cart.theme_id', $value->theme_id)
+    //     ->get();
+    //   }
+    //   // dd($data['cartThemes']);
+    // }else{
+    //   $data = session()->get('cart');
+    //   $data2 = session()->get('cart.items');
+    // }
 
     $var = preg_split("/\//", $this->url->current());
     $new = str_replace('%20', ' ', $var[5]);
@@ -45,39 +77,24 @@ class HomeController extends Controller
     $data['brand'] = DB::table('brand')
     ->where('brand', $new)
     ->get();
-
+    // dd($data['brand']);
     foreach ($data['brand'] as $key => $value){
       $data['brand_id'] = $value->id;
       $denum = explode(',' ,$value->themes);
     }
     $count = count($denum);
-    foreach ($data['brand']  as $key => $value){
-      for($i =0;$i<$count;$i++){
-        if($i == 0){
-          $data['denum'][] = DB::table('themes')
-          ->join('denomination', 'denomination.id', '=', 'themes.denomination_id')
-          ->where('themes.id',(int)$denum[0])
-          ->get();
-        }else{
-          $data['denum'][] = DB::table('themes')
-          ->join('denomination', 'denomination.id', '=', 'themes.denomination_id')
-          ->where('themes.id',(int)$denum[$i])
-          ->get();
-        }
-      }
+    $data['allThemes'] = $denum;
+    foreach ($denum  as $key => $value){
+      $intval= (int)$value;
+      $data['denum'][] = DB::table('denomination')
+      ->leftJoin('themes', 'themes.denomination_id', '=', 'denomination.id')
+      ->where('themes.id',$intval)
+      ->get();
     }
-    // dd($count);
-    // for($i =0;$i<$count;$i++){
-    //   if($i == 0){
-    //     $data['denum'][] = DB::table('denomination')
-    //     ->where('id',(int)$denum[0])
-    //     ->get();
-    //   }else{
-    //     $data['denum'][] = DB::table('denomination')
-    //     ->where('id',(int)$denum[$i])
-    //     ->get();
-    //   }
-    // } 
+    $data['name'] = '';
+    $data['intval'] = $intval;
+
+
     return view('giftcard',$data);
   }
 

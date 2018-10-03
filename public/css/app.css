@@ -10999,6 +10999,10 @@ a:focus {
   margin-bottom: 15px;
 }
 
+.brand-container label {
+  padding: 0;
+}
+
 .brand-container .quantity {
   width: 100%;
   padding: 0 10px;
@@ -11014,6 +11018,18 @@ a:focus {
 
 .brand-container .quantity label {
   width: 100%;
+}
+
+.brand-container .quantity .input-group {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+}
+
+.brand-container .quantity .input-group input {
+  text-align: center;
 }
 
 .brands img,

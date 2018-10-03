@@ -4,13 +4,30 @@
   <div class="content denums">
     <input type="hidden" name="" value="" id="geturl">
     <input type="hidden" name="" value="" id="gettemplate">
-    <form  class="form_details" action="{{ route('cart') }}" enctype="multipart/form-data" method="post" style="width:100%;">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="nav-link btn-red btn-center float-right cart-btn"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</button>
+      </div>
+    </div>
+    <form  class="form_details" action="{{ route('cart') }}" enctype="multipart/form-data" method="post" style="width:100%;margin-top:0;">
       {{ csrf_field() }}
       <h1 class="template-name text-center"></h1><br>
       <input type="hidden" value="{{Auth::user() ? Auth::user()->id : '0'}}" name="user_id">
       <input type="hidden" value="{{$brand_id}}" name="brand_id">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
+          @if(session()->has('success'))
+          <div class="alert alert-success">
+            {{ session()->get('success') }}
+          </div>
+          @elseif(session()->has('error'))
+          <div class="alert alert-danger">
+            {{ session()->get('error') }}
+          </div>
+          @endif
+          <?php
+          $x = 0;
+           ?>
           @foreach ($denum as $k => $result)
             @foreach ($result as $key => $denum)
             <div class="col-md-4">
@@ -31,7 +48,9 @@
                         <span class="glyphicon glyphicon-minus"></span>
                       </button>
                     </span>
-                    <input type="text" name="quantity" class="form-control input-number quantity-{{$key}}" value="0" min="0" max="100">
+                    <?php $x++; ?>
+                    <input type="text" name="quantityVal[{{$x}}]" class="form-control input-number quantity-{{$key}}" value="0" min="0" max="100">
+                    <input type="hidden" name="themeID[{{$x}}]" value="{{$denum->id}}">
                     <span class="input-group-btn">
                       <button type="button" style="margin-top:0;" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                         <span class="glyphicon glyphicon-plus"></span>

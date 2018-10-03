@@ -92,83 +92,46 @@ class CardController extends Controller
   */
   public function store(Request $request)
   {
+    // TODO: insert to cart
     $input      = $request->except(['_token']);
-    $trans_id   = $this->cart->generateTransctionID(15);
-    $count = count($request->quantityVal);
-    foreach ($request->themeID as $key => $value){
-      $intval= (int)$value;
-      $input['input'][$key]["theme_id"] = $value;
-      $input['input'][$key]['transaction_id']     = $trans_id;
-      $input['input'][$key]['brand_id']     = $request->brand_id;
-      $input['input'][$key]['user_id']     = $request->user_id;
-      $input['input'][$key]['sender']     = $request->sender;
-      $input['input'][$key]['name']     = $request->sender;
-      $input['input'][$key]['address']     = $request->sender;
-      $input['input'][$key]['mobile']     = $request->sender;
-      $input['themes'] = DB::table('denomination')
-      ->leftJoin('themes', 'themes.denomination_id', '=', 'denomination.id')
-      ->where('themes.id',$intval)
-      ->get();
-      foreach ($input['themes'] as $key3 => $value){
-        $input['input'][$key]['denomination'] = (int)$value->denomination;
+    $input['transaction_id']     = $this->cart->generateTransctionID(15);
+    $input['brand_id']     = $request->brand_id;
+    $input['denomination'] = DB::table('denomination')
+    ->get();
+
+    foreach ($input['denomination'] as $key => $value){
+      if($request['100'] > '0'){
+        if($value->denomination == '100'){
+          $input['denomination_id'] = $value->id;
+          $input['total'] = $request['100']*$value->denomination;
+          $input['quantity'] = $request['100'];
+          return $this->storeCart($request,$input);
+        }
       }
-    }
-    foreach ($request->quantityVal as $key2 => $value){
-      $input['input'][$key2]['quantity'] =  (int)$value;
-      $input['input'][$key2]['total'] = $input['input'][$key2]['quantity'] * $input['input'][$key2]['denomination'];
-    }
-    foreach ($input['input'] as $key => $value){
-      if($input['input'][$key]['quantity'] == 0){
-        // DO NOT INSERT
-        $res = [];
-      }else{
-        $res[] =[
-          'user_id'             => (int)$input['input'][$key]['user_id'],
-          'theme_id'            => (int)$input['input'][$key]['theme_id'],
-          'brand_id'            => (int)$input['input'][$key]['brand_id'],
-          'transaction_id'      => $input['input'][$key]['transaction_id'],
-          'sender'              => $input['input'][$key]['sender'],
-          'name'                => $input['input'][$key]['name'],
-          'quantity'            => $input['input'][$key]['quantity'],
-          'address'             => $input['input'][$key]['address'],
-          // 'email'               => $input['email'],
-          'mobile'              => $input['input'][$key]['mobile'],
-          'total'               => $input['input'][$key]['total']
-        ];
+      if($request['500'] > '0'){
+        if($value->denomination == '500'){
+          $input['denomination_id'] = $value->id;
+          $input['total'] = $request['500']*$value->denomination;
+          $input['quantity'] = $request['500'];
+          return $this->storeCart($request,$input);
+        }
       }
-    }
-    if(!$res){
-      switch($request->submitbutton) {
-        case 'save':
-        return back()->with('error', 'Please enter a Quantity');
-        break;
-        case 'save_cart':
-        return back()->with('error', 'Please enter a Quantity');
-        break;
+      if($request['1000'] > '0'){
+        if($value->denomination == '1000'){
+          $input['denomination_id'] = $value->id;
+          $input['total'] = $request['1000']*$value->denomination;
+          $input['quantity'] = $request['1000'];
+          return $this->storeCart($request,$input);
+        }
       }
-    }else{
-      return $this->storeCart($res,$input,$request);
-    }
-  }
-  public function storeCart($res,$input,$request)
-  {
-    if ($input['user_id'] != '0'){
-      $messages   = [
-        'required' => 'The :attribute is required',
-      ];
-      Cart::insert($res);
-    }else{
-      //// TODO: insert to cart for guest
-      if ($request->session()->exists('cart')) {
-        $request->session()->push('cart.items', $res);
-      }else{
-        $request->session()->put('cart.items', $res);
+      if($request['2000'] > '0'){
+        if($value->denomination == '2000'){
+          $input['denomination_id'] = $value->id;
+          $input['total'] = $request['2000']*$value->denomination;
+          $input['quantity'] = $request['2000'];
+          return $this->storeCart($request,$input);
+        }
       }
-    }
-    $cart                       = $this->cart->getItems();
-    $data['cart']               = $cart;
-    if($request->type =="json"){
-      return $data;
     }
     switch($request->submitbutton) {
       case 'save':
@@ -179,10 +142,35 @@ class CardController extends Controller
       break;
     }
   }
+  //storing to cart function
+  public function storeCart($request,$input){
+    //for logged on user
+
+    if ($request->user_id != '0'){
+      $messages   = [
+        'required' => 'The :attribute is required',
+      ];
+      Cart::create($input); //insert all inputs to db
+
+    }else{
+      //for guest
+      if ($request->session()->exists('cart')) {
+        $request->session()->push('cart.items', $input);
+      }else{
+        $request->session()->put('cart.items', $input);
+      }
+    }
+    $cart                       = $this->cart->getItems();
+    $data['cart']               = $cart;
+
+    if($request->type =="json"){
+      return $data;
+    }
+
+  }
   /**
   * Confirmation Page.
   */
-
   public function confirm()
   {
     //for logged on user
