@@ -34,11 +34,11 @@ class HomeController extends Controller
       return view('brand',$data);
     }else{
       //for guest
-      $data = session()->get('cart');
+      $data3 = session()->get('cart');
       $data2 = session()->get('cart.items');
       if (session()->exists('cart')){
         if (!empty($data2)){
-          $data['cart'] =$data;
+          $data3['cart'] =$data3;
           return view('brand',$data);
         }else{
           return view('brand',$data);
@@ -52,24 +52,29 @@ class HomeController extends Controller
   public function giftcard()
   {
     // TODO: join themes
-    // $user = Auth::user();
-    // if ($user){
-    //   $data['cart'] = DB::table('cart')
-    //   ->where('user_id', $user->id)
-    //   ->get();
-    //   foreach ($data['cart'] as $key => $value){
-    //     // Joined cart and themes to get themes details
-    //     $data['cartThemes'][$key] = DB::table('themes')
-    //     ->join('cart', 'themes.id', '=', 'cart.theme_id')
-    //     ->where('cart.theme_id', $value->theme_id)
-    //     ->get();
-    //   }
-    //   // dd($data['cartThemes']);
-    // }else{
-    //   $data = session()->get('cart');
-    //   $data2 = session()->get('cart.items');
-    // }
-
+    $user = Auth::user();
+    if ($user){
+      $data['cart'] = DB::table('cart')
+      ->where('user_id', $user->id)
+      ->get();
+      foreach ($data['cart'] as $key => $value){
+        // Joined cart and themes to get themes details
+        $data['cartThemes'][$key] = DB::table('themes')
+        ->join('cart', 'themes.id', '=', 'cart.theme_id')
+        ->join('denomination', 'themes.denomination_id', '=', 'denomination.id')
+        ->where('cart.theme_id', $value->theme_id)
+        ->get();
+      }
+    }else{
+      if (session()->exists('cart')){
+        $data = session()->get('cart');
+        $data2 = session()->get('cart.items');
+        if (!empty($data2)){
+          $data['cart'] =$data2;
+        }
+      }
+    }
+    // dd($data,$data2);
     $var = preg_split("/\//", $this->url->current());
     $new = str_replace('%20', ' ', $var[5]);
     $fword = explode(' ' ,$new);

@@ -1,4 +1,5 @@
 @extends('includes.app')
+@include('includes.modal')
 @section('content')
 <div class="container">
   <div class="content denums">
@@ -52,7 +53,7 @@
                     <input type="text" name="quantityVal[{{$x}}]" class="form-control input-number quantity-{{$key}}" value="0" min="0" max="100">
                     <input type="hidden" name="themeID[{{$x}}]" value="{{$denum->id}}">
                     <span class="input-group-btn">
-                      <button type="button" style="margin-top:0;" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                      <button type="button" style="margin-top:0; " class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                         <span class="glyphicon glyphicon-plus"></span>
                       </button>
                     </span>

@@ -11012,6 +11012,10 @@ a:focus {
   width: auto;
 }
 
+.brand-container .quantity .input-group-btn button {
+  height: 24px;
+}
+
 .brand-container .quantity input {
   padding: 6px 12px !important;
 }

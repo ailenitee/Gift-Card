@@ -8,6 +8,9 @@
     padding: 0 10px;
     .input-group-btn{
       width: auto;
+      button{
+            height: 24px;
+      }
     }
     input{
       padding: 6px 12px!important;

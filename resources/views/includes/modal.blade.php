@@ -13,7 +13,7 @@
             <tr>
               <!-- <th scope="col">#</th> -->
               <th scope="col">Product</th>
-              <th scope="col">Price</th>
+              <th scope="col">Denomination</th>
               <th scope="col">Quantity</th>
               <th scope="col">Total</th>
               <th scope="col"></th>
@@ -43,21 +43,26 @@
                   @foreach ($cart as $card)
                     @foreach ($card as $cards)
                     <tr>
-                      <!-- <td></td> -->
-                      @if(isset($cards['giftcard']))
                       <td>
-                        <img src="{{$cards['giftcard']}}" alt="">
+                        @if(isset($cards['theme']))
+                        <img src="{{$cards['theme']}}" alt="">
+                        @endif
                       </td>
-                      @endif
-                      @if(isset($cards['amount']))
-                      <td>{{$cards['amount']}}</td>
-                      @endif
-                      @if(isset($cards['quantity']))
-                      <td>{{$cards['quantity']}}</td>
-                      @endif
-                      @if(isset($cards['total']))
-                      <td>{{$cards['total']}}</td>
-                      @endif
+                      <td>
+                        @if(isset($cards['denomination']))
+                          {{$cards['denomination']}}
+                        @endif
+                      </td>
+                      <td>
+                        @if(isset($cards['quantity']))
+                          {{$cards['quantity']}}
+                        @endif
+                      </td>
+                      <td>
+                        @if(isset($cards['total']))
+                          {{$cards['total']}}
+                        @endif
+                      </td> 
                       <td>
                         @if(isset($cards['id']))
                           <input type="hidden" name="id" value="{{$cards['id']}}">
@@ -84,21 +89,22 @@
                   @endif
               @else
                 @if(count($cart) > 0)
-                  @foreach ($cart as $card)
-                    <tr>
-                      <!-- <th scope="row">{{$card->id}}</th> -->
-                      <td><img src="{{$card->giftcard}}" alt=""></td>
-                      <td>{{$card->amount}}</td>
-                      <td>{{$card->quantity}}</td>
-                      <td>{{$card->total}}</td>
-                      <td>
-                          <a href="{{url('/edit-cart',$card->id)}}"><i class="fas fa-edit"></i></a>
-                      </td>
-                      <td>
-                          <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
-                          <div class="custom_link delete_link"><i class="fas fa-trash"></i><div>
-                      </td>
-                    </tr>
+                  @foreach ($cartThemes as $cards)
+                    @foreach ($cards as $card)
+                      <tr>
+                        <td><img src="{{$card->theme}}" alt=""></td>
+                        <td>&#8369; {{$card->denomination}}</td>
+                        <td>{{$card->quantity}}</td>
+                        <td>{{$card->total}}</td>
+                        <td>
+                            <a href="{{url('/edit-cart',$card->id)}}"><i class="fas fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
+                            <div class="custom_link delete_link"><i class="fas fa-trash"></i><div>
+                        </td>
+                      </tr>
+                    @endforeach
                   @endforeach
                 @else
                       <tr>
