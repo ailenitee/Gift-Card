@@ -67,9 +67,10 @@ class HomeController extends Controller
       }
     }else{
       if (session()->exists('cart')){
-        $data = session()->get('cart');
-        $data2 = session()->get('cart.items');
+
         if (!empty($data2)){
+          $data = session()->get('cart');
+          $data2 = session()->get('cart.items');
           $data['cart'] =$data2;
         }
       }
