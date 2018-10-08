@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
-Options +MultiViews +Indexes 
+DirectoryIndex index.php
+Options +MultiViews +Indexes
 RewriteEngine On
 
 # Handle Authorization Header
