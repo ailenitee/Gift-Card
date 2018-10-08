@@ -24,6 +24,7 @@ class CreateTransactionTable extends Migration
             $table->string('city');
             $table->string('refnum');
             $table->string('status');
+            // $table->string('fb_id')->unique()->nullable();
             $table->timestamps();
             $table->engine = "InnoDB";
         });

@@ -97,14 +97,14 @@ class CardController extends Controller
     $count = count($request->quantityVal);
     foreach ($request->themeID as $key => $value){
       $intval= (int)$value;
-      $input['input'][$key]["theme_id"] = $value;
+      $input['input'][$key]["theme_id"]           = $value;
       $input['input'][$key]['transaction_id']     = $trans_id;
-      $input['input'][$key]['brand_id']     = $request->brand_id;
-      $input['input'][$key]['user_id']     = $request->user_id;
-      $input['input'][$key]['sender']     = $request->sender;
-      $input['input'][$key]['name']     = $request->name;
-      $input['input'][$key]['address']     = $request->address;
-      $input['input'][$key]['mobile']     = $request->mobile;
+      $input['input'][$key]['brand_id']           = $request->brand_id;
+      $input['input'][$key]['user_id']            = $request->user_id;
+      $input['input'][$key]['sender']             = $request->sender;
+      $input['input'][$key]['name']               = $request->name;
+      $input['input'][$key]['address']            = $request->address;
+      $input['input'][$key]['mobile']             = $request->mobile;
       $input['themes'] = DB::table('denomination')
       ->leftJoin('themes', 'themes.denomination_id', '=', 'denomination.id')
       ->where('themes.id',$intval)
