@@ -37,8 +37,8 @@
           <div class="border-bottom">
             <div class="hid-xs">
               <div class="col-md-2">
-                @if(isset($cards['giftcard']))
-                <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
+                @if(isset($cards['theme']))
+                <img src="{{$cards['theme']}}" alt="" class="confirm_img">
                 @endif
                 <br>
                 @if(isset($cards['sender']))
@@ -46,19 +46,18 @@
                 @endif
               </div>
               <div class="col-md-3">
-
                 <!-- eGiftCard -->
                 @if(isset($cards['email']))
                 <p>Send to: {{$cards['email']}}</p>
                 @endif
                 <!-- end eGiftCard -->
-
                 <!-- Deliver -->
-                @if(isset($cards['dname']))
                 <p>
                   Deliver to:
                   <br>
-                  {{$cards['dname']}}
+                  @if(isset($cards['name']))
+                  {{$cards['name']}}
+                  @endif
                   <br>
                   @if(isset($cards['mobile']))
                   {{$cards['mobile']}}
@@ -68,15 +67,14 @@
                   {{$cards['address']}}
                   @endif
                 </p>
-                @endif
                 <!-- end Deliver -->
                 @if(isset($cards['message']))
                 <p class="text-overflow">Message: {{$cards['message']}}</p>
                 @endif
               </div>
               <div class="col-md-2">
-                @if(isset($cards['amount']))
-                <div>{{$cards['amount']}}</div>
+                @if(isset($cards['denomination']))
+                <div>{{$cards['denomination']}}</div>
                 @endif
               </div>
               <div class="col-md-1">
@@ -104,8 +102,8 @@
             </div>
             <div class="hid-sm">
               <div class="col-xs-4">
-                @if(isset($cards['giftcard']))
-                <img src="{{$cards['giftcard']}}" alt="" class="confirm_img">
+                @if(isset($cards['theme']))
+                <img src="{{$cards['theme']}}" alt="" class="confirm_img">
                 @endif
                 <div class="action_buttons">
                   @if(isset($cards['id']))
@@ -128,8 +126,8 @@
                 @if(isset($cards['message']))
                 <p class="text-overflow">Message: {{$cards['message']}}</p>
                 @endif
-                @if(isset($cards['amount']))
-                <p>Amount: {{$cards['amount']}}</p>
+                @if(isset($cards['denomination']))
+                <p>Amount: {{$cards['denomination']}}</p>
                 @endif
                 @if(isset($cards['quantity']))
                 <p>Quantity: {{$cards['quantity']}}</p>
@@ -168,7 +166,7 @@
                 <p>
                   Deliver to:
                   <br>
-                  {{$card->dname}}
+                  {{$card->name}}
                   <br>
                   {{$card->mobile}}
                   <br>
@@ -232,7 +230,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <a  href="{{url('/card/details')}}"class="btn-border btn-center m-bottom">ADD ANOTHER GIFT</a>
+        <a  href="{{url('/brand')}}"class="btn-border btn-center m-bottom">ADD ANOTHER GIFT</a>
       </div>
       <div class="col-md-6">
         <a class="btn-red btn-center" href="{{url('/checkout')}}">CONFIRM AND CHECKOUT</a>

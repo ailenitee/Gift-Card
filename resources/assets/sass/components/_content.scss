@@ -281,7 +281,14 @@
   .send-tab-content{
     margin-top: 30px;
   }
-  @extend .brands;
+  &.brands{
+    img{
+      width: 100%;
+      margin:  10px 0;
+      max-height: 190px;
+      object-fit: contain;
+    }
+  }
   &.denums{
     .denums-margins{
       margin: 10px 30px;

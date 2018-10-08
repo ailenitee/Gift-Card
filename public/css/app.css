@@ -11036,15 +11036,6 @@ a:focus {
   text-align: center;
 }
 
-.brands img,
-.content img {
-  width: 100%;
-  margin: 10px 0;
-  max-height: 190px;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 #cartModal .modal-dialog {
   width: 50%;
   max-width: none;
@@ -12039,6 +12030,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 .content .send-tab-content {
   margin-top: 30px;
+}
+
+.content.brands img {
+  width: 100%;
+  margin: 10px 0;
+  max-height: 190px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .content.denums .denums-margins {
