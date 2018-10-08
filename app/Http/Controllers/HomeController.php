@@ -51,7 +51,6 @@ class HomeController extends Controller
   }
   public function giftcard()
   {
-    // TODO: join themes
     $user = Auth::user();
     if ($user){
       $data['cart'] = DB::table('cart')
@@ -66,16 +65,41 @@ class HomeController extends Controller
         ->get();
       }
     }else{
+      $data3 = session()->get('cart');
+      $data2 = session()->get('cart.items');
+      // dd($data2);
       if (session()->exists('cart')){
-
         if (!empty($data2)){
-          $data = session()->get('cart');
-          $data2 = session()->get('cart.items');
           $data['cart'] =$data2;
+          // dd($data2);
+          foreach ($data2 as $key => $value){
+            foreach ($value as $key2 => $value2){
+              //get theme img
+
+              $data['cart'][$key][$key2]['themes'] = DB::table('themes')
+              ->where('id', $value2['theme_id'])
+              ->get();
+              foreach ($data['cart'][$key][$key2]['themes'] as $value3){
+                $data['cart'][$key][$key2]['themeImg'] = $value3->theme;
+                $data['cart'][$key][$key2]['denomination_id'] = $value3->denomination_id;
+              }
+              //get denomination
+              $data['cart'][$key][$key2]['denomination'] = DB::table('denomination')
+              ->where('id', $data['cart'][$key][$key2]['denomination_id'])
+              ->get();
+              foreach ($data['cart'][$key][$key2]['denomination'] as $value4){
+                $data['cart'][$key][$key2]['denomination'] = $value4->denomination;
+              }
+
+              $data['cart'][$key][$key2]['theme'] = $data['cart'][$key][$key2]['themeImg'];
+              $data['cart'][$key][$key2]['denomination'] = $data['cart'][$key][$key2]['denomination'];
+            }
+          }
+          // dd(count($key));
         }
       }
     }
-    // dd($data,$data2);
+
     $var = preg_split("/\//", $this->url->current());
     $new = str_replace('%20', ' ', $var[5]);
     $fword = explode(' ' ,$new);

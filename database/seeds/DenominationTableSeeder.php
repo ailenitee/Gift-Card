@@ -16,6 +16,9 @@ class DenominationTableSeeder extends Seeder
           'denomination'					=> '100'
         ],
         [
+          'denomination'					=> '200'
+        ],
+        [
           'denomination'					=> '500'
         ],
         [
