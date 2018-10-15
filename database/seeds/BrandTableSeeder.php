@@ -14,7 +14,7 @@ class BrandTableSeeder extends Seeder
       $data = [
         [
           'brand'				          => 'Mercury Drug',
-          'themes'				      	=> '1,2,5,8',
+          'themes'				      	=> '22,23,1',
           'logo'					        => 'https://s3.amazonaws.com/smgiftcard/images/thumbnails/mercurydrug.jpg'
         ],
         [
