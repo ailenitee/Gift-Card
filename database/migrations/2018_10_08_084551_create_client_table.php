@@ -17,6 +17,10 @@ class CreateClientTable extends Migration
             $table->increments('id');
             $table->string('code')->unique();
             $table->string('name');
+            $table->string('bot_name')->nullable();
+            $table->string('access_token')->nullable();
+            $table->string('priority')->nullable();
+            $table->boolean('physical')->default(false);
             $table->timestamps();
         });
     }

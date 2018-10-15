@@ -93,12 +93,13 @@ class CardController extends Controller
   public function store(Request $request)
   {
     $input      = $request->except(['_token']);
-    $trans_id   = $this->cart->generateTransctionID(15);
-    $count = count($request->quantityVal);
+    // $trans_id   = $this->cart->generateTransctionID(15);
+    // $count = count($request->quantityVal);
+
     foreach ($request->themeID as $key => $value){
       $intval= (int)$value;
       $input['input'][$key]["theme_id"]           = $value;
-      $input['input'][$key]['transaction_id']     = $trans_id;
+      // $input['input'][$key]['transaction_id']     = $trans_id;
       $input['input'][$key]['brand_id']           = $request->brand_id;
       $input['input'][$key]['user_id']            = $request->user_id;
       $input['input'][$key]['sender']             = $request->sender;
@@ -118,15 +119,15 @@ class CardController extends Controller
       $input['input'][$key2]['total'] = $input['input'][$key2]['quantity'] * $input['input'][$key2]['denomination'];
     }
     foreach ($input['input'] as $key => $value){
-      if($input['input'][$key]['quantity'] == 0){
+
+      if($input['input'][$key]['quantity'] != 0){
         // DO NOT INSERT
-        $res = [];
-      }else{
+        // dd($input['input'][$key]['quantity']);
         $res[] =[
           'user_id'             => (int)$input['input'][$key]['user_id'],
           'theme_id'            => (int)$input['input'][$key]['theme_id'],
           'brand_id'            => (int)$input['input'][$key]['brand_id'],
-          'transaction_id'      => $input['input'][$key]['transaction_id'],
+          // 'transaction_id'      => $input['input'][$key]['transaction_id'],
           'sender'              => $input['input'][$key]['sender'],
           'name'                => $input['input'][$key]['name'],
           'quantity'            => $input['input'][$key]['quantity'],
@@ -437,7 +438,7 @@ class CardController extends Controller
       $data['name'] = $data['item']->name;
       $data['dname'] = $data['item']->dname;
       $data['email'] = $data['item']->email;
-      $data['message'] = $data['item']->message;
+      $data['message'] = $data['item']->message;x
       $data['giftcard'] = $data['item']->giftcard;
       $data['amount'] = $data['item']->amount;
       $data['sender'] = $data['item']->sender;

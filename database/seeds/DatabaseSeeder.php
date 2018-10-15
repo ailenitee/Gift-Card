@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
     $this->call(DenominationTableSeeder::class);
     $this->call(CategoryTableSeeder::class);
     $this->call(ThemesTableSeeder::class);
+    $this->call(RoleTableSeeder::class);
+    $this->call(ClientTableSeeder::class);
     $data = [
       [
         'name'				=> 'superadmin',
@@ -22,7 +24,7 @@ class DatabaseSeeder extends Seeder
         'password'				=> bcrypt('1q2w3e4R'),
         'username'				=> 'superadmin',
         'mobile'					=> '0000',
-        'roles'						=> '0',
+        'role_id'						=> 1,
         'status'				=> '1'
       ],
       [
@@ -31,7 +33,7 @@ class DatabaseSeeder extends Seeder
         'password'				=> bcrypt('admin'),
         'username'				=> 'administrator',
         'mobile'					=> '0000',
-        'roles'						=> '1',
+        'role_id'						=> 1,
         'status'				=> '1'
       ]
     ];
@@ -43,7 +45,7 @@ class DatabaseSeeder extends Seeder
         'password'      => $key['password'],
         'username'	    => $key['username'],
         'mobile'		    => $key['mobile'],
-        'roles'			    => $key['roles'],
+        'role_id'			    => $key['role_id'],
         'status'			  => $key['status'],
       ]);
     }

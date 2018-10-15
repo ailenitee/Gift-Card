@@ -116,6 +116,16 @@ class ThemesTableSeeder extends Seeder
           'theme'				      => url()->current().'/img/denomination/2000/GetWellSoon_2000.jpg',
           'category_id'			  => '7',
           'denomination_id'   => '5'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/100/Love_100.jpg',
+          'category_id'			  => '6',
+          'denomination_id'   => '1'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/200/ForHer_200.jpg',
+          'category_id'			  => '6',
+          'denomination_id'   => '2'
         ]
       ];
       foreach ($data as $key)

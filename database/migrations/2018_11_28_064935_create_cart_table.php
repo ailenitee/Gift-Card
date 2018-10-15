@@ -18,7 +18,6 @@ class CreateCartTable extends Migration
       $table->unsignedInteger('user_id')->unsigned();
       $table->unsignedInteger('brand_id')->unsigned();
       $table->unsignedInteger('theme_id')->unsigned();
-      $table->string('transaction_id');
       $table->string('sender');
       $table->string('name');
       $table->string('quantity');

@@ -15,18 +15,21 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('role_id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('username');
             $table->string('mobile');
             $table->string('password');
-            $table->string('roles');
             $table->string('status');
             $table->rememberToken();
             $table->timestamps();
             $table->engine = "InnoDB";
         });
-
+        Schema::table('users', function(Blueprint $table)
+        {
+          $table->foreign('role_id')->references('id')->on('roles')->onDelete('restrict')->onUpdate('restrict');
+        });
     }
 
     /**
