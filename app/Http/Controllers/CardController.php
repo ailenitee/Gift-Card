@@ -103,7 +103,7 @@ class CardController extends Controller
       if($input['input'][$key]['quantity'] != 0){
         // DO NOT INSERT
         // dd($input['input'][$key]['quantity']);
-        $res[$key] =[
+        $res[] =[
           'user_id'             => $input['input'][$key]['user_id'],
           'theme_id'            => (int)$input['input'][$key]['theme_id'],
           'brand_id'            => (int)$input['input'][$key]['brand_id'],

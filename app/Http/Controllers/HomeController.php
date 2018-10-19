@@ -40,11 +40,11 @@ class HomeController extends Controller
 
   public function giftcard()
   {
-    // dd(session()->getId());
+    session()->getId();
     $user = Auth::user();
     if ($user){
       $data['user_id'] = $user->id;
-      $data['cartThemes'] = DB::table('cart') 
+      $data['cartThemes'] = DB::table('cart')
       ->join('themes', 'themes.id', '=', 'cart.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
       ->select('cart.*','denominations.denomination','themes.theme')
@@ -56,7 +56,6 @@ class HomeController extends Controller
       ->join('themes', 'themes.id', '=', 'cart.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
       ->select('cart.*','denominations.denomination','themes.theme')
-      ->where('user_type', 'guest')
       ->where('user_id', session()->getId())
       ->get(); //get all data from db table.cart based on user id
     }
