@@ -23,8 +23,8 @@ class CreateThemesTable extends Migration
         });
         Schema::table('themes', function(Blueprint $table)
         {
-          $table->foreign('category_id')->references('id')->on('category')->onDelete('restrict')->onUpdate('restrict');
-          $table->foreign('denomination_id')->references('id')->on('denomination')->onDelete('restrict')->onUpdate('restrict');
+          $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict')->onUpdate('restrict');
+          $table->foreign('denomination_id')->references('id')->on('denominations')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

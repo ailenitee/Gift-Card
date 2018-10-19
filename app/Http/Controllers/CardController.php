@@ -28,64 +28,36 @@ class CardController extends Controller
   /**
   * Send a Gift Card.
   */
-  public function index()
-  {
+  public function index(){
     //for logged on user
     $user = Auth::user();
     if ($user){
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      $data['themes'] = DB::table('themes')->limit(6)
-      ->get();
-      $data['themesAll'] = DB::table('themes')
-      ->get();
-      $data['quantity'] = '';
-      $data['name'] = '';
-      $data['dname'] = '';
-      $data['email'] = '';
-      $data['message'] = '';
-      $data['giftcard'] = '';
-      $data['amount'] = '500';
-      $data['edit'] = '';
-      $data['id'] = '';
-      $data['sender'] = '';
-      $data['address'] = '';
-      $data['mobile'] = '';
-      // dd($data);
-      return view('details',$data);
     }else{
-      //for guest
-      $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      $data3['themes'] = DB::table('themes')->limit(6)
-      ->get();
-      $data3['themesAll'] = DB::table('themes')
-      ->get();
-      if (session()->exists('cart')){
-        $data3['quantity'] = '';
-        $data3['id'] = '';
-        $data3['name'] = '';
-        $data3['dname'] = '';
-        $data3['email'] = '';
-        $data3['message'] = '';
-        $data3['giftcard'] = '';
-        $data3['amount'] = '500';
-        $data3['edit'] = '';
-        $data3['sender'] = '';
-        $data3['address'] = '';
-        $data3['mobile'] = '';
-        if (!empty($data2)){
-          $data['cart'] =$data;
-          $array = array_merge($data, $data3);
-          return view('details',$array);
-        }else{
-          return view('details',$data3);
-        }
-      }else{
-        return view('details',$data);
-      }
+      $data['cart'] = DB::table('cart')
+      ->where('user_type', 'guest')
+      ->get(); //get all data from db table.cart based on user id
     }
+    $data['themes'] = DB::table('themes')->limit(6)
+    ->get();
+    $data['themesAll'] = DB::table('themes')
+    ->get();
+    $data['quantity'] = '';
+    $data['name'] = '';
+    $data['dname'] = '';
+    $data['email'] = '';
+    $data['message'] = '';
+    $data['giftcard'] = '';
+    $data['amount'] = '500';
+    $data['edit'] = '';
+    $data['id'] = '';
+    $data['sender'] = '';
+    $data['address'] = '';
+    $data['mobile'] = '';
+    // dd($data);
+    return view('details',$data);
   }
   /**
   * Store to Cart.
@@ -95,19 +67,27 @@ class CardController extends Controller
     $input      = $request->except(['_token']);
     // $trans_id   = $this->cart->generateTransctionID(15);
     // $count = count($request->quantityVal);
-
+    // dd($input);
+    if($input['user_id'] == "0"){
+      $user_type = 'guest';
+      $user_id = session()->getId();
+    }else{
+      $user_type = 'user';
+      $user_id = $request->user_id;
+    }
     foreach ($request->themeID as $key => $value){
       $intval= (int)$value;
       $input['input'][$key]["theme_id"]           = $value;
       // $input['input'][$key]['transaction_id']     = $trans_id;
       $input['input'][$key]['brand_id']           = $request->brand_id;
-      $input['input'][$key]['user_id']            = $request->user_id;
+      $input['input'][$key]['user_id']            = $user_id;
       $input['input'][$key]['sender']             = $request->sender;
       $input['input'][$key]['name']               = $request->name;
       $input['input'][$key]['address']            = $request->address;
       $input['input'][$key]['mobile']             = $request->mobile;
-      $input['themes'] = DB::table('denomination')
-      ->leftJoin('themes', 'themes.denomination_id', '=', 'denomination.id')
+      $input['input'][$key]['user_type']          = $user_type;
+      $input['themes'] = DB::table('denominations')
+      ->leftJoin('themes', 'themes.denomination_id', '=', 'denominations.id')
       ->where('themes.id',$intval)
       ->get();
       foreach ($input['themes'] as $key3 => $value){
@@ -123,8 +103,8 @@ class CardController extends Controller
       if($input['input'][$key]['quantity'] != 0){
         // DO NOT INSERT
         // dd($input['input'][$key]['quantity']);
-        $res[] =[
-          'user_id'             => (int)$input['input'][$key]['user_id'],
+        $res[$key] =[
+          'user_id'             => $input['input'][$key]['user_id'],
           'theme_id'            => (int)$input['input'][$key]['theme_id'],
           'brand_id'            => (int)$input['input'][$key]['brand_id'],
           // 'transaction_id'      => $input['input'][$key]['transaction_id'],
@@ -134,7 +114,8 @@ class CardController extends Controller
           'address'             => $input['input'][$key]['address'],
           // 'email'               => $input['email'],
           'mobile'              => $input['input'][$key]['mobile'],
-          'total'               => $input['input'][$key]['total']
+          'total'               => $input['input'][$key]['total'],
+          'user_type'           => $input['input'][$key]['user_type']
         ];
       }
     }
@@ -154,19 +135,11 @@ class CardController extends Controller
 
   public function storeCart($res,$input,$request)
   {
-    if ($input['user_id'] != '0'){
-      $messages   = [
-        'required' => 'The :attribute is required',
-      ];
-      Cart::insert($res);
-    }else{
-      //// TODO: insert to cart for guest
-      if ($request->session()->exists('cart')) {
-        $request->session()->push('cart.items', $res);
-      }else{
-        $request->session()->put('cart.items', $res);
-      }
-    }
+    // dd($res);
+    $messages   = [
+      'required' => 'The :attribute is required',
+    ];
+    Cart::insert($res);
     $cart                       = $this->cart->getItems();
     $data['cart']               = $cart;
     if($request->type =="json"){
@@ -196,7 +169,7 @@ class CardController extends Controller
         // Joined cart and themes to get themes details
         $data['cartThemes'][$key] = DB::table('themes')
         ->join('cart', 'themes.id', '=', 'cart.theme_id')
-        ->join('denomination', 'themes.denomination_id', '=', 'denomination.id')
+        ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
         ->where('cart.theme_id', $value->theme_id)
         ->get();
       }
@@ -221,7 +194,7 @@ class CardController extends Controller
                 $data['cart'][$key][$key2]['denomination_id'] = $value3->denomination_id;
               }
               //get denomination
-              $data['cart'][$key][$key2]['denomination'] = DB::table('denomination')
+              $data['cart'][$key][$key2]['denomination'] = DB::table('denominations')
               ->where('id', $data['cart'][$key][$key2]['denomination_id'])
               ->get();
               foreach ($data['cart'][$key][$key2]['denomination'] as $value4){
@@ -421,71 +394,39 @@ class CardController extends Controller
   */
   public function edit($id)
   {
-    //for logged on user
-
     $user = Auth::user();
     if ($user){
-      $data['item'] = DB::table('cart')
-      ->where('id', $id)
-      ->first(); //get specific data to edit from db table.cart based on user id
-      $data['cart'] = DB::table('cart')
+      $data['user_id'] = $user->id;
+      $data['cartThemes'] = DB::table('cart')
+      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+      ->select('cart.*','denominations.denomination','themes.theme')
+      ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      $data['themes'] = DB::table('themes')->limit(6)
-      ->get();
-      $data['themesAll'] = DB::table('themes')
-      ->get();
-      $data['quantity'] = $data['item']->quantity;
-      $data['name'] = $data['item']->name;
-      $data['dname'] = $data['item']->dname;
-      $data['email'] = $data['item']->email;
-      $data['message'] = $data['item']->message;x
-      $data['giftcard'] = $data['item']->giftcard;
-      $data['amount'] = $data['item']->amount;
-      $data['sender'] = $data['item']->sender;
-      $data['address'] = $data['item']->address;
-      $data['mobile'] = $data['item']->mobile;
-      $data['edit'] = 'edit';
-      $data['id'] = $id;
-
-      return view('details',$data);
     }else{
-      //for guest
-      $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      $data3['themes'] = DB::table('themes')
-      ->limit(6)
-      ->get();
-      $data3['themesAll'] = DB::table('themes')
-      ->get();
-      if (session()->exists('cart')){
-        if (!empty($data2)){
-
-          foreach ($data2 as $key => $value){
-            if($value['id'] == $id){
-              $data3['quantity'] = $value['quantity'];
-              $data3['name'] = $value['name'];
-              $data3['dname'] = $value['dname'];
-              $data3['email'] = $value['email'];
-              $data3['message'] = $value['message'];
-              $data3['giftcard'] = $value['giftcard'];
-              $data3['amount'] = $value['amount'];
-              $data3['edit'] = 'edit';
-              $data3['id'] = $id;
-              $data3['sender'] =$value['sender'];
-              $data3['address'] = $value['address'];
-              $data3['mobile'] = $value['mobile'];
-            }
-          }
-          $data['cart'] =$data;
-          $array = array_merge($data, $data3);
-          return view('details',$array);
-        }else{
-          return view('details');
-        }
-      }else{
-        return view('details');
-      }
+      $data['user_id'] = session()->getId();
+      $data['cartThemes'] = DB::table('cart')
+      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+      ->select('cart.*','denominations.denomination','themes.theme')
+      ->where('user_type', 'guest')
+      ->get(); //get all data from db table.cart based on user id
     }
+    $data['item'] = DB::table('cart')
+    ->join('themes', 'themes.id', '=', 'cart.theme_id')
+    ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+    ->select('cart.*','denominations.denomination','themes.theme')
+    ->where('cart.id', $id)
+    ->first();
+    $data['brand_id'] = $data['item']->brand_id;
+    $data['name']     = $data['item']->name;
+    $data['sender']   = $data['item']->sender;
+    $data['address']  = $data['item']->address;
+    $data['mobile']   = $data['item']->mobile;
+    $data['quantity'] = $data['item']->quantity;
+    $data['edit'] = 'edit';
+    $data['id'] = $id;
+    return view('giftcard',$data);
   }
 
 
@@ -495,48 +436,24 @@ class CardController extends Controller
   public function update(Request $request)
   {
     $data['edit'] = 'edit';
-    $request->total = $request->quantity*$request->amount; //get total amount per item
-    $input      = $request->except(['_token','submitbutton']);
-    $input['total'] = $request->total;
-    if($request->hasFile('giftcard')){
-      $messages   = [
-        'image|mimes' => 'should be jpeg,png,jpg,gif,svg!',
-      ];
-      $imageName = time().'.'.$request->giftcard->getClientOriginalExtension(); //set a name for the image
-      $request->giftcard->move(public_path('/img/uploads'), $imageName); //move the image to a folder
-      $imageFile = $this->url->to('/').'/img/uploads/'.$imageName; //the full url of the image
-      $input['giftcard'] = $imageFile; //new name/link of the image
-    }
+
+     //get total amount per item
+    $input      = $request->except(['_token','submitbutton','denomination','quantityVal','themeID']);
     //for logged on user
-    if ($request->user_id != '0'){
-      $messages   = [
-        'required' => 'The :attribute is required',
-      ];
-      DB::table('cart')
-      ->where('id', $request->id)
-      ->where('user_id', $request->user_id)
-      ->update($input);
-    }else{
-      //for guest
-      $data2 = session()->get('cart.items');
-      foreach ($data2 as $key => $value){
-        if($value['id'] == $input['id']){
-          session()->pull('cart.items.'. $key); //get selected cart item
-          session()->forget('cart.items.'. $key); //delete selected cart item
-          session()->save(); //save cart
-        }
-      }
-      if ($request->session()->exists('cart')) {
-        $request->session()->push('cart.items', $input);
-      }else{
-        $request->session()->put('cart.items', $input);
-      }
+    $messages   = [
+      'required' => 'The :attribute is required',
+    ];
+    // dd($input,$request);
+    foreach ($request->quantityVal as $key => $value){
+      $input['total'] = (int)$value*(int)$request->denomination;
+       $input['quantity'] = $value;
     }
-    $cart                       = $this->cart->getItems();
-    $data['cart']               = $cart;
-    if($request->type =="json"){
-      return $data;
-    }
+    // dd($input,$request);
+    DB::table('cart')
+    ->where('id', $request->id)
+    ->where('user_id', $request->user_id)
+    ->update($input);
+
     switch($request->submitbutton) {
       case 'update':
       return back()->with('success', 'Updated Cart Item Succesfully!'); //Update Cart

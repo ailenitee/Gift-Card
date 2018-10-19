@@ -13,7 +13,7 @@ class CreateDenominationTable extends Migration
      */
     public function up()
     {
-        Schema::create('denomination', function (Blueprint $table) {
+        Schema::create('denominations', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('denomination');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateDenominationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('denomination');
+        Schema::dropIfExists('denominations');
     }
 }

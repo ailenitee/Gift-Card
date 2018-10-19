@@ -16,95 +16,66 @@ class HomeController extends Controller
   * @return \Illuminate\Http\Response
   */
   protected $url;
-
   public function __construct(UrlGenerator $url)
   {
     $this->url = $url;
     $this->cart = session('cart');
   }
   public function brand() {
+    // dd(session()->getId());
     $user = Auth::user();
-    $data['brand'] = DB::table('brand')
+    $data['brand'] = DB::table('brands')
     ->get();
     if ($user){
       $data['cart'] = DB::table('cart')
       ->where('user_id', $user->id)
-      ->get();
-      // dd($data);
-      return view('brand',$data);
+      ->get(); //get all data from db table.cart based on user id
     }else{
-      //for guest
-      $data3 = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      if (session()->exists('cart')){
-        if (!empty($data2)){
-          $data3['cart'] =$data3;
-          return view('brand',$data);
-        }else{
-          return view('brand',$data);
-        }
-      }else{
-        return view('brand',$data);
-      }
-      // return view('brand',$data);
+      $data['cart'] = DB::table('cart')
+      ->where('user_type', 'guest')
+      ->get(); //get all data from db table.cart based on user id
     }
+    return view('brand',$data);
   }
+
   public function giftcard()
   {
+    // dd(session()->getId());
     $user = Auth::user();
     if ($user){
-      $data['cart'] = DB::table('cart')
+      $data['user_id'] = $user->id;
+      $data['cartThemes'] = DB::table('cart') 
+      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+      ->select('cart.*','denominations.denomination','themes.theme')
       ->where('user_id', $user->id)
-      ->get();
-      foreach ($data['cart'] as $key => $value){
-        // Joined cart and themes to get themes details
-        $data['cartThemes'][$key] = DB::table('themes')
-        ->join('cart', 'themes.id', '=', 'cart.theme_id')
-        ->join('denomination', 'themes.denomination_id', '=', 'denomination.id')
-        ->where('cart.theme_id', $value->theme_id)
-        ->get();
-      }
+      ->get(); //get all data from db table.cart based on user id
     }else{
-      $data3 = session()->get('cart');
-      $data2 = session()->get('cart.items');
-      // dd($data2);
-      if (session()->exists('cart')){
-        if (!empty($data2)){
-          $data['cart'] =$data2;
-          // dd($data2);
-          foreach ($data2 as $key => $value){
-            foreach ($value as $key2 => $value2){
-              //get theme img
-
-              $data['cart'][$key][$key2]['themes'] = DB::table('themes')
-              ->where('id', $value2['theme_id'])
-              ->get();
-              foreach ($data['cart'][$key][$key2]['themes'] as $value3){
-                $data['cart'][$key][$key2]['themeImg'] = $value3->theme;
-                $data['cart'][$key][$key2]['denomination_id'] = $value3->denomination_id;
-              }
-              //get denomination
-              $data['cart'][$key][$key2]['denomination'] = DB::table('denomination')
-              ->where('id', $data['cart'][$key][$key2]['denomination_id'])
-              ->get();
-              foreach ($data['cart'][$key][$key2]['denomination'] as $value4){
-                $data['cart'][$key][$key2]['denomination'] = $value4->denomination;
-              }
-
-              $data['cart'][$key][$key2]['theme'] = $data['cart'][$key][$key2]['themeImg'];
-              $data['cart'][$key][$key2]['denomination'] = $data['cart'][$key][$key2]['denomination'];
-            }
-          }
-          // dd(count($key));
-        }
-      }
+      $data['user_id'] = session()->getId();
+      $data['cartThemes'] = DB::table('cart')
+      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+      ->select('cart.*','denominations.denomination','themes.theme')
+      ->where('user_type', 'guest')
+      ->where('user_id', session()->getId())
+      ->get(); //get all data from db table.cart based on user id
     }
 
+    foreach ($data['cartThemes'] as $key => $value){
+      // Joined cart and themes to get themes details
+      $data['item'] = DB::table('cart')
+      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
+      ->select('cart.*','denominations.denomination','themes.theme')
+      ->where('cart.theme_id', $value->theme_id)
+      ->get();
+    }
+    // dd($data['cartThemes']);
     $var = preg_split("/\//", $this->url->current());
     $new = str_replace('%20', ' ', $var[5]);
     $fword = explode(' ' ,$new);
     $data['fword'] = explode(' ' ,$fword[0]);
-    $data['brand'] = DB::table('brand')
+    $data['brand'] = DB::table('brands')
     ->where('brand', $new)
     ->get();
     // dd($data['brand']);
@@ -116,14 +87,20 @@ class HomeController extends Controller
     $data['allThemes'] = $denum;
     foreach ($denum  as $key => $value){
       $intval= (int)$value;
-      $data['denum'][] = DB::table('denomination')
-      ->leftJoin('themes', 'themes.denomination_id', '=', 'denomination.id')
+      $data['denum'][] = DB::table('denominations')
+      ->leftJoin('themes', 'themes.denomination_id', '=', 'denominations.id')
       ->where('themes.id',$intval)
       ->get();
     }
     $data['name'] = '';
+    $data['edit'] = '';
+    $data['address'] = '';
+    $data['sender'] = '';
+    $data['mobile'] = '';
+
     $data['intval'] = $intval;
 
+    // dd($data);
 
     return view('giftcard',$data);
   }
@@ -137,4 +114,8 @@ class HomeController extends Controller
     return view('contact');
   }
 
+  public function getCart($user){
+
+    return $data['cartThemes'];
+  }
 }

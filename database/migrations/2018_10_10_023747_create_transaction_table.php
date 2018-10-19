@@ -13,7 +13,7 @@ class CreateTransactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name');
@@ -29,9 +29,9 @@ class CreateTransactionTable extends Migration
             $table->timestamps();
             $table->engine = "InnoDB";
         });
-        Schema::table('transaction', function(Blueprint $table)
+        Schema::table('transactions', function(Blueprint $table)
         {
-          $table->foreign('client_id')->references('id')->on('client')->onDelete('restrict')->onUpdate('restrict');
+          $table->foreign('client_id')->references('id')->on('clients')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 
@@ -42,6 +42,6 @@ class CreateTransactionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('transactions');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-  protected $table = "brand";
+  protected $table = "brands";
   protected $fillable = ["brand","theme","logo"];
 
   public function getFillable(){
