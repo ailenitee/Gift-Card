@@ -60,7 +60,7 @@ class CardController extends Controller
     return view('details',$data);
   }
   /**
-  * Store to Cart.
+  * Store to carts.
   */
   public function store(Request $request)
   {
@@ -160,17 +160,17 @@ class CardController extends Controller
     if ($user){
       $data['user_id'] = $user->id;
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
     }else{
       $data['user_id'] = session()->getId();
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_id', session()->getId())
       ->get(); //get all data from db table.cart based on user id
     }
@@ -310,7 +310,7 @@ class CardController extends Controller
     }else{
       //for guest
       $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
+      $data2 = session()->get('carts.items');
       //check if existing cart in session
       if (session()->exists('cart')){
         //check if cart empty
@@ -336,25 +336,25 @@ class CardController extends Controller
     if ($user){
       $data['user_id'] = $user->id;
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
     }else{
       $data['user_id'] = session()->getId();
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_type', 'guest')
       ->get(); //get all data from db table.cart based on user id
     }
     $data['item'] = DB::table('carts')
-    ->join('themes', 'themes.id', '=', 'cart.theme_id')
+    ->join('themes', 'themes.id', '=', 'carts.theme_id')
     ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-    ->select('cart.*','denominations.denomination','themes.theme')
-    ->where('cart.id', $id)
+    ->select('carts.*','denominations.denomination','themes.theme')
+    ->where('carts.id', $id)
     ->first();
     $data['brand_id'] = $data['item']->brand_id;
     $data['name']     = $data['item']->name;
@@ -427,11 +427,11 @@ class CardController extends Controller
       ->delete(); //delete data from db table.cart based on item id
     }else{
       //for guest
-      $data2 = session()->get('cart.items');
+      $data2 = session()->get('carts.items');
       foreach ($data2 as $key => $value){
         if($value['id'] == $id){
-          session()->pull('cart.items.'. $key);
-          session()->forget('cart.items.'. $key);
+          session()->pull('carts.items.'. $key);
+          session()->forget('carts.items.'. $key);
           session()->save();
         }
       }
@@ -470,7 +470,7 @@ class CardController extends Controller
     }else{
       //for guest
       $data = session()->get('cart');
-      $data2 = session()->get('cart.items');
+      $data2 = session()->get('carts.items');
       $data3['themes'] = DB::table('themes')
       ->get(); //get all data from db table.themes
       $data3['themesAll'] = DB::table('themes')

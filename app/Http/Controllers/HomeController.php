@@ -45,17 +45,17 @@ class HomeController extends Controller
     if ($user){
       $data['user_id'] = $user->id;
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
     }else{
       $data['user_id'] = session()->getId();
       $data['cartThemes'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
+      ->select('carts.*','denominations.denomination','themes.theme')
       ->where('user_id', session()->getId())
       ->get(); //get all data from db table.cart based on user id
     }
@@ -63,10 +63,10 @@ class HomeController extends Controller
     foreach ($data['cartThemes'] as $key => $value){
       // Joined cart and themes to get themes details
       $data['item'] = DB::table('carts')
-      ->join('themes', 'themes.id', '=', 'cart.theme_id')
+      ->join('themes', 'themes.id', '=', 'carts.theme_id')
       ->join('denominations', 'themes.denomination_id', '=', 'denominations.id')
-      ->select('cart.*','denominations.denomination','themes.theme')
-      ->where('cart.theme_id', $value->theme_id)
+      ->select('carts.*','denominations.denomination','themes.theme')
+      ->where('carts.theme_id', $value->theme_id)
       ->get();
     }
     // dd($data['cartThemes']);
