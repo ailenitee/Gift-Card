@@ -17,11 +17,12 @@ class CreateLogsTable extends Migration
       $table->unsignedInteger('cart_id')->unsigned();
       $table->increments('id');
       $table->string('epin');
+      $table->string('code')->nullable();
       $table->timestamps();
     });
     Schema::table('logs', function(Blueprint $table)
     {
-      $table->foreign('cart_id')->references('id')->on('cart')->onDelete('restrict')->onUpdate('restrict');
+      $table->foreign('cart_id')->references('id')->on('carts')->onDelete('restrict')->onUpdate('restrict');
     });
   }
 

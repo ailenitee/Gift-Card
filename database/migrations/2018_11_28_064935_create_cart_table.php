@@ -13,9 +13,8 @@ class CreateCartTable extends Migration
   */
   public function up()
   {
-    Schema::create('cart', function (Blueprint $table) {
+    Schema::create('carts', function (Blueprint $table) {
       $table->increments('id');
-      // $table->unsignedInteger('user_id')->unsigned();
       $table->unsignedInteger('brand_id')->unsigned();
       $table->unsignedInteger('theme_id')->unsigned();
       $table->unsignedInteger('product_id')->nullable()->unsigned();
@@ -28,13 +27,12 @@ class CreateCartTable extends Migration
       $table->string('address')->nullable();
       $table->string('message')->nullable();
       $table->string('mobile')->nullable();
-      $table->string('total'); 
+      $table->string('total');
       $table->timestamps();
       $table->engine = "InnoDB";
     });
-    Schema::table('cart', function(Blueprint $table)
-    {
-      // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    Schema::table('carts', function(Blueprint $table)
+    { 
       $table->foreign('brand_id')->references('id')->on('brands')->onDelete('restrict')->onUpdate('restrict');
       $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('restrict')->onUpdate('restrict');
       $table->foreign('theme_id')->references('id')->on('themes')->onDelete('restrict')->onUpdate('restrict');
@@ -50,7 +48,7 @@ class CreateCartTable extends Migration
   public function down()
   {
     DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-    Schema::dropIfExists('cart');
+    Schema::dropIfExists('carts');
     DB::statement('SET FOREIGN_KEY_CHECKS = 1');
   }
 }
