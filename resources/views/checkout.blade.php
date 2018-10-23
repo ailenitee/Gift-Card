@@ -15,31 +15,15 @@
               <p>Total Amount:</p>
             </div>
             <div class="col-md-6">
-              @if(Auth::guest())
-                <p>{{count($items)}}</p>
-              @else
-                <p>{{count($cart)}}</p>
-              @endif
+              <p>{{count($cart)}}</p>
               <p>&#8369;<span class="total_sum"></span></p>
               <input type="hidden" name="total" value="" class="total_sum">
               <input type="hidden" name="status" value="pending">
             </div>
           </div>
-          @if(Auth::guest())
-            @if(!empty($cart))
-              @foreach ($cart as $card)
-                @foreach ($card as $cards)
-                  @if(isset($cards['total']))
-                  <div class="total-cart" style="display:none;">{{$cards['total']}}</div>
-                  @endif
-                @endforeach
-              @endforeach
-            @endif
-          @else
-            @foreach ($cart as $card)
-              <div class="total-cart" style="display:none;">{{$card->total}}</div>
-            @endforeach
-          @endif
+          @foreach ($cart as $card)
+          <div class="total-cart" style="display:none;">{{$card->total}}</div>
+          @endforeach 
         </div>
         <hr>
         <div class="m-top">
@@ -75,9 +59,9 @@
             <button type="submit" name="button" class="btn-red btn-center btn-checkout" >CONFIRM AND PAY</button>
           </div>
         </div>
-        </form>
-      </div>
+      </form>
     </div>
+  </div>
 </div>
 
 @stop

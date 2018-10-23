@@ -33,6 +33,9 @@ class CategoryTableSeeder extends Seeder
         [
           'category'				          => 'Get Well Soon'
         ],
+        [
+          'category'				          => 'Regular'
+        ],
       ];
       foreach ($data as $key)
       {

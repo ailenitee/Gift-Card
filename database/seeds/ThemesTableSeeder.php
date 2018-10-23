@@ -126,7 +126,32 @@ class ThemesTableSeeder extends Seeder
           'theme'				      => url()->current().'/img/denomination/200/ForHer_200.jpg',
           'category_id'			  => '6',
           'denomination_id'   => '2'
-        ]
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/100/Love_100.jpg',
+          'category_id'			  => '8',
+          'denomination_id'   => '1'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/200/ForHer_200.jpg',
+          'category_id'			  => '8',
+          'denomination_id'   => '2'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/500/Christmas1_500.jpg',
+          'category_id'			  => '8',
+          'denomination_id'   => '3'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/1000/Love_1000.jpg',
+          'category_id'			  => '8',
+          'denomination_id'   => '4'
+        ],
+        [
+          'theme'				      => url()->current().'/img/denomination/2000/Congratulations_2000.jpg',
+          'category_id'			  => '8',
+          'denomination_id'   => '5'
+        ],
       ];
       foreach ($data as $key)
       {

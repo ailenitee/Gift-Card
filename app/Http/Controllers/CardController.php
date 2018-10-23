@@ -306,25 +306,13 @@ class CardController extends Controller
       $data['cart'] = DB::table('carts')
       ->where('user_id', $user->id)
       ->get(); //get all data from db table.cart based on user id
-      return view('checkout',$data);
+
     }else{
-      //for guest
-      $data = session()->get('cart');
-      $data2 = session()->get('carts.items');
-      //check if existing cart in session
-      if (session()->exists('cart')){
-        //check if cart empty
-        if (!empty($data2)){
-          $data['cart'] =$data;
-          $data['items'] =$data2;
-          return view('checkout',$data);
-        }else{
-          return view('checkout');
-        }
-      }else{
-        return view('checkout');
-      }
+      $data['cart'] = DB::table('carts')
+      ->where('user_id', session()->getId())
+      ->get(); //get all data from db table.cart based on user id
     }
+    return view('checkout',$data);
   }
 
   /**
@@ -407,12 +395,15 @@ class CardController extends Controller
   */
   public function clearCart(Request $request){
     $user = Auth::user();
+    session()->getId();
     if ($user){
       $data = DB::table('carts')
       ->where('user_id', $user->id)
       ->delete();
     }else{
-      session()->flush('cart');
+      $data = DB::table('carts')
+      ->where('user_id', session()->getId())
+      ->delete();
     }
     return back()->with('success', 'Cleared Cart!');
   }
@@ -420,84 +411,9 @@ class CardController extends Controller
   public function deleteCart($id)
   {
     //for logged on user
-    $user = Auth::user();
-    if ($user){
-      $data['cart'] = DB::table('carts')
-      ->where('id', $id)
-      ->delete(); //delete data from db table.cart based on item id
-    }else{
-      //for guest
-      $data2 = session()->get('carts.items');
-      foreach ($data2 as $key => $value){
-        if($value['id'] == $id){
-          session()->pull('carts.items.'. $key);
-          session()->forget('carts.items.'. $key);
-          session()->save();
-        }
-      }
-    }
-    return redirect('/card/details')->with('success', 'Removed Item From Cart!');
-  }
-
-  public function index2()
-  {
-    //for logged on user
-    $user = Auth::user();
-
-    if ($user){
-      $data['themes'] = DB::table('themes')
-      ->get(); //get all data from db table.themes
-      $data['cart'] = DB::table('carts')
-      ->where('user_id', $user->id)
-      ->get(); //get all data from db table.cart based on user id
-      $data['themes'] = DB::table('themes')->limit(6)
-      ->get();
-      $data['themesAll'] = DB::table('themes')
-      ->get();
-      $data['quantity'] = '';
-      $data['name'] = '';
-      $data['dname'] = '';
-      $data['email'] = '';
-      $data['message'] = '';
-      $data['giftcard'] = '';
-      $data['amount'] = '500';
-      $data['edit'] = '';
-      $data['id'] = '';
-      $data['sender'] = '';
-      $data['address'] = '';
-      $data['mobile'] = '';
-      return view('details2',$data);
-    }else{
-      //for guest
-      $data = session()->get('cart');
-      $data2 = session()->get('carts.items');
-      $data3['themes'] = DB::table('themes')
-      ->get(); //get all data from db table.themes
-      $data3['themesAll'] = DB::table('themes')
-      ->get();
-      if (session()->exists('cart')){
-        $data3['quantity'] = '';
-        $data3['id'] = '';
-        $data3['name'] = '';
-        $data3['dname'] = '';
-        $data3['email'] = '';
-        $data3['message'] = '';
-        $data3['giftcard'] = '';
-        $data3['amount'] = '500';
-        $data3['edit'] = '';
-        $data3['sender'] = '';
-        $data3['address'] = '';
-        $data3['mobile'] = '';
-        if (!empty($data2)){
-          $data['cart'] =$data;
-          $array = array_merge($data, $data3);
-          return view('details2',$array);
-        }else{
-          return view('details2',$data3);
-        }
-      }else{
-        return view('details2',$data);
-      }
-    }
+    $data['cart'] = DB::table('carts')
+    ->where('id', $id)
+    ->delete();
+    return back()->with('success', 'Removed Item From Cart!');
   }
 }

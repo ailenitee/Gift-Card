@@ -40,10 +40,7 @@
                 <p class="text-center">From: {{$card->name}}</p>
               </div>
               <div class="col-md-3">
-                @if($card->email)
-                <p>Send to: {{$card->email}}</p>
-                <!-- Deliver -->
-                @else
+                @if($card->address)
                 <p>
                   Deliver to:
                   <br>
@@ -54,11 +51,20 @@
                   {{$card->address}}
                 </p>
                 <!-- end Deliver -->
+                <!-- SMS -->
+                @else
+                <p>
+                  Send Text Message to:
+                  <br>
+                  {{$card->name}}
+                  <br>
+                  {{$card->mobile}}
+                </p>
+                <!-- end SMS -->
                 @endif
-                <p class="text-overflow">Message: {{$card->message}}</p>
               </div>
               <div class="col-md-2">
-                {{$card->amount}}
+                {{$card->denomination}}
               </div>
               <div class="col-md-1">
                 {{$card->quantity}}
@@ -79,21 +85,34 @@
             </div>
             <div class="hid-sm">
               <div class="col-xs-4">
-                <img src="{{$card->giftcard}}" alt="" class="confirm_img">
+                <img src="{{$card->theme}}" alt="" class="confirm_img">
                 <div class="action_buttons">
                   <input type="hidden" name="id" value="{{$card->id}}">
                   <a href="{{url('/edit-cart',$card->id)}}">Edit</a>&nbsp;
-                  <!-- <input type="hidden" name="id" value="{{$card->id}}">
-                  <a href="{{url('/delete-cart',$card->id)}}">Delete</a> -->
                   <input type="hidden" name="id" value="{{$card->id}}" class="get_id">
                   <div class="custom_link delete_link">Delete</div>
                 </div>
               </div>
               <div class="col-xs-8">
-                <p>Send to: <b>{{$card->email}}</b></p>
-                <p>From: {{$card->name}}</p>
-                <p class="text-overflow">Message: {{$card->message}}</p>
-                <p>Amount: {{$card->amount}}</p>
+                @if($card->address)
+                <p>
+                  Deliver to:
+                  <br>
+                  <p>{{$card->address}}</p>
+                  <p>From: {{$card->name}}</p>
+                  <p>Mobile: {{$card->mobile}}</p>
+                </p>
+                <!-- end Deliver -->
+                <!-- SMS -->
+                @else
+                <p>
+                  Send Text Message to:
+                  <p>{{$card->name}}</p>
+                  <p>Mobile: {{$card->mobile}}</p>
+                </p>
+                <!-- end SMS -->
+                @endif 
+                <p>Amount: {{$card->denomination}}</p>
                 <p>Quantity: {{$card->quantity}}</p>
                 <p>Total: {{$card->total}}</p>
               </div>
