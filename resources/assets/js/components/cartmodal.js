@@ -5,6 +5,9 @@ $(function() {
   $('.delete_link').on('click', function(){
     var pass_id = $(this).siblings('.get_id').val();
     $('.modal-body').scrollTop(0);
+    if(window.location.href.indexOf("confirm") > -1) {
+      $("html, body").animate({scrollTop: $("#top").offset().top}, 200);
+   }
     $('#pass_id').val(pass_id);
     $('.alert-cart-confirmation').css('display','block');
     $('.alert-cart-confirmation').css('opacity','1');

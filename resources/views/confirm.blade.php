@@ -1,5 +1,6 @@
 @extends('includes.app')
 @section('content')
+<a name="top" id="top"></a>
 <div class="container">
   <div class="content confirm">
     <h1 class="text-center egift">Confirm &amp; Checkout</h1>
@@ -17,6 +18,13 @@
           </div>
         </div>
       </div>
+      @if(count($cartThemes) == 0)
+      <div class="text-center">
+        <br>
+        <h2>You have nothing in your Cart</h2>
+        <a  href="{{url('/brand')}}"class="btn-border btn-center m-bottom">CONTINUE SHOPPING</a>
+      </div>
+      @else
       <div class="row hids-xs" style="width: 90%;margin: 0 auto;">
         <div class="col-md-offset-5 col-md-2">
           <h4 class="text-center">Price</h4>
@@ -28,7 +36,6 @@
           <h4 class="text-center">Total</h4>
         </div>
       </div>
-      @if(!empty($cartThemes))
       @foreach ($cartThemes as $card)
       <div class="inner-box">
         <div class="row">
@@ -111,7 +118,7 @@
                   <p>Mobile: {{$card->mobile}}</p>
                 </p>
                 <!-- end SMS -->
-                @endif 
+                @endif
                 <p>Amount: {{$card->denomination}}</p>
                 <p>Quantity: {{$card->quantity}}</p>
                 <p>Total: {{$card->total}}</p>
@@ -125,15 +132,23 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <p class="total_sum_p">Total : <span class="total_sum"></span></p>
+        <p class="total_sum_p">Total : &#8369;<span class="total_sum"></span></p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <a  href="{{url('/brand')}}"class="btn-border btn-center m-bottom">ADD ANOTHER GIFT</a>
+        @if(count($cartThemes) == 0)
+          <a  href="{{url('/brand')}}"class="btn-border btn-center m-bottom">ADD A GIFT</a>
+        @else
+          <a  href="{{url('/brand')}}"class="btn-border btn-center m-bottom">ADD ANOTHER GIFT</a>
+        @endif
       </div>
       <div class="col-md-6">
+        @if(count($cartThemes) == 0)
+          <a class="btn-red btn-center disabled" href="{{url('/checkout')}}">CONFIRM AND CHECKOUT</a>
+        @else
         <a class="btn-red btn-center" href="{{url('/checkout')}}">CONFIRM AND CHECKOUT</a>
+        @endif
       </div>
     </div>
   </div>

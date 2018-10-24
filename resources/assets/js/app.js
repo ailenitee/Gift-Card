@@ -114,9 +114,12 @@ $(function() {
   var decode = decodeURI(last_part);
   $('#geturl').val(decode);
 
-  var str = $("#geturl").val();
-  var spaceChar = str.indexOf(" ");
-  var reqstr = str.substring(0,spaceChar);
+  var str = $("#geturl").val(); 
+  if(str != undefined){
+    var spaceChar = str.indexOf(" ");
+    var reqstr = str.substring(0,spaceChar);
+  }
+
   $('#gettemplate').val(reqstr);
   $('.template-name').text(decode+" Gift Card");
 

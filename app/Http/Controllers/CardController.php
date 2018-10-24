@@ -78,7 +78,6 @@ class CardController extends Controller
     foreach ($request->themeID as $key => $value){
       $intval= (int)$value;
       $input['input'][$key]["theme_id"]           = $value;
-      // $input['input'][$key]['transaction_id']     = $trans_id;
       $input['input'][$key]['brand_id']           = $request->brand_id;
       $input['input'][$key]['user_id']            = $user_id;
       $input['input'][$key]['sender']             = $request->sender;
@@ -174,7 +173,7 @@ class CardController extends Controller
       ->where('user_id', session()->getId())
       ->get(); //get all data from db table.cart based on user id
     }
-    // dd($data);
+    // dd(count($data['cartThemes']));
     return view('confirm',$data);
   }
 
