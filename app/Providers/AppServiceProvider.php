@@ -11,27 +11,30 @@ use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+  /**
+  * Bootstrap any application services.
+  *
+  * @return void
+  */
+  public function boot()
+  {
+    Schema::defaultStringLength(191);
+    if(!session('cart'))
     {
-      Schema::defaultStringLength(191);
-      if(!session('cart'))
-      {
-          session(['cart' => new EasyCart()]);
-      }
+      session(['cart' => new EasyCart()]);
     }
+    if (!\App::environment('local')) {
+      \URL::forceScheme('https');
+    }
+  }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+  /**
+  * Register any application services.
+  *
+  * @return void
+  */
+  public function register()
+  {
+    //
+  }
 }
